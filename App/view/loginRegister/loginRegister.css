@@ -1,0 +1,305 @@
+/*GENERALES*/
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ /*CABECERA*/
+ .cabecera{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    background: #ffffff;
+ }
+ .logo{
+    background-image: url("../../../logrocho/RecursosGenerales/imgLogo/LogrochoBig.png");
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+ }
+ /*MENU*/
+ .menu{
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 2px solid rgb(255, 204, 0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+ }
+ .menu div{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height: 100%;
+    background: #ffffff;
+ }
+.menu p{
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    align-items: center;
+    font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #222;
+}
+.menu p:hover{
+    background: rgb(255, 204, 0);
+}
+.btnMenu{
+    height: 100%;
+    width: 50%;
+    text-decoration: none;
+    background: #ffffff;
+}
+
+ /*LOGINREGISTER*/
+ .contenedorLoginRegister{
+    width: 70%;
+    height: 500px;
+    margin-top: 40px;
+    border: 2px solid #fc0;
+    border-radius: 40px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+ }
+ .btnLoginRegister{
+    margin-left: 10%;
+    border: 2px solid #fc0;
+    height: 50px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    width: 80%;
+    transition: 0.3s;
+    box-shadow: 0px 0px 0px #fc0;
+ }
+ .btnLoginRegister:hover{
+    background: #fc0;
+    box-shadow: 0px 0px 10px #fc0;
+ }
+ .txtBtnLoginRegister{
+     margin-bottom: 0px;
+     
+ }
+ /*LOGIN*/
+.contenedorLogin{
+    border-right: 2px solid #f6f6f6;
+    height: 100%;
+    width: 50%;
+    border-radius: 40px 0px 0px 40px;
+    padding-top: 15px;
+}
+.tituloLogin{
+    border-bottom: 1px solid #f6f6f6;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.spanLogin{
+    color: rgb(45, 45, 45);
+    border-bottom: 2px solid #fc0;
+    margin-left: 60px;
+}
+.camposLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+    height: 30%;
+}
+.campoLogin{
+    border-top: 2px solid #fc0;
+    border-bottom: 2px solid #fc0;
+    border-right: 2px solid #fc0;
+    width: 80%;
+    border-radius: 0px 100px 100px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.campoLogin input:focus{
+    box-shadow: 0px 0px 10px #fc0;
+    border: 0px;
+}
+.campoLoginLabel{
+    background: #fc0;
+    width: 40%;
+    border-radius: 0px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.campoLoginLabel h3{
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.campoLoginInput{
+    border-radius: 0px 40px 40px 0px;
+    border: 0px;
+    outline: none;
+    box-shadow: 0px 0px 0px #fc0;
+    transition: 0.3s;
+    padding-left: 10px;
+    width: 60%;
+}
+#errorLogin{
+    color: red;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+ /*REGISTER*/
+ .contenedorRegister{
+    border-left: 2px solid #f6f6f6;
+    height: 100%;
+    width: 50%;
+    border-radius: 0px 40px 40px 0px;
+    padding-top: 15px;
+}
+.tituloRegister{
+    border-bottom: 1px solid #f6f6f6;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.spanRegister{
+    color: rgb(45, 45, 45);
+    border-bottom: 2px solid #fc0;
+    margin-left: 60px;
+}
+.camposRegister{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+    height: 60%;
+}
+
+#errorRegister{
+    color: red;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/*FOOTER*/
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+ body {
+     font-family: 'Rubik', sans-serif;
+     height: 100% !important;
+     background-color: #F8F9FB !important
+ }
+
+ .container-fluid {
+     margin-top: 101px;
+     color: #000 !important
+ }
+
+ .card {
+     background-color: #F8F9FB !important
+ }
+
+ p {
+     display: flex;
+ }
+
+/*  h3 {
+     font-size: calc(24px + (30 - 24) * ((100vw - 360px) / (1600 - 360))) !important
+ } */
+
+ .social {
+     font-size: 21px !important
+ }
+
+ .color-text {
+     color: #757575 !important
+ }
+
+ button {
+     font-size: calc(12px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;
+     background-color: #2CA6FB !important;
+     padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+     padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+ }
+
+ button:focus {
+     -moz-box-shadow: none !important;
+     -webkit-box-shadow: none !important;
+     box-shadow: none !important;
+     outline-width: 0
+ }
+
+ footer {
+     color: #caced1 !important
+ }
+
+ li {
+     margin-top: 20px;
+     margin-bottom: 20px
+ }
+
+ .Careers {
+     cursor: pointer;
+     color: #1E88E5
+ }
+
+ .row-1 {
+     background-color: #1E242A !important
+ }
+
+ .row-2 {
+     background-color: #28323C !important
+ }
+
+ .itemFooter{
+     cursor: pointer;
+ }
+ .itemFooter:hover{
+    color: white;
+}
+.footer{
+    margin-top: 25px;
+    width: 100%;
+}
+#footerArriba{
+    margin-right: 0px;
+}
+#footerAbajo{
+    margin-right: 0px;
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../../logrocho/viewFrontal/home/home.css" />
+</head>
+<body>
+    <div class="content">
+        <div class="cabecera">
+            <a href="home">
+                <div class="logo"> 
+
+                </div>
+            </a>
+            <div class="btnLogin" id="contenedorBtnLogin">
+                <a id="btnLogin" href="frontLoginRegister">👤 Login/Register</a>
+            </div>
+        </div>
+        <div class="menu">
+            <a class="btnBares btnMenu" href="baresFront">
+                <p>Bares</p>
+            </a>
+            <a class="btnPinchos btnMenu" href="frontPinchos">
+                <p>Pinchos</p>
+            </a>
+            <a class="btnMapa btnMenu" href="mapa">
+                <p>Mapa</p>
+            </a>
+        </div>
+        <div class="slider">
+            <div class="btnIzq">
+                <a class="btn btn-outline-light izq" id="botonIzquierda" onclick="moverFotoIzquierda()"><</a>
+            </div>            
+            <div class="zonaCentral">
+                <div class="botonesArriba">
+                    <div class="btnPreferidos btn btn-outline-light" onclick="mostrarPreferidos()" id="btnPreferidos">Preferidos</div>
+                    <div class="btnMejorValorados btn btn-outline-light" onclick="mostrarMejorValorados()" id="btnMejorValorados">Mejor valorados</div>
+                </div>
+                <div class="imagenes" id="imagenes">
+                    <div class="imagen1 mostrado" id="imagen1"></div>
+                    <div class="imagen2 noMostrado" id="imagen2"></div>
+                </div>
+                <div class="imagenes2" id="imagenes2">
+                    <div class="imagen2_1 mostrado" id="imagen2_1"></div>
+                </div>
+                <div class="botonPausa btn btn-outline-light" onclick="pararReanudarAnimacion()" id="btnPararAnimacion">
+                    Parar animacion
+                </div>
+            </div>
+            <div class="btnDer">
+                <a class="btn btn-outline-light der" id="botonDerecha" onclick="moverFotoDerecha()">></a>
+            </div>
+        </div>
+        <div class="explicacionWeb">
+            <fieldset>
+                <legend>LOGROCHO ¿Que puedes hacer aqui?</legend>    
+            </fieldset>
+            <p id="parrafoExplicacionWeb">
+                Esta web es una web dedicada a proveer informacion sobre los bares y 
+                pincho de la Calle Laurel de Logroño. Los usuario podran obtener informacion 
+                sobre los bares colaboradores con la aplicacion, nombre y localizacion dentro de la
+                Laurel, sus pinchos, precios de los pinchos y por ultimo notas y reseñas puestas por otros 
+                usuarios sobre los pinchos de cada bar.
+                Todo esto podras hacerlo sin necesidad de registrarte en la web, pero, ademas, 
+                si te registras, tendras la opcion de, tu mismo, dejar reseñas sobre los pinchos que 
+                degustes en cada una de tus visitas a cualquier bar de La Laurel, ademas de ponerle una 
+                nota numerica al pincho. 
+                De esta forma favoreceras al desarrollo de la web haciendo que cada vez haya mas informacion
+                por parte de los usuarios y mas referencias para nuevos usuarios.
+                <br><br><br><br><span>¡GRACIAS POR UTILIZAR LOGROCHO!</span>
+            </p>
+        </div>
+        <div class="restaurantesMejorValorados">
+            <h1 class="tituloRestaurantesMejorValorados">
+                <span class="spanRestaurantesMejorValorados">Podio de restaurantes mejor valorados</span>
+            </h1>
+            <div class="contenedorRestaurantes">
+                <div class="restaurante">
+                    <div class="imgRestaurante imgRestaurante1">
+
+                    </div>
+                    <p class="nombreRestaurante">Restaurante La Senda</p>
+                </div>
+                <div class="restaurante">
+                    <div class="imgRestaurante imgRestaurante2">
+
+                    </div>
+                    <p class="nombreRestaurante">Bar Calderas</p>
+                </div>
+                <div class="restaurante">
+                    <div class="imgRestaurante imgRestaurante3">
+
+                    </div>
+                    <p class="nombreRestaurante">Bar Restaurante Tastavin</p>
+                </div>
+            </div>
+        </div>
+        <div class="reseñasMejorValoradas">
+            <h1 class="tituloReseñasPopulares">
+                <span class="spanReseñasPopulares">Podio de reseñas mas populares</span>
+            </h1>
+            <div class="contenedorReseñasPopulares">
+                <div class="reseña">
+                    <div class="usuarioNotaReseña">
+                        <p class="usuarioReseña">👤 Usuario</p>
+                        <p class="notaReseña">4/5 ⭐</p>
+                        <div class="btnVerPincho"><p>Ver pincho</p></div>
+                    </div>
+                    <div class="imagenTextoReseña">
+                        <div class="imagenReseña">
+
+                        </div>
+                        <p class="textoReseña">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet gravida convallis. In porta auctor leo ac maximus. Nullam tincidunt mauris quis lorem viverra, vitae ullamcorper mauris posuere. Mauris nec metus a sem ornare venenatis at a nibh</p>
+                    </div>
+                </div>
+                <div class="reseña">
+                    <div class="usuarioNotaReseña">
+                        <p class="usuarioReseña">👤 Usuario</p>
+                        <p class="notaReseña">3.5/5 ⭐</p>
+                        <div class="btnVerPincho"><p>Ver pincho</p></div>
+                    </div>
+                    <div class="imagenTextoReseña">
+                        <div class="imagenReseña">
+
+                        </div>
+                        <p class="textoReseña">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet gravida convallis. In porta auctor leo ac maximus. Nullam tincidunt mauris quis lorem viverra, vitae ullamcorper mauris posuere. Mauris nec metus a sem ornare venenatis at a nibh</p>
+                    </div>
+                </div>
+                <div class="reseña">
+                    <div class="usuarioNotaReseña">
+                        <p class="usuarioReseña">👤 Usuario</p>
+                        <p class="notaReseña">4.5/5 ⭐</p>
+                        <div class="btnVerPincho"><p>Ver pincho</p></div>
+                    </div>
+                    <div class="imagenTextoReseña">
+                        <div class="imagenReseña">
+
+                        </div>
+                        <p class="textoReseña">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet gravida convallis. In porta auctor leo ac maximus. Nullam tincidunt mauris quis lorem viverra, vitae ullamcorper mauris posuere. Mauris nec metus a sem ornare venenatis at a nibh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="row justify-content-center mb-0 pt-5 pb-0 row-2 px-3" id="footerArriba">
+            <div class="col-12">
+                <div class="row row-2">
+                    <div class="col-sm-3 text-md-center">
+                        <h5><span> <i class="fa fa-firefox text-light" aria-hidden="true"></i></span><b>Logrocho</b></h5>
+                    </div>
+                    <div class="col-sm-3 my-sm-0 mt-5">
+                        <ul class="list-unstyled">
+                            <li class="mt-0 itemFooter">Plataforma</li>
+                            <li class="itemFooter">Centro de ayuda</li>
+                            <li class="itemFooter">Seguridad</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3 my-sm-0 mt-5">
+                        <ul class="list-unstyled">
+                            <li class="mt-0 itemFooter">Clientes</li>
+                            <li class="itemFooter">Casos de uso</li>
+                            <li class="itemFooter">Servicios al cliente</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3 my-sm-0 mt-5">
+                        <ul class="list-unstyled">
+                            <li class="mt-0 itemFooter">Compañía</li>
+                            <li class="itemFooter">Sobre nosotros</li>
+                            <li class="itemFooter">Carreras- <span class="Careers">Estamos contratando</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-0 pt-0 row-1 mb-0 px-sm-3 px-2" id="footerAbajo">
+            <div class="col-12">
+                <div class="row my-4 row-1 no-gutters">
+                    <div class="col-sm-3 col-auto text-center"><small>&#9400; Abadía Software</small></div>
+                    <div class="col-md-3 col-auto "></div>
+                    <div class="col-md-3 col-auto"></div>
+                    <div class="col my-auto text-md-left text-right "> <small> iabadiac01@larioja.edu.es <span><img src="../../../../logrocho/RecursosGenerales/simboloTwitter.png" class="img-fluid " width="25"></span> <span><img src="../../../../logrocho/RecursosGenerales/simboloFacebook.png" class="img-fluid " width="25"></span></small> </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../../../logrocho/RecursosGenerales/jquery-3.6.0.js"></script>
+    <script src="../../../logrocho/viewFrontal/home/home.js"></script>
+</body>
+</html>
