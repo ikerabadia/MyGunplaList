@@ -36,16 +36,23 @@ fieldset{
     align-items: center;
     padding-left: 100px;
     padding-right: 100px;
-    background: #ffffff;
+    background: #191fba;
  }
  .logo{
-    background-image: url("../../../../logrocho/RecursosGenerales/imgLogo/LogrochoBig.png");
-    width: 150px;
-    height: 150px;
+    background-image: url("../../../../mygunplalist/RecursosGenerales/imgLogo/LogoRojoFondoGunMetal.PNG"); 
+    width: 285px;
+    height: 115px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    border: 3px solid #2a3439;
+    border-radius: 5px;
+    transition: 0.3s;    
+ }
+ .logo:hover{
+    border: 20px solid #2a3439; 
+    box-shadow: 0px 0px 20px #2a3439;
  }
  .btnLogin{
     cursor: pointer;
@@ -65,12 +72,13 @@ fieldset{
  .menu{
     width: 100%;
     height: 50px;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 2px solid rgb(255, 204, 0);
+    border-top: 1px solid #e60b0b;
+    border-bottom: 2px solid #e60b0b;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    background-color: #2a3439;
  }
  .menu div{
     width: 50%;
@@ -78,7 +86,7 @@ fieldset{
     flex-direction: row;
     align-content: center;
     height: 100%;
-    background: #ffffff;
+    background: #2a3439;
  }
 .menu p{
     margin: 0px;
@@ -92,430 +100,15 @@ fieldset{
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #222;
+    color: white;
 }
 .menu p:hover{
-    background: rgb(255, 204, 0);
+    background: #e60b0b;
+    box-shadow: 0px -10px 15px #e60b0b; 
 }
 .btnMenu{
     height: 100%;
     width: 50%;
     text-decoration: none;
-    background: #ffffff;
-}
-
-
-/*SLIDER*/
-.slider{
-    width: 100%;
-    height: 600px;
-    background-color: #f4f6f5;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-.zonaCentral{
-    height: 100%;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;    
-}
-.imagenes{      
-    height: 80%;
-    overflow: hidden;
-    position: relative;
-    background: black;
-}
-.imagen1{
-    background-image: url("../../../logrocho/RecursosGenerales/restauranteDefault.png");  
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-}
-.imagen2{
-    background-image: url("../../../logrocho/RecursosGenerales/restauranteDefault.png");  
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0%;
-    left: 100%;
-}
-.izq{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    border-radius: 10px 0px 0px 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    color: black;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #222;
-}
-.izq:hover{
-    background: rgb(255, 204, 0);
-}
-.der{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    border-radius: 0px 10px 10px 0px;  
-    transition: 0.3s;
-    color: black;  
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #222;
-}
-.der:hover{
-    background: rgb(255, 204, 0);
-}
-/*EXPLICACION WEB*/
-.explicacionWeb{
-    background: #fc0;
-    height: 400px;
-    width: 100%;
-    padding-top: 20px;
-}
-#parrafoExplicacionWeb{
-    width: 80%;
-    margin-left: 10%;
-    font-style: italic;
-    font-size: 20px !important;
-    text-align: center;
-}
-#parrafoExplicacionWeb span{
-    font-weight: 900;
-}
-
-/*pinchos mejor valorados*/
-.imagenes2{
-    display: none;
-    background: black;
-    height: 80%;
-}
-.imagen2_1{
-    background-image: url("../../../logrocho/viewFrontal/home/imgPinchosMejorVal/pincho01.jpg");  
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    transition: 1s;
-}
-
-/*Parte de arriba*/
-.botonesArriba{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: flex-end;
-    justify-content: flex-start;
-    align-items: flex-end;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #222;
-}
-.btnPreferidos{
-    text-decoration: none;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    width: 50%;
-    text-align: center;
-    border-radius: 10px 0px 0px 0px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #222;
-    background: rgb(255, 204, 0);
-}
-.btnPreferidos:hover{
-    background: rgb(255, 204, 0);
-}
-.btnMejorValorados{
-    text-decoration: none;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    width: 50%;
-    text-align: center;
-    border-radius: 0px 10px 0px 0px;
-    cursor: pointer;
-    background: transparent;
-    transition: 0.3s;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #222;
-}
-.btnMejorValorados:hover{
-    background: rgb(255, 204, 0);
-}
-.botonPausa{
-    border-radius: 0px 0px 10px 10px;
-    transition: 0.3s;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #222;
-}
-.botonPausa:hover{
-    background: rgb(255, 204, 0);
-}
-
-/*RESTAURANTES MEJOR VALORADOS*/
-.restaurantesMejorValorados{
-    margin-top: 60px;
-    margin-left: 150px;
-    margin-right: 150px;
-}
-.tituloRestaurantesMejorValorados{
-    border-bottom: 1px solid #f6f6f6;
-    font-size: 22px;
-    text-transform: uppercase;
-    font-weight: 300;
-}
-.spanRestaurantesMejorValorados{
-    color: rgb(45, 45, 45);
-    border-bottom: 2px solid #fc0;
-    
-}
-.contenedorRestaurantes{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-.restaurante{
-    width: 30%;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0px 0px 0px;
-}
-.restaurante:hover{
-    box-shadow: 0px 0px 10px;
-}
-.imgRestaurante{    
-    width: 100%;
-    height: 300px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-}
-.imgRestaurante1{
-    background-image: url("../../../logrocho/viewFrontal/home/imgRestaurantes/restaurante1.jpg");
-}
-.imgRestaurante2{
-    background-image: url("../../../logrocho/viewFrontal/home/imgRestaurantes/restaurante2.jpeg");
-}
-.imgRestaurante3{
-    background-image: url("../../../logrocho/viewFrontal/home/imgRestaurantes/restaurante3.jpeg");
-}
-.nombreRestaurante{
-    text-align: center;
-    margin: 0px;
-}
-
-/*RESEÑAS MAS POPULARES*/
-.reseñasMejorValoradas{
-    margin-top: 60px;
-    margin-left: 150px;
-    margin-right: 150px;
-}
-.tituloReseñasPopulares{
-    border-bottom: 1px solid #f6f6f6;
-    font-size: 22px;
-    text-transform: uppercase;
-    font-weight: 300;
-}
-.spanReseñasPopulares{
-    color: rgb(45, 45, 45);
-    border-bottom: 2px solid #fc0;
-    
-}
-.contenedorReseñasPopulares{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    font-size: 14px;
-}
-.reseña{
-
-}
-.usuarioNotaReseña{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 5px;
-}
-.usuarioNotaReseña p{
-    margin: 0px;
-    display: flex;
-    align-items: center;
-}
-.usuarioReseña{
-    box-shadow: 0px 0px;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.usuarioReseña:hover{
-    box-shadow: 0px -2px;
-}
-.notaReseña{
-
-}
-.btnVerPincho{
-    border-radius: 5px;
-    text-transform: uppercase;
-    border: 1px solid #fc0;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    height: 35px;
-    width: 25%;
-    justify-content: center;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.btnVerPincho:hover{
-    background: #fc0;
-}
-.btnVerPincho p{
-    margin: 0px;
-}
-.imagenTextoReseña{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.imagenReseña{
-    background-image: url("../../../logrocho/viewFrontal/home/imgPinchosFav/pincho01.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    width: 40%;
-    height: 150px;
-}
-.textoReseña{
-    width: 60%;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-/*FOOTER*/
-@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
-
- body {
-     font-family: 'Rubik', sans-serif;
-     height: 100% !important;
-     background-color: #F8F9FB !important
- }
-
- .container-fluid {
-     margin-top: 101px;
-     color: #000 !important
- }
-
- .card {
-     background-color: #F8F9FB !important
- }
-
- p {
-     font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
- }
-
- h3 {
-     font-size: calc(24px + (30 - 24) * ((100vw - 360px) / (1600 - 360))) !important
- }
-
- .social {
-     font-size: 21px !important
- }
-
- .color-text {
-     color: #757575 !important
- }
-
- button {
-     font-size: calc(12px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;
-     background-color: #2CA6FB !important;
-     padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-     padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-     padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
-     padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
- }
-
- button:focus {
-     -moz-box-shadow: none !important;
-     -webkit-box-shadow: none !important;
-     box-shadow: none !important;
-     outline-width: 0
- }
-
- footer {
-     color: #caced1 !important
- }
-
- li {
-     margin-top: 20px;
-     margin-bottom: 20px
- }
-
- .Careers {
-     cursor: pointer;
-     color: #1E88E5
- }
-
- .row-1 {
-     background-color: #1E242A !important
- }
-
- .row-2 {
-     background-color: #28323C !important
- }
-
- .itemFooter{
-     cursor: pointer;
- }
- .itemFooter:hover{
-    color: white;
-}
-.footer{
-    margin-top: 25px;
-    width: 100%;
-}
-#footerArriba{
-    margin-right: 0px;
-}
-#footerAbajo{
-    margin-right: 0px;
+    background: #2a3439;
 }
