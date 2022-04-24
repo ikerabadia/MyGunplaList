@@ -1,5 +1,5 @@
 <?php
-class ApiController
+class ApiUserController
 {
 
     function __construct()
@@ -16,7 +16,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["usuarios"] = array();
-        $usuariosbd = Conexion::getUsuarios($pagina, $cantidadRegistros);
+        $usuariosbd = BdUsuarios::getUsuarios($pagina, $cantidadRegistros);
         foreach ($usuariosbd as $usuario) {
             $aux = array();
             $aux["id_usuario"] = $usuario["id_usuario"];
@@ -35,7 +35,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["usuarios"] = array();
-        $usuariosbd = Conexion::getUser($idUsuario);
+        $usuariosbd = BdUsuarios::getUser($idUsuario);
         foreach ($usuariosbd as $usuario) {
             $aux = array();
             $aux["id_usuario"] = $usuario["id_usuario"];
@@ -53,7 +53,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["usuario"] = array();
-        $usuariosbd = Conexion::newUsuario($username, $password, $email);
+        $usuariosbd = BdUsuarios::newUsuario($username, $password, $email);
         
         echo json_encode($usuariosbd);
     }
@@ -65,7 +65,7 @@ class ApiController
             header("Content-Type: application/json', 'HTTP/1.1 200 OK");
             $array = array();
             $array["usuario"] = array();
-            $reseñasbd = Conexion::deleteUsuario($idUsuario);
+            $reseñasbd = BdUsuarios::deleteUsuario($idUsuario);
                 
             echo json_encode($reseñasbd);
         /* }else{
@@ -83,7 +83,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["usuario"] = array();
-        $usuariosbd = Conexion::updateUsuario($idUsuario, $username, $password, $img_usuario, $email);
+        $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email);
         
         echo json_encode($usuariosbd);
     }
@@ -102,7 +102,7 @@ class ApiController
             move_uploaded_file($imagen["tmp_name"], "./imagenes/usuarios/".$idUsuario."/".$imagen["name"]);
         }
         
-        Conexion::guardarImagenUsuario($idUsuario, $ruta);
+        BdUsuarios::guardarImagenUsuario($idUsuario, $ruta);
     }
     
     /**
@@ -116,7 +116,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["imagenes"] = array();
-        $imagenesbd = Conexion::getImagenUsuario($idUsuario);
+        $imagenesbd = BdUsuarios::getImagenUsuario($idUsuario);
         foreach ($imagenesbd as $imagen) {
             $aux = array();
             $aux["id"] = $imagen["id"];
@@ -137,7 +137,7 @@ class ApiController
     {
         
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
-        $imagenbd = Conexion::deleteImagenUsuario($idUsuario);
+        $imagenbd = BdUsuarios::deleteImagenUsuario($idUsuario);
                 
         echo json_encode($imagenbd);        
         
@@ -156,7 +156,7 @@ class ApiController
 
         if (isset($_SESSION["usuarioActual"])) {
             $idUsuario = $_SESSION["usuarioActual"]["idUsuario"];
-            Conexion::deleteUsuario($idUsuario);
+            BdUsuarios::deleteUsuario($idUsuario);
             $array["resultado"] = "Usuario dado de baja correctamente";
             session_destroy();
         }else{
@@ -174,7 +174,7 @@ class ApiController
             $array["usuarios"] = array();
             $usuario = array();
 
-            $usuariosbd = Conexion::getUser($_SESSION["usuarioActual"]["id_usuario"]);
+            $usuariosbd = BdUsuarios::getUser($_SESSION["usuarioActual"]["id_usuario"]);
             foreach ($usuariosbd as $usuariobd) {
                 $aux = array();
                 $aux["id_usuario"] = $usuariobd["id_usuario"];
@@ -182,6 +182,12 @@ class ApiController
                 $aux["password"] = $usuariobd["password"];
                 $aux["img_usuario"] = $usuariobd["img_usuario"];
                 $aux["email"] = $usuariobd["email"];
+                if ($usuariobd["moderador"] == 1) {
+                    $aux["moderador"] = true;
+                }else{
+                    $aux["moderador"] = false;
+                }
+                
 
                 //$aux["imagen"] ="";
                 /* $imagenesbd = Conexion::getImagenUsuario($usuariobd["idUsuario"]);
@@ -213,7 +219,7 @@ class ApiController
 
     public function loginFront($user, $password){
 
-        $login = Conexion::getLogin($user, $password);
+        $login = BdUsuarios::getLogin($user, $password);
 
         if ($login->rowCount() == 1) {
             $_SESSION["usuarioActual"] = $login->fetch();
@@ -237,7 +243,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["mejorValorados"] = array();
-        $mejorValoradosbd = Conexion::getImagenesMejorValorados();
+        $mejorValoradosbd = BdUsuarios::getImagenesMejorValorados();
         foreach ($mejorValoradosbd as $imagen) {
             $aux = array();
             $aux["imagen"] = $imagen["imagen"];
@@ -252,7 +258,7 @@ class ApiController
         }
 
         $array["preferidos"] = array();
-        $preferidos = Conexion::getImagenesPreferidos($idUsuario);
+        $preferidos = BdUsuarios::getImagenesPreferidos($idUsuario);
         foreach ($preferidos as $imagen) {
             $aux = array();
             $aux["imagen"] = $imagen["imagen"];
@@ -270,7 +276,7 @@ class ApiController
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["bares"] = array();
-        $baresbd = Conexion::getBaresFiltradosNombreDescripcion($textoBuscador);
+        $baresbd = BdUsuarios::getBaresFiltradosNombreDescripcion($textoBuscador);
 
         foreach ($baresbd as $bar) {
 
@@ -285,7 +291,7 @@ class ApiController
         }
 
         $array["pinchos"] = array();        
-        $pinchosbd = Conexion::getPinchosFiltradosNombreDescripcionTextoResena($textoBuscador, 0, 100, 0, 10);
+        $pinchosbd = BdUsuarios::getPinchosFiltradosNombreDescripcionTextoResena($textoBuscador, 0, 100, 0, 10);
 
         foreach($pinchosbd as $pincho){
             $aux = array();
