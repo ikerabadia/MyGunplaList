@@ -273,6 +273,44 @@ class BdUsuarios{
         }
     }
 
+    static function addToMisGunplas($idModelKit, $idUsuario){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "INSERT INTO `listado_model_kits_usuario`(`fk_usuario`, `fk_model_kit`, `estado`, `nota_dificultad`, `nota_acabado_OOB`, `nota_pos_pers`, `nota_calidad`, `nota_poses`, `nota_media_usuario`) VALUES ('$idUsuario','$idModelKit','0',null,null,null,null,null,null)";
+            $resultado = $db->query($sql);            
+            
+            if ($resultado) {                
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Exception $th) {
+            return false;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
+
+    static function patchEstadoMisGunplas($idModelKit, $idUsuario, $estado){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "UPDATE `listado_model_kits_usuario` SET `estado`=$estado WHERE fk_usuario = $idUsuario AND fk_model_kit = $idModelKit";
+            $resultado = $db->query($sql);
+
+            if ($resultado) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     //GENERICOS
     static function getImagenesMejorValorados(){
         try {

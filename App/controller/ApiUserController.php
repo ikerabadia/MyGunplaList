@@ -311,4 +311,61 @@ class ApiUserController
         echo json_encode($array);
     }
 
+    public function addToMisGunplas($idModelKit){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        if (isset($_SESSION["usuarioActual"])) {
+
+            $idUsuario = $_SESSION["usuarioActual"]["id_usuario"];
+            $bdUsuarios = BdUsuarios::addToMisGunplas($idModelKit, $idUsuario);
+
+            if ($bdUsuarios == true) {
+                $array["status"] = true;
+                $array["mensaje"] = "Model Kit añadido a tus gunplas correctamente";
+            }else{
+                $array["status"] = false;
+                $array["mensaje"] = "El model kit ya esta entre tus gunplas";
+            }    
+
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "debes estar logueado para añadir un model kit a tus gunplas";
+        }
+
+        echo json_encode($array);
+    }
+
+    public function patchEstadoMisGunplas($idModelKit, $estado){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        if (isset($_SESSION["usuarioActual"])) {
+
+            if ($estado < 0 || $estado > 3) {
+                $array["status"] = false;
+                $array["mensaje"] = "El estado introducido no es un estado valido, el estado debe ser un numero entre el 0 y el 3, ambos incluidos";
+            }else{
+
+                $idUsuario = $_SESSION["usuarioActual"]["id_usuario"];
+                $bdUsuarios = BdUsuarios::patchEstadoMisGunplas($idModelKit, $idUsuario, $estado);    
+
+                if ($bdUsuarios == true) {
+                    $array["status"] = true;
+                    $array["mensaje"] = "El estado del model kit se ha modificado correctamente";
+                }else{
+                    $array["status"] = false;
+                    $array["mensaje"] = "ha ocurrido un error al modificar el estado del model kit";
+                } 
+
+            }
+
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Debes estar logueado para modificar el estado de uno de tus gunplas";
+        }
+
+        echo json_encode($array);
+    }
+
 }

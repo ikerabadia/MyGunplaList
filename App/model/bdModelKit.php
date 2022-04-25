@@ -22,9 +22,9 @@ class BdModelKit{
                 return "false";
             }
         } catch (\Exception $th) {
-            return "false";
+            return false;
         } catch (\PDOException $e) {
-            return "false";
+            return false;
         }
     }
 
@@ -48,4 +48,26 @@ class BdModelKit{
             
         }
     }
+
+    static function isInList($idUsuario, $idModelKit){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "SELECT * FROM `listado_model_kits_usuario` WHERE fk_usuario = $idUsuario and fk_model_kit = $idModelKit";
+            $resultado = $db->query($sql);
+
+            echo $resultado->fetchColumn();
+
+            if ($resultado->fetchColumn() == false) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }

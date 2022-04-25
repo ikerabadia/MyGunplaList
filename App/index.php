@@ -47,6 +47,13 @@
         $apiUserController->loginFront($user, $password);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "logout") {
         $apiUserController->logout();
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "addToMisGunplas") {
+        $idModelKit = $_POST["idModelKit"];
+        $apiUserController->addToMisGunplas($idModelKit);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "patchEstadoMisGunplas") {
+        $idModelKit = $_POST["idModelKit"];
+        $estado = $_POST["estado"];
+        $apiUserController->patchEstadoMisGunplas($idModelKit, $estado);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoModelKit") { //MODEL KITS
         $nombre = $_POST["nombre"];
         $grado = $_POST["grado"];
