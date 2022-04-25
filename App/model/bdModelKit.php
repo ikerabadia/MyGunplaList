@@ -94,6 +94,22 @@ class BdModelKit{
         }
     }
 
+    //CONSULTA PARA OBTENER LOS MODEL KITS PAGINADOS Y RANKEADOS TANTO POR NOTA COMO POR POPULARIDAD
+    /* SELECT
+    (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota,
+    DENSE_RANK() OVER (
+            ORDER BY nota desc
+        ) puesto_nota,
+    (SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as popularidad,    
+    DENSE_RANK() OVER (
+            ORDER BY popularidad desc
+        ) puesto_popularidad, 
+    mk.*
+    FROM `model_kit` mk
+    WHERE (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario WHERE listado_model_kits_usuario.fk_model_kit = mk.id_model_kit) is not null
+    ORDER BY puesto_nota asc
+    LIMIT 50 OFFSET 1 */
+
     
     
 
