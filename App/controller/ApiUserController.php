@@ -368,4 +368,32 @@ class ApiUserController
         echo json_encode($array);
     }
 
+    //poner nota a partir de las puntuaciones recibidas del index.php
+    public function ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        if (isset($_SESSION["usuarioActual"])) {
+
+            $idUsuario = $_SESSION["usuarioActual"]["id_usuario"];
+            $notaMedia = ($notaDificultad + $notaOOB + $notaPersonalizacion + $notaCalidad + $notaPoses) / 5;
+            $bdUsuarios = BdUsuarios::ponerNota($idModelKit, $idUsuario, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses, $notaMedia);
+
+            if ($bdUsuarios == true) {
+                $array["status"] = true;
+                $array["mensaje"] = "La nota se ha modificado correctamente";
+            }else{
+                $array["status"] = false;
+                $array["mensaje"] = "ha ocurrido un error al modificar la nota";
+            }    
+
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Debes estar logueado para modificar la nota de uno de tus gunplas";
+        }
+
+        echo json_encode($array);
+    }
+
+
 }

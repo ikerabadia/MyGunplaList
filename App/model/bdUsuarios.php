@@ -311,6 +311,25 @@ class BdUsuarios{
         }
     }
 
+    static function ponerNota($idModelKit, $idUsuario, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses, $notaMedia){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "UPDATE `listado_model_kits_usuario` SET `nota_dificultad`=$notaDificultad, `nota_acabado_OOB`=$notaOOB, `nota_pos_pers`=$notaPersonalizacion, `nota_calidad`=$notaCalidad, `nota_poses`=$notaPoses, `nota_media_usuario`=$notaMedia WHERE fk_usuario = $idUsuario AND fk_model_kit = $idModelKit";
+            $resultado = $db->query($sql);
+
+            if ($resultado) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     //GENERICOS
     static function getImagenesMejorValorados(){
         try {

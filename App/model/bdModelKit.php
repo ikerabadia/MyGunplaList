@@ -70,4 +70,35 @@ class BdModelKit{
         }
     }
 
+    static function getModificacionesModelKit($idModelKit){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "SELECT 
+            *,
+            (select username from usuarios u WHERE m.fk_usuario = u.id_usuario) username
+            FROM `modificaciones_model_kit` m WHERE m.fk_model_kit = $idModelKit";
+            $resultado = $db->query($sql);
+
+            $modificaciones = array();
+
+            while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                $modificaciones[] = $fila;
+            }
+
+            return $modificaciones;
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    
+    
+
+
+
+
+
 }

@@ -54,7 +54,15 @@
         $idModelKit = $_POST["idModelKit"];
         $estado = $_POST["estado"];
         $apiUserController->patchEstadoMisGunplas($idModelKit, $estado);
-    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoModelKit") { //MODEL KITS
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "ponerNota") {
+        $idModelKit = $_POST["idModelKit"];
+        $notaDificultad = $_POST["notaDificultad"];
+        $notaOOB = $_POST["notaOOB"];
+        $notaPersonalizacion = $_POST["notaPersonalizacion"];
+        $notaCalidad = $_POST["notaCalidad"];
+        $notaPoses = $_POST["notaPoses"];
+        $apiUserController->ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoModelKit") {                                  //MODEL KITS
         $nombre = $_POST["nombre"];
         $grado = $_POST["grado"];
         $escala = $_POST["escala"];
@@ -79,6 +87,9 @@
         $imgPose1 = $_POST["imgPose1"];
         $imgPose2 = $_POST["imgPose2"];
         $apiModelKitController->updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModificacionesModelKit") {
+        $idModelKit = $array_ruta[2];
+        $apiModelKitController->getModificacionesModelKit($idModelKit);
     }else if(count($array_ruta)==0){ //Pagina mostrada por defecto
         header("Location: ".$_SERVER["REQUEST_URI"]."home");
     }else{
