@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "212885d6-88a9-4439-a287-097d298e511b",
+		"name": "MYGUNPLALIST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "GetUsuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pagina",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cantidadRegistros",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/usuario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "abadio",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "abadio",
+									"type": "text"
+								},
+								{
+									"key": "img_usuario",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "elabadio@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/nuevoUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"nuevoUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/deleteUsuario/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"deleteUsuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "ikerabadiaedited",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ikerabadiaedited",
+									"type": "text"
+								},
+								{
+									"key": "img_usuario",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ikerabadiaEdited@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/updateUsuario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"updateUsuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsuarioLogueado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/getUsuarioLogueado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"getUsuarioLogueado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "ikerabadiaedited",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ikerabadiaedited",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/loginFront",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"loginFront"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addModelKitMisGunplas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idModelKit",
+									"value": "14",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/addToMisGunplas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"addToMisGunplas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patchEstadoMisGunplas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idModelKit",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/patchEstadoMisGunplas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"patchEstadoMisGunplas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Model Kits",
+			"item": [
+				{
+					"name": "newModelKit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "ZAKU II Origin Type C-5",
+									"type": "text"
+								},
+								{
+									"key": "grado",
+									"value": "HG",
+									"type": "text"
+								},
+								{
+									"key": "escala",
+									"value": "1/144",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "La version C-5 del clasico ZAKU II de Zeon, en version hg de la saga origin, con una mayor calidad de acabado OOB, detalles, colores mas vibrantes y mas posibilidad de poses.",
+									"type": "text"
+								},
+								{
+									"key": "fechaSalida",
+									"value": "2020-4-01",
+									"type": "text"
+								},
+								{
+									"key": "imgPoseBaseDelante",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgPoseBaseDetras",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgCaja",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgPose1",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgPose2",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/nuevoModelKit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"nuevoModelKit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateModelKit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "RX-78-2",
+									"type": "text"
+								},
+								{
+									"key": "grado",
+									"value": "EG",
+									"type": "text"
+								},
+								{
+									"key": "escala",
+									"value": "1/144",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Bandai ha lanzado un nuevo RX-78-2 pero en la serie Entry Grade (EG) aparte de lo obvio que es bastante económico, lo más importante de los  EG es que estan pensados para ser montados sin alicates, ni pegamento ni cualquier otra cosa que no sean tus dedos! Es decir es ideal para los que se inician a este hobby o para aquellas personas que no tengan ninguna experiencia y muy probablemente no tengan pensado en engancharse a este estupendo hobby. Vamos que si quieres hacer un regalo, que se entretengan un rato y sentirse orgullosde montar su propio gunpla esta es muy buena elección como regalo. Nunca falla.",
+									"type": "text"
+								},
+								{
+									"key": "fechaSalida",
+									"value": "2020-12-01",
+									"type": "text"
+								},
+								{
+									"key": "imgPoseBaseDelante",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgPoseBaseDetras",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgCaja",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgPose1",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imgPose2",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/mygunplalist/index.php/api/updateModelKit/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"index.php",
+								"api",
+								"updateModelKit",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

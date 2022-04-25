@@ -1,0 +1,1374 @@
+{
+	"info": {
+		"_postman_id": "18d44af0-121b-4dc6-9704-49f93292f519",
+		"name": "LOGROCHO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bares",
+			"item": [
+				{
+					"name": "getBares",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pagina",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cantidadRegistros",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/restaurantes",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"restaurantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/restaurante/24",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"restaurante",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newBar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Divina Croqueta",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Especialidad en croquetas elaboradas al momento, con producto de temporada, y con novedades semanales. Croquetas veganas dependiendo de la semana.",
+									"type": "text"
+								},
+								{
+									"key": "localizacion",
+									"value": "Calle San Agustín, 41",
+									"type": "text"
+								},
+								{
+									"key": "latitud",
+									"value": "42.46585370423383",
+									"type": "text"
+								},
+								{
+									"key": "longitud",
+									"value": "-2.4493475950868775",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/nuevoRestaurante",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"nuevoRestaurante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deleteRestaurante/6",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deleteRestaurante",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Restaurante1UWU",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Descripcion restaurante 1UWU",
+									"type": "text"
+								},
+								{
+									"key": "localizacion",
+									"value": "Localizacion restaurante 1UWU",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/updateRestaurante/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"updateRestaurante",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getImagenBar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idBar",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "numeroImagen",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/getImagenRestaurante",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"getImagenRestaurante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteImagenRestaurante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fk_bar",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "numeroImagen",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deleteImagenRestaurante",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deleteImagenRestaurante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBaresFiltrados",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fTextoBuscador",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "fNotaMinima",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "fNotaMaxima",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/restaurantesFiltrados",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"restaurantesFiltrados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRestaurantesConSusImagenesJuntoASusPinchosConSusImagenes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/restaurantesConPinchos/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"restaurantesConPinchos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFullRestaurantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/getFullRestaurantes",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"getFullRestaurantes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reseñas",
+			"item": [
+				{
+					"name": "getReseñas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pagina",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cantidadRegistros",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/resenas",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"resenas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReseña",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/resena/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"resena",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newReseña",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fkUsuario",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "fkPincho",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nota",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "textoResena",
+									"value": "keweno la berdas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/nuevaResena",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"nuevaResena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteReseña",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deleteResena/3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deleteResena",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateReseña",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fkUsuario",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "fkPincho",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nota",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "textoResena",
+									"value": "kemalo puag",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/updateResena/2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"updateResena",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "darLike",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fk_resena",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/darLike",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"darLike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarLike",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fk_resena",
+									"value": "13",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/eliminarLike",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"eliminarLike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReseñasByUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/resenasByUsuario/4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"resenasByUsuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReseñasPinchosOrdenPopularidad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/resenasPinchosOrdenPopularidad",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"resenasPinchosOrdenPopularidad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getResenasLikedByUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/resenasLikeadasUsuario",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"resenasLikeadasUsuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pinchos",
+			"item": [
+				{
+					"name": "GetPinchos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pagina",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cantidadRegistros",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/pinchos",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"pinchos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPincho",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/pincho/26",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"pincho",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newPincho",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "pincho3",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "fkBar",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "camalares",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/nuevoPincho",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"nuevoPincho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePincho",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deletePincho/3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deletePincho",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePincho",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "croquetas",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "13",
+									"type": "text"
+								},
+								{
+									"key": "fkBar",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "croquetas rikas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/updatePincho/2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"updatePincho",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteImagenPincho",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fk_pincho",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "numeroImagen",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deleteImagenPincho",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deleteImagenPincho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPinchosByBar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/pinchos/26",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"pinchos",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getImagenPincho",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPincho",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "numeroImagen",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/getImagenPincho",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"getImagenPincho"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPinchosConImagenesYReseñas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/pinchosImagenesResenas/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"pinchosImagenesResenas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPinchosFiltrados",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "textoBuscador",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "notaMinima",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "notaMaxima",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "precioMinimo",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "precioMaximo",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/getPinchosFiltrados",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"getPinchosFiltrados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "GetUsuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pagina",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cantidadRegistros",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost/mygunplalist/backend/index.php/api/usuarios",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"backend",
+								"index.php",
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mygunplalist/backend/index.php/api/usuario/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mygunplalist",
+								"backend",
+								"index.php",
+								"api",
+								"usuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido1",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "correoElectronico",
+									"value": "ikerabadia@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "user",
+									"value": "ikerabadia",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "org",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/resenas",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"resenas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deleteUsuario/3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deleteUsuario",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "iker",
+									"type": "text"
+								},
+								{
+									"key": "apellido1",
+									"value": "abadia",
+									"type": "text"
+								},
+								{
+									"key": "apellido2",
+									"value": "conejos",
+									"type": "text"
+								},
+								{
+									"key": "correoElectronico",
+									"value": "ikerabadiaconejos@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "user",
+									"value": "ikerabadia",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "org",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/updateUsuario/4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"updateUsuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getImagen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/getImagenUsuario/4",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"getImagenUsuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteImagenUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/deleteImagenUsuario/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"deleteImagenUsuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bajaUsuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/logrocho/index.php/api/bajaUsuario",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"bajaUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsuarioLogueado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/getUsuarioLogueado",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"getUsuarioLogueado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginFront",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "ikerabadia",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "org",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/loginFront",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"loginFront"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/logout",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "genericos",
+			"item": [
+				{
+					"name": "buscadorGeneral",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "textoBuscador",
+									"value": "cro",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://iker.ociobinario.com/logrocho/index.php/api/buscadorBaresPinchos",
+							"protocol": "https",
+							"host": [
+								"iker",
+								"ociobinario",
+								"com"
+							],
+							"path": [
+								"logrocho",
+								"index.php",
+								"api",
+								"buscadorBaresPinchos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
