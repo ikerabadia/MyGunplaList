@@ -90,6 +90,15 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModificacionesModelKit") {
         $idModelKit = $array_ruta[2];
         $apiModelKitController->getModificacionesModelKit($idModelKit);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getAllModelKits") {
+        $pagina = $_POST["pagina"];
+        $orden = $_POST["orden"];
+        $notaMinima = $_POST["notaMinima"];
+        $notaMaxima = $_POST["notaMaxima"];
+        $textoBuscador = $_POST["textoBuscador"];
+        $apiModelKitController->getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModelKitById") {
+        $apiModelKitController->getModelKitById($array_ruta[2]);
     }else if(count($array_ruta)==0){ //Pagina mostrada por defecto
         header("Location: ".$_SERVER["REQUEST_URI"]."home");
     }else{

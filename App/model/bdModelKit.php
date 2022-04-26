@@ -94,23 +94,73 @@ class BdModelKit{
         }
     }
 
-    //CONSULTA PARA OBTENER LOS MODEL KITS PAGINADOS Y RANKEADOS TANTO POR NOTA COMO POR POPULARIDAD
-    /* SELECT
-    (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota,
-    DENSE_RANK() OVER (
-            ORDER BY nota desc
-        ) puesto_nota,
-    (SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as popularidad,    
-    DENSE_RANK() OVER (
-            ORDER BY popularidad desc
-        ) puesto_popularidad, 
-    mk.*
-    FROM `model_kit` mk
-    WHERE (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario WHERE listado_model_kits_usuario.fk_model_kit = mk.id_model_kit) is not null
-    ORDER BY puesto_nota asc
-    LIMIT 50 OFFSET 1 */
-
     
+
+    //CONSULTA PARA OBTENER LOS MODEL KITS PAGINADOS Y RANKEADOS TANTO POR NOTA COMO POR POPULARIDAD
+    static function getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador){
+        try {
+            $db = Conexion::getConection();
+
+            $offset = ($pagina * 50);
+
+            $sql = "SELECT * FROM(
+                SELECT
+                        (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota,
+                        DENSE_RANK() OVER (
+                                ORDER BY nota desc
+                            ) puesto_nota,
+                        (SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as popularidad,    
+                        DENSE_RANK() OVER (
+                                ORDER BY popularidad desc
+                            ) puesto_popularidad, 
+                        mk.*
+                        FROM `model_kit` mk
+                        WHERE ((SELECT AVG(nota_media_usuario) from listado_model_kits_usuario WHERE listado_model_kits_usuario.fk_model_kit = mk.id_model_kit) is not null)    
+                ) listado WHERE 
+                    (UPPER(listado.nombre) LIKE UPPER('%$textoBuscador%'))
+                     AND ( listado.nota >= $notaMinima )
+                     AND ( listado.nota <= $notaMaxima )
+                 ORDER BY nota DESC
+                 LIMIT 50 OFFSET $offset";
+
+            $resultado = $db->query($sql);
+
+            return $resultado;
+
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    static function getModelKitById($idModelKit){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "SELECT * FROM (		
+                SELECT
+                (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota,
+                DENSE_RANK() OVER (                	
+                        ORDER BY nota desc
+                    ) puesto_nota,
+                (SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as popularidad,    
+                DENSE_RANK() OVER (
+                        ORDER BY popularidad desc
+                    ) puesto_popularidad, 
+                mk.*
+                FROM `model_kit` mk
+        )lista WHERE lista.id_model_kit = $idModelKit";
+
+            $resultado = $db->query($sql);
+
+            return $resultado;
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
     
 
 

@@ -89,18 +89,6 @@ class ApiModelKitController
             foreach ($modelKitsBd as $modelKitBd) {
                 $aux = array();
 
-                /* $aux["id_model_kit"] = $modelKitBd["id_model_kit"];
-                $aux["nombre"] = $modelKitBd["nombre"];
-                $aux["grado"] = $modelKitBd["grado"];
-                $aux["escala"] = $modelKitBd["escala"];
-                $aux["descripcion"] = $modelKitBd["descripcion"];
-                $aux["fecha_salida"] = $modelKitBd["fecha_salida"];
-                $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
-                $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
-                $aux["img_caja"] = $modelKitBd["img_caja"];
-                $aux["img_pose1"] = $modelKitBd["img_pose1"];
-                $aux["img_pose2"] = $modelKitBd["img_pose2"]; */
-
                 $aux["fk_model_kit"] = $modelKitBd["fk_model_kit"];
                 $aux["fk_usuario"] = $modelKitBd["fk_usuario"];
                 $aux["username"] = $modelKitBd["username"];
@@ -115,6 +103,88 @@ class ApiModelKitController
         }
 
         echo json_encode($array);
+    }
+
+    
+
+    public function getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        $modelKitsBd = BdModelKit::getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador);
+
+        if ($modelKitsBd != false) {
+            $array["status"] = true;
+            $array["mensaje"] = "Model Kits obtenidos correctamente";
+            $array["modelKits"] = array();
+            foreach ($modelKitsBd as $modelKitBd) {
+                $aux = array();
+
+                $aux["id_model_kit"] = $modelKitBd["id_model_kit"];
+                $aux["nombre"] = $modelKitBd["nombre"];
+                $aux["grado"] = $modelKitBd["grado"];
+                $aux["escala"] = $modelKitBd["escala"];
+                $aux["descripcion"] = $modelKitBd["descripcion"];
+                $aux["fecha_salida"] = $modelKitBd["fecha_salida"];
+                $aux["nota"] = $modelKitBd["nota"];
+                $aux["puesto_nota"] = $modelKitBd["puesto_nota"];
+                $aux["popularidad"] = $modelKitBd["popularidad"];
+                $aux["puesto_popularidad"] = $modelKitBd["puesto_popularidad"];
+                $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
+                $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
+                $aux["img_caja"] = $modelKitBd["img_caja"];
+                $aux["img_pose1"] = $modelKitBd["img_pose1"];
+                $aux["img_pose2"] = $modelKitBd["img_pose2"];
+
+                array_push($array["modelKits"], $aux);
+            } 
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Ha ocurrido un error al obtener los model kits";
+        }
+
+        echo json_encode($array);
+
+    }
+
+    public function getModelKitById($idModelKit){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        $modelKitsBd = BdModelKit::getModelKitById($idModelKit);
+
+        if ($modelKitsBd != false) {
+            $array["status"] = true;
+            $array["mensaje"] = "Model Kit obtenido correctamente";
+            $array["modelKits"] = array();
+            foreach ($modelKitsBd as $modelKitBd) {
+                $aux = array();
+
+                $aux["id_model_kit"] = $modelKitBd["id_model_kit"];
+                $aux["nombre"] = $modelKitBd["nombre"];
+                $aux["grado"] = $modelKitBd["grado"];
+                $aux["escala"] = $modelKitBd["escala"];
+                $aux["descripcion"] = $modelKitBd["descripcion"];
+                $aux["fecha_salida"] = $modelKitBd["fecha_salida"];
+                $aux["nota"] = $modelKitBd["nota"];
+                $aux["puesto_nota"] = $modelKitBd["puesto_nota"];
+                $aux["popularidad"] = $modelKitBd["popularidad"];
+                $aux["puesto_popularidad"] = $modelKitBd["puesto_popularidad"];
+                $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
+                $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
+                $aux["img_caja"] = $modelKitBd["img_caja"];
+                $aux["img_pose1"] = $modelKitBd["img_pose1"];
+                $aux["img_pose2"] = $modelKitBd["img_pose2"];
+
+                array_push($array["modelKits"], $aux);
+            }
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Ha ocurrido un error al obtener su model kits";
+        }
+
+        echo json_encode($array);
+
     }
 
     
