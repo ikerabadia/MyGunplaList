@@ -62,6 +62,10 @@
         $notaCalidad = $_POST["notaCalidad"];
         $notaPoses = $_POST["notaPoses"];
         $apiUserController->ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getUserList") {
+        $estado = $_POST["estado"];
+        $idUsuario = $_POST["idUsuario"];
+        $apiUserController->getUserList($idUsuario, $estado);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoModelKit") {                                  //MODEL KITS
         $nombre = $_POST["nombre"];
         $grado = $_POST["grado"];

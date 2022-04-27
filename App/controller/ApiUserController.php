@@ -395,5 +395,64 @@ class ApiUserController
         echo json_encode($array);
     }
 
+    public function getUserList($idUser, $estado){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        $modelKitsBd = BdUsuarios::getUserList($idUser, $estado);
+
+        if ($modelKitsBd != false) {
+            $array["status"] = true;
+            $array["mensaje"] = "Lista de model kits obtenida correctamente";
+            $array["modelKits"] = array();
+            foreach ($modelKitsBd as $modelKitBd) {
+                $aux = array();
+
+                $aux["id"] = $modelKitBd["id"];
+                $aux["fk_usuario"] = $modelKitBd["fk_usuario"];
+                $aux["model_kit"] = array();
+
+                $modelKitsBd2 = BdModelKit::getModelKitById($modelKitBd["fk_model_kit"]);
+                foreach ($modelKitsBd2 as $modelKitBd2) {
+                    $aux2 = array();
+    
+                    $aux2["id_model_kit"] = $modelKitBd2["id_model_kit"];
+                    $aux2["nombre"] = $modelKitBd2["nombre"];
+                    $aux2["grado"] = $modelKitBd2["grado"];
+                    $aux2["escala"] = $modelKitBd2["escala"];
+                    $aux2["descripcion"] = $modelKitBd2["descripcion"];
+                    $aux2["fecha_salida"] = $modelKitBd2["fecha_salida"];
+                    $aux2["nota"] = $modelKitBd2["nota"];
+                    $aux2["puesto_nota"] = $modelKitBd2["puesto_nota"];
+                    $aux2["popularidad"] = $modelKitBd2["popularidad"];
+                    $aux2["puesto_popularidad"] = $modelKitBd2["puesto_popularidad"];
+                    $aux2["img_pose_base_delante"] = $modelKitBd2["img_pose_base_delante"];
+                    $aux2["img_pose_base_detras"] = $modelKitBd2["img_pose_base_detras"];
+                    $aux2["img_caja"] = $modelKitBd2["img_caja"];
+                    $aux2["img_pose1"] = $modelKitBd2["img_pose1"];
+                    $aux2["img_pose2"] = $modelKitBd2["img_pose2"];
+    
+                    array_push($aux["model_kit"], $aux2);
+                }
+                $aux["estado"] = $modelKitBd["estado"];
+                $aux["nota_dificultad"] = $modelKitBd["nota_dificultad"];
+                $aux["nota_acabado_OOB"] = $modelKitBd["nota_acabado_OOB"];
+                $aux["nota_pos_pers"] = $modelKitBd["nota_pos_pers"];
+                $aux["nota_calidad"] = $modelKitBd["nota_calidad"];
+                $aux["nota_poses"] = $modelKitBd["nota_poses"];
+                $aux["nota_media_usuario"] = $modelKitBd["nota_media_usuario"];
+                $aux["puesto_nota_mis_gunplas"] = $modelKitBd["puesto_nota_mis_gunplas"];
+                
+
+                array_push($array["modelKits"], $aux);
+            }
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Ha ocurrido un error al obtener su lista de model kits";
+        }
+        echo json_encode($array);
+    }
+
+    
 
 }

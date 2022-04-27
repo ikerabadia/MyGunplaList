@@ -120,7 +120,7 @@ class BdModelKit{
                     (UPPER(listado.nombre) LIKE UPPER('%$textoBuscador%'))
                      AND ( listado.nota >= $notaMinima )
                      AND ( listado.nota <= $notaMaxima )
-                 ORDER BY nota DESC
+                 ORDER BY $orden DESC
                  LIMIT 50 OFFSET $offset";
 
             $resultado = $db->query($sql);
@@ -161,10 +161,5 @@ class BdModelKit{
             echo $e->getMessage();
         }
     }
-    
-
-
-
-
 
 }

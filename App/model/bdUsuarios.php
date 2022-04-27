@@ -330,6 +330,31 @@ class BdUsuarios{
         }
     }
 
+    static function getUserList($idUser, $estado){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "SELECT * from (
+                SELECT 
+                *,
+                DENSE_RANK() OVER (                	
+                       ORDER BY nota_media_usuario desc
+                ) puesto_nota_mis_gunplas
+                FROM `listado_model_kits_usuario` 
+                WHERE fk_usuario = $idUser
+            )datos WHERE datos.estado LIKE '%$estado%'";
+            $resultado = $db->query($sql);
+
+            //echo var_dump($resultado);
+
+            return $resultado;
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     //GENERICOS
     static function getImagenesMejorValorados(){
         try {
