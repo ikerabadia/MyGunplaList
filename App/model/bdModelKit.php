@@ -105,17 +105,16 @@ class BdModelKit{
 
             $sql = "SELECT * FROM(
                 SELECT
-                        (SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota,
+                        COALESCE((SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit),0) as nota,
                         DENSE_RANK() OVER (
                                 ORDER BY nota desc
                             ) puesto_nota,
-                        (SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as popularidad,    
+                        COALESCE((SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit),0) as popularidad,    
                         DENSE_RANK() OVER (
                                 ORDER BY popularidad desc
                             ) puesto_popularidad, 
                         mk.*
                         FROM `model_kit` mk
-                        WHERE ((SELECT AVG(nota_media_usuario) from listado_model_kits_usuario WHERE listado_model_kits_usuario.fk_model_kit = mk.id_model_kit) is not null)    
                 ) listado WHERE 
                     (UPPER(listado.nombre) LIKE UPPER('%$textoBuscador%'))
                      AND ( listado.nota >= $notaMinima )
@@ -148,6 +147,11 @@ class BdModelKit{
                 DENSE_RANK() OVER (
                         ORDER BY popularidad desc
                     ) puesto_popularidad, 
+    			(SELECT AVG(nota_dificultad) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_dificultad,
+                (SELECT AVG(nota_acabado_OOB) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_acabado_OOB,
+                (SELECT AVG(nota_pos_pers) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_pos_pers,
+                (SELECT AVG(nota_calidad) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_calidad,
+                (SELECT AVG(nota_poses) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_poses,
                 mk.*
                 FROM `model_kit` mk
         )lista WHERE lista.id_model_kit = $idModelKit";

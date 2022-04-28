@@ -355,6 +355,21 @@ class BdUsuarios{
         }
     }
 
+    static function getUserListModelKit($idUsuario, $idModelKit){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "SELECT * FROM `listado_model_kits_usuario` WHERE fk_usuario = $idUsuario AND fk_model_kit = $idModelKit";
+            $resultado = $db->query($sql);
+
+            return $resultado;
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     //GENERICOS
     static function getImagenesMejorValorados(){
         try {
