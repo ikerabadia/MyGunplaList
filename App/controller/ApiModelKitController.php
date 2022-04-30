@@ -230,5 +230,63 @@ class ApiModelKitController
 
     }
 
+    public function getTopModelKitsByDate($numeroRegistros, $orden, $dias){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        $modelKitsBd = BdModelKit::getTopModelKitsByDate($numeroRegistros, $orden, $dias);
+
+        if ($modelKitsBd != false) {
+            $array["status"] = true;
+            $array["mensaje"] = "Model Kits obtenidos correctamente";
+            $array["modelKits"] = array();
+            foreach ($modelKitsBd as $modelKitBd) {
+                $aux = array();
+
+                $aux["id_model_kit"] = $modelKitBd["id_model_kit"];
+                $aux["nombre"] = $modelKitBd["nombre"];
+                $aux["grado"] = $modelKitBd["grado"];
+                $aux["escala"] = $modelKitBd["escala"];
+                $aux["descripcion"] = $modelKitBd["descripcion"];
+                $aux["fecha_salida"] = $modelKitBd["fecha_salida"];
+                $aux["nota"] = $modelKitBd["nota"];
+                if (isset($_SESSION["usuarioActual"])) {
+                    $modelKitLista = BdUsuarios::getUserListModelKit($_SESSION["usuarioActual"]["id_usuario"], $modelKitBd["id_model_kit"]);
+                    if ($modelKitLista){
+                        $aux["modelKitUserData"] = array();
+                        foreach ($modelKitLista as $modelKitListaBd) {
+                            $aux["modelKitUserData"]["estado"] = $modelKitListaBd["estado"];
+                            $aux["modelKitUserData"]["nota_dificultad"] = $modelKitListaBd["nota_dificultad"];
+                            $aux["modelKitUserData"]["nota_acabado_OOB"] = $modelKitListaBd["nota_acabado_OOB"];
+                            $aux["modelKitUserData"]["nota_pos_pers"] = $modelKitListaBd["nota_pos_pers"];
+                            $aux["modelKitUserData"]["nota_calidad"] = $modelKitListaBd["nota_calidad"];
+                            $aux["modelKitUserData"]["nota_poses"] = $modelKitListaBd["nota_poses"];
+                            $aux["modelKitUserData"]["nota_media_usuario"] = $modelKitListaBd["nota_media_usuario"];
+                        }
+                    }else{
+                        $aux["modelKitUserData"] = null;
+                    }
+                }else{
+                    $aux["modelKitUserData"] = null;
+                }
+                $aux["puesto_nota"] = $modelKitBd["puesto_nota"];
+                $aux["popularidad"] = $modelKitBd["popularidad"];
+                $aux["puesto_popularidad"] = $modelKitBd["puesto_popularidad"];
+                $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
+                $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
+                $aux["img_caja"] = $modelKitBd["img_caja"];
+                $aux["img_pose1"] = $modelKitBd["img_pose1"];
+                $aux["img_pose2"] = $modelKitBd["img_pose2"];
+
+                array_push($array["modelKits"], $aux);
+            } 
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Ha ocurrido un error al obtener los model kits";
+        }
+
+        echo json_encode($array);
+    }
+
     
 }

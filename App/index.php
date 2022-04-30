@@ -103,6 +103,11 @@
         $apiModelKitController->getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModelKitById") {
         $apiModelKitController->getModelKitById($array_ruta[2]);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getTopModelKitsByDate") {
+        $numeroRegistros = $_POST["numeroRegistros"];
+        $orden = $_POST["orden"];
+        $dias = $_POST["dias"];
+        $apiModelKitController->getTopModelKitsByDate($numeroRegistros, $orden, $dias);
     }else if(count($array_ruta)==0){ //Pagina mostrada por defecto
         header("Location: ".$_SERVER["REQUEST_URI"]."home");
     }else{

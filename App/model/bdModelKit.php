@@ -166,4 +166,36 @@ class BdModelKit{
         }
     }
 
+    static function getTopModelKitsByDate($numeroRegistros, $orden, $dias){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "SELECT * FROM(
+                SELECT
+                        COALESCE((SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit),0) as nota,
+                        DENSE_RANK() OVER (
+                                ORDER BY nota desc
+                            ) puesto_nota,
+                        COALESCE((SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit),0) as popularidad,    
+                        DENSE_RANK() OVER (
+                                ORDER BY popularidad desc
+                            ) puesto_popularidad, 
+                        mk.*
+                        FROM `model_kit` mk
+                ) listado
+                WHERE listado.fecha_salida > DATE_ADD(CURDATE(), INTERVAL -$dias DAY)
+                ORDER BY $orden DESC
+                LIMIT $numeroRegistros OFFSET 0";
+
+            $resultado = $db->query($sql);
+
+            return $resultado;
+
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }
