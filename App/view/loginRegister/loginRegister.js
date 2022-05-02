@@ -113,3 +113,12 @@ function register(){
   }
   
 }
+
+function oscurecer() {
+  document.getElementById("SvgjsG1007").setAttribute("fill", "#990000");
+  document.getElementById("SvgjsG1008").setAttribute("fill", "#990000");
+}
+function desOscurecer() {
+  document.getElementById("SvgjsG1007").setAttribute("fill", "#e60b0b");
+  document.getElementById("SvgjsG1008").setAttribute("fill", "#e60b0b");
+}

@@ -2,9 +2,9 @@
 use mailer\mailer;
 class UserController
 {
-    public function index()
+    public function login()
     {
-        require("view/login/login.php");
+        require("view/loginRegister/loginRegister.html");
     }
     //LOGIN RESPUESTA    
     /**

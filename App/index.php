@@ -16,7 +16,7 @@
     $array_ruta = array_filter(explode("/",$ruta));
 
     if (isset($array_ruta[0]) && $array_ruta[0] == "login") {
-        $userController->index();
+        $userController->login();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "home") { //PAGINA PRINCIPAL
         $userController->home();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuarios") { //Usuarios  API 
