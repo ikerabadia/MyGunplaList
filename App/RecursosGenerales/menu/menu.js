@@ -1,18 +1,17 @@
-
-window.onload = function() {
-    pintarMenu();
-  };
+window.onload = function () {
+  pintarMenu();
+};
 
 function oscurecer() {
-    document.getElementById("SvgjsG1007").setAttribute("fill", "#990000");
-    document.getElementById("SvgjsG1008").setAttribute("fill", "#990000");
+  document.getElementById("SvgjsG1007").setAttribute("fill", "#990000");
+  document.getElementById("SvgjsG1008").setAttribute("fill", "#990000");
 }
 function desOscurecer() {
-    document.getElementById("SvgjsG1007").setAttribute("fill", "#e60b0b");
-    document.getElementById("SvgjsG1008").setAttribute("fill", "#e60b0b");
+  document.getElementById("SvgjsG1007").setAttribute("fill", "#e60b0b");
+  document.getElementById("SvgjsG1008").setAttribute("fill", "#e60b0b");
 }
-function pintarMenu(){
-    document.getElementById("menu").innerHTML = `<div class="wrapper"> </div>
+function pintarMenu() {
+  document.getElementById("menu").innerHTML = `<div class="wrapper"> </div>
     <div class="container-fluid all-show"> 
         <a class="navbar-brand" href="home" onmouseover="oscurecer()" onmouseleave="desOscurecer()">
             <svg width="77.133" height="60" viewBox="0 0 77.133 81" class="css-1j8o68f">
@@ -48,6 +47,24 @@ function pintarMenu(){
         </div>
         <div id="loginRegisterUserContainer">
             <a href="login" class="loginRegisterButton">LOGIN / REGISTER</a>
+        </div>
+    </div>`;
+}
+function pintarToast() {
+  document.getElementById("menu").innerHTML = `
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect id="toastCuadradoColor" width="100%" height="100%" fill="red"></rect>
+                </svg>
+                <strong class="me-auto">MyGunplaList</strong>
+                <small>ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="toastTexto" class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
         </div>
     </div>`;
 }

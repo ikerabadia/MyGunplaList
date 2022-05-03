@@ -12,10 +12,10 @@ h1{
 .login .group input[type=text], .login .group input[type=password] {
   width: 100%;
   border: none;
-  color: #aaabb0;
+  color: #2A3439;
   padding: 14px 10px 14px 45px;
   margin-top: 20px;
-  background: #33374a;
+  background-color: white !important;
   z-index: 2;
   font-size: 12px;
   letter-spacing: 1px;
@@ -407,4 +407,24 @@ input[type=radio] {
 }
 .logo g{
     transition: 0.35s;
+}
+
+/*TOAST*/
+#toast{
+  color: #2A3439;
+}
+
+/*SHAKE ANIMATION*/
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
