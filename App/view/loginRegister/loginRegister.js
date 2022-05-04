@@ -2,8 +2,8 @@ window.onload = function() {
 };
 
 function verificarLogin() {
-    var user = document.getElementById("campoLoginInputUsuario").value;
-    var password = document.getElementById("campoLoginInputContraseña").value;
+    var user = document.getElementById("usuarioLogin").value;
+    var password = document.getElementById("passwordLogin").value;
 
     var settings = {
         "url": "api/loginFront",
@@ -23,10 +23,11 @@ function verificarLogin() {
         var resultados=eval(json);
 
         if (resultados == "true") {
-            window.location.href = 'home';
+          window.location.href = 'home'; 
         }else{
-            document.getElementById("errorLogin").innerHTML = "Usuario o contraseña incorrectos"
+          mostrarToast("red", "Usuario o contraseña incorrectos");
         }
+
       });
 }
 
@@ -34,52 +35,7 @@ function register(){
   var email = document.getElementById("campoRegisterInputEmail").value;
   var usuario = document.getElementById("campoRegisterInputUsuario").value;
   var contrasena = document.getElementById("campoRegisterInputContraseña").value;
-  var repetirContrasena = document.getElementById("campoRegisterInputRepetirContraseña").value;
 
-  var camposCorrectos = true;
-
-  if (contrasena != repetirContrasena) {
-    document.getElementById("campoRegisterInputContraseña").style.boxShadow = "0px 0px 10px red";
-    document.getElementById("campoRegisterInputRepetirContraseña").style.boxShadow = "0px 0px 10px red";
-    document.getElementById("errorRegister").innerHTML = "las contraseñas no coinciden";
-    camposCorrectos = false;
-  }else{
-    document.getElementById("campoRegisterInputContraseña").style.boxShadow = "0px 0px 0px red";
-    document.getElementById("campoRegisterInputRepetirContraseña").style.boxShadow = "0px 0px 0px red";
-    document.getElementById("errorRegister").innerHTML = "";
-
-    if (email == "" || /'\\/.test(email)) {
-      document.getElementById("campoRegisterInputEmail").style.boxShadow = "0px 0px 10px red";
-      camposCorrectos = false;
-    }else{
-      document.getElementById("campoRegisterInputEmail").style.boxShadow = "0px 0px 0px red";
-    }
-  
-    if (usuario == "" || /\'/.test(usuario)) {
-      document.getElementById("campoRegisterInputUsuario").style.boxShadow = "0px 0px 10px red";
-      camposCorrectos = false;
-    }else{
-      document.getElementById("campoRegisterInputUsuario").style.boxShadow = "0px 0px 0px red";
-    }
-  
-    if (contrasena == "" || /\'/.test(contrasena)) {
-      document.getElementById("campoRegisterInputContraseña").style.boxShadow = "0px 0px 10px red";
-      camposCorrectos = false;
-    }else{
-      document.getElementById("campoRegisterInputContraseña").style.boxShadow = "0px 0px 0px red";
-    }
-  
-    if (repetirContrasena == "" || /\'/.test(repetirContrasena)) {
-      document.getElementById("campoRegisterInputRepetirContraseña").style.boxShadow = "0px 0px 10px red";
-      camposCorrectos = false;
-    }else{
-      document.getElementById("campoRegisterInputRepetirContraseña").style.boxShadow = "0px 0px 0px red";
-    }
-  }
-
-  
-
-  if(camposCorrectos){
     var settings = {
       "url": "api/nuevoUsuario",
       "method": "POST",
@@ -109,7 +65,6 @@ function register(){
       }
       
     });
-  }
   
 }
 
@@ -121,16 +76,9 @@ function comprobarUsuarioLogin() {
     document.getElementById("iconoUserLogin").style.animation = "";
     return true;
   }else{    
-    /* document.getElementById("iconoUserLogin").style.color = "red";  
-    var promise = new Promise(function(){
-      document.getElementById("iconoUserLogin").style.animation = "";
-    });  
-    promise.then(
-      function(){
-        document.getElementById("iconoUserLogin").style.animation = "shake 0.5s";  
-      }
-    ) */
+    document.getElementById("iconoUserLogin").style.color = "red";  
     document.getElementById("iconoUserLogin").style.animation = "";
+    void document.getElementById("iconoUserLogin").offsetWidth;
     document.getElementById("iconoUserLogin").style.animation = "shake 0.5s";  
     return false;
   }
@@ -144,6 +92,8 @@ function comprobarContrasenaLogin() {
     return true;
   }else{
     document.getElementById("iconoPasswordLogin").style.color = "red";
+    document.getElementById("iconoPasswordLogin").style.animation = "";
+    void document.getElementById("iconoPasswordLogin").offsetWidth;
     document.getElementById("iconoPasswordLogin").style.animation = "shake 0.5s";
     return false;
   }  
@@ -157,6 +107,8 @@ function comprobarUsuarioRegister() {
     return true;
   }else{
     document.getElementById("iconoUsuarioRegister").style.color = "red";
+    document.getElementById("iconoUsuarioRegister").style.animation = "";
+    void document.getElementById("iconoUsuarioRegister").offsetWidth;
     document.getElementById("iconoUsuarioRegister").style.animation = "shake 0.5s";
     return false;
   }  
@@ -170,6 +122,8 @@ function comprobarEmailRegister() {
     return true;
   }else{
     document.getElementById("iconoEmailRegister").style.color = "red";
+    document.getElementById("iconoEmailRegister").style.animation = "";
+    void document.getElementById("iconoEmailRegister").offsetWidth;
     document.getElementById("iconoEmailRegister").style.animation = "shake 0.5s";
     return false;
   }    
@@ -183,6 +137,8 @@ function comprobarContrasenaRegister() {
     return true;
   }else{
     document.getElementById("iconoContrasenaRegister").style.color = "red";
+    document.getElementById("iconoContrasenaRegister").style.animation = "";
+    void document.getElementById("iconoContrasenaRegister").offsetWidth;
     document.getElementById("iconoContrasenaRegister").style.animation = "shake 0.5s";
     return false;
   }      
@@ -196,6 +152,8 @@ function comprobarContrasena2Register() {
     return true;
   }else{
     document.getElementById("iconoContrasena2Register").style.color = "red";
+    document.getElementById("iconoContrasena2Register").style.animation = "";
+    void document.getElementById("iconoContrasena2Register").offsetWidth;
     document.getElementById("iconoContrasena2Register").style.animation = "shake 0.5s";
     return false;
   }        
@@ -218,15 +176,39 @@ function mostrarToast(color, texto){
 }
 
 function comprobarLogin() {
-  if (comprobarUsuarioLogin() && comprobarContrasenaLogin()) {
-    alert("Login correcto");
+  var correcto = true;
+
+  if (!comprobarUsuarioLogin()) {
+    correcto = false;
+  }
+  if (!comprobarContrasenaLogin()) {
+    correcto = false;
+  }
+
+  if (correcto) {
+    verificarLogin();
   }else{
     mostrarToast("red", "Rellene todos los campos del login");
   }
 }
 
 function comprobarRegister(){
-  if (comprobarUsuarioRegister() && comprobarEmailRegister() && comprobarContrasenaRegister() && comprobarContrasena2Register()) {
+  var correcto = true;
+
+  if (!comprobarUsuarioRegister()) {
+    correcto = false;
+  }
+  if (!comprobarEmailRegister()) {
+    correcto = false;
+  }
+  if (!comprobarContrasenaRegister()) {
+    correcto = false;
+  }
+  if (!comprobarContrasena2Register()) {
+    correcto = false;
+  }
+
+  if (correcto) {
     alert("Registro correcto");
   }else{
     mostrarToast("red", "Los campos del nuevo usuario no son correctos");

@@ -1,7 +1,18 @@
+
+var usuarioLogueado;
+
 window.onload = function () {
   pintarMenu();
+  setModal();
 };
+function setModal() {
+    var myModal = document.getElementById('logoutModal')
+    var myInput = document.getElementById('logoutBtn')
 
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.click()
+    })
+}
 function oscurecer() {
   document.getElementById("SvgjsG1007").setAttribute("fill", "#990000");
   document.getElementById("SvgjsG1008").setAttribute("fill", "#990000");
@@ -46,25 +57,99 @@ function pintarMenu() {
             </div>
         </div>
         <div id="loginRegisterUserContainer">
-            <a href="login" class="loginRegisterButton">LOGIN / REGISTER</a>
+
+        </div>
+
+        <div class="modal" tabindex="-1" id="logoutModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cerrar sesion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="hideLogoutModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Esta seguro de que quiere cerrar sesion?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideLogoutModal()">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="logout()">Cerrar sesion</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>`;
+
+    getUsuarioLogueado()
 }
-function pintarToast() {
-  document.getElementById("menu").innerHTML = `
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect id="toastCuadradoColor" width="100%" height="100%" fill="red"></rect>
-                </svg>
-                <strong class="me-auto">MyGunplaList</strong>
-                <small>ahora</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div id="toastTexto" class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>`;
+
+function showLogoutModal() {
+    document.getElementById("logoutModal").style.display = "block";
+    /* event.preventDefault(); */
 }
+function hideLogoutModal() {
+    document.getElementById("logoutModal").style.display = "none";
+}
+
+function logout() {
+    var settings = {
+        "url": "api/logout",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        usuarioLogueado = null;
+        window.location.href = "home";
+      });
+}
+
+function getUsuarioLogueado() {
+    var settings = {
+        "url": "api/getUsuarioLogueado",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        
+        if (response == "false") {
+            usuarioLogueado = null;
+            document.getElementById("loginRegisterUserContainer").innerHTML = `<a id="loginRegisterButton" href="login" class="loginRegisterButton">LOGIN / REGISTER</a>`;
+        }else{
+            usuarioLogueado = response;
+            var imgUsuario = "../../../mygunplalist/RecursosGenerales/img/genericProfile.webp";
+            if(response["img_usuario"] != ""){
+                imgUsuario = response["img_usuario"];
+            }
+            document.getElementById("loginRegisterUserContainer").innerHTML = `
+            <a id="userPageButton" class="userPageButton"  onmouseover="userPageButtonHover()" onmouseleave="userPageButtonMouseLeave()">
+                <img id="userPageButtonImg" class="img-thumbnail" src="${imgUsuario}" alt="" onclick="verPaginaUsuario()">
+                <div>
+                    <p href="usuario/${response["id_usuario"]}" id="username" onclick="verPaginaUsuario()">${response["username"]}</p>
+                    <i id="logoutBtn" onclick="showLogoutModal(event)" title="Cerrar Sesion" class="fa fa-sign-out tooltip-test" aria-hidden="true"></i>
+                </div>
+            </a>`;
+        }
+    });
+}
+
+function verPaginaUsuario(){
+    window.location.href = "usuario/" + usuarioLogueado["id_usuario"];
+}
+
+
+function userPageButtonHover() {
+    document.getElementById("userPageButtonImg").style.borderRadius = "100%";
+    document.getElementById("userPageButtonImg").style.transform = "rotate(360deg)";
+    document.getElementById("username").style.marginLeft = "5%";
+}
+function userPageButtonMouseLeave() {
+    document.getElementById("userPageButtonImg").style.borderRadius = "";
+    document.getElementById("userPageButtonImg").style.transform = "rotate(0deg)";
+    document.getElementById("username").style.marginLeft = "10%";
+}
+
