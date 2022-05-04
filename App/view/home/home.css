@@ -29,7 +29,7 @@ body {
 
 .navbar-collapse{
     font-family: "mecha";
-    width: 40%;
+    width: 30%;
     flex-grow: 0;
 }
 
@@ -144,7 +144,7 @@ body {
 #loginRegisterUserContainer{
     box-sizing: border-box;
     height: 46px;
-    width: 15%;
+    width: 23%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,7 +156,7 @@ body {
     border-radius: 5px;
     text-decoration: none;
     font-family: "mecha";
-    width: 100%;
+    width: 60%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -182,7 +182,7 @@ body {
     transition-timing-function: ease;
 }
 #userPageButtonImg{
-    width: 28%;
+    width: 18%;
     transition: 0.5s;
     border:0px;
     background-color: #2A3439;
@@ -205,5 +205,8 @@ body {
 /*MODAL CERRAR SESION*/
 #logoutModal{
     color: #2A3439;
+}
+.divUsuarioLogout{
+    width: 100%;
 }
 

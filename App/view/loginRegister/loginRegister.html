@@ -41,7 +41,7 @@
       <div class="panel">
         <input id="switch-open" type="radio" name="switch" />
         <input id="switch-close" type="radio" name="switch" />
-        <div class="login">
+        <div class="login" id="divLogin">
           <h1>LOGIN</h1>
           <div class="group">
             <i id="iconoUserLogin" class="fa fa-user" aria-hidden="true"></i>
@@ -55,10 +55,10 @@
           </div>
           <input type="submit" value="LOGIN" onclick="comprobarLogin()"/>
         </div>
-        <div class="register">
-          <label class="button-open" for="switch-open"></label>
-          <label class="button-close" for="switch-close"></label>
-          <div class="inner">
+        <div class="register" id="divRegister">
+          <label class="button-open" id="button-open" for="switch-open"></label>
+          <label class="button-close" id="button-close" for="switch-close"></label>
+          <div class="inner" id="innerRegister">
             <h1>REGISTER</h1>
             <div class="group">
               <i id="iconoUsuarioRegister" class="fa fa-user" aria-hidden="true"></i>

@@ -101,7 +101,7 @@ function comprobarContrasenaLogin() {
 
 function comprobarUsuarioRegister() {
   var textoUsuarioRegister = document.getElementById("usuarioRegister").value;
-  if (campoRellenado(textoUsuarioRegister) && !/\'/.test(textoUsuarioRegister) && !/\\/.test(textoUsuarioRegister)) {
+  if (campoRellenado(textoUsuarioRegister) && !/\'/.test(textoUsuarioRegister) && !/\\/.test(textoUsuarioRegister) && !/ /.test(textoUsuarioRegister)  && textoUsuarioRegister.length <= 20) {
     document.getElementById("iconoUsuarioRegister").style.color = "green";
     document.getElementById("iconoUsuarioRegister").style.animation = "";
     return true;
@@ -131,7 +131,8 @@ function comprobarEmailRegister() {
 
 function comprobarContrasenaRegister() {
   var textoContrasenaRegister = document.getElementById("passwordRegister").value;
-  if (campoRellenado(textoContrasenaRegister) && !/\'/.test(textoContrasenaRegister) && !/\\/.test(textoContrasenaRegister)) {
+  comprobarContrasena2Register();
+  if (campoRellenado(textoContrasenaRegister) && !/\'/.test(textoContrasenaRegister) && !/\\/.test(textoContrasenaRegister) && !/ /.test(textoContrasenaRegister) && textoContrasenaRegister.length <= 20 && textoContrasenaRegister.length >= 5) {
     document.getElementById("iconoContrasenaRegister").style.color = "green";
     document.getElementById("iconoContrasenaRegister").style.animation = "";
     return true;
@@ -146,7 +147,7 @@ function comprobarContrasenaRegister() {
 
 function comprobarContrasena2Register() {
   var textoContrasenaRegister2 = document.getElementById("password2Register").value;
-  if (campoRellenado(textoContrasenaRegister2) && !/\'/.test(textoContrasenaRegister2) && !/\\/.test(textoContrasenaRegister2) && document.getElementById("passwordRegister").value == textoContrasenaRegister2) {
+  if (campoRellenado(campoRellenado(textoContrasenaRegister2) && document.getElementById("passwordRegister").value == textoContrasenaRegister2)) {
     document.getElementById("iconoContrasena2Register").style.color = "green";
     document.getElementById("iconoContrasena2Register").style.animation = "";
     return true;
@@ -168,7 +169,7 @@ function campoRellenado(texto) {
 }
 
 function mostrarToast(color, texto){
-  document.getElementById("toastCuadradoColor").fillStyle = color;
+  document.getElementById("toastCuadradoColor").style.fill = color;
   document.getElementById("toastTexto").innerHTML = texto;
   var toastLiveExample = document.getElementById('toast')
   var toast = new bootstrap.Toast(toastLiveExample);
@@ -209,9 +210,43 @@ function comprobarRegister(){
   }
 
   if (correcto) {
-    alert("Registro correcto");
+    
+    var textoUsuarioRegister = document.getElementById("usuarioRegister").value;
+    var textoEmailRegister = document.getElementById("emailRegister").value;
+    var textoContrasenaRegister = document.getElementById("passwordRegister").value;
+
+
+    var settings = {
+      "url": "api/nuevoUsuario",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+      },
+      "data": {
+        "username": ""+textoUsuarioRegister,
+        "password": ""+textoContrasenaRegister,
+        "img_usuario": "",
+        "email": ""+textoEmailRegister
+      }
+    };
+    
+    $.ajax(settings).done(function (response) {
+      if (response == "true") {   
+        document.getElementById("button-close").click();
+
+        document.getElementById("usuarioRegister").value = "";
+        document.getElementById("emailRegister").value = "";
+        document.getElementById("passwordRegister").value = "";
+        document.getElementById("password2Register").value = "";
+
+        mostrarToast("green", "Usuario registrado correctamente");        
+      }else{
+        mostrarToast("red", "El usuario ya existe");                            
+      }
+    });
+
   }else{
-    mostrarToast("red", "Los campos del nuevo usuario no son correctos");
+    mostrarToast("red", "Los campos del nuevo usuario no son correctos <br> - Usuario y contraseña no pueden contener espacios ni medir mas de 20 caracteres <br> - La contraseña debe tener al menos 5 caracteres");
   }
 }
 

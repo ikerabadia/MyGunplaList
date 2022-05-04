@@ -7,12 +7,12 @@ class BdUsuarios{
     //---------------------------------------------------------------------------------------
     
     //SIN HACER
-    static function getLogin($user, $password)
+    static function getLogin($user)
     {
         try {
             $db = Conexion::getConection();
 
-            $sql = "SELECT * FROM usuarios WHERE username='" . $user . "' AND password='" . $password . "'";
+            $sql = "SELECT * FROM usuarios WHERE username='" . $user . "'";
             $resultado = $db->query($sql);
 
             if ($resultado) {

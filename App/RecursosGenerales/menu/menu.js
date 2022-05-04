@@ -128,7 +128,7 @@ function getUsuarioLogueado() {
             document.getElementById("loginRegisterUserContainer").innerHTML = `
             <a id="userPageButton" class="userPageButton"  onmouseover="userPageButtonHover()" onmouseleave="userPageButtonMouseLeave()">
                 <img id="userPageButtonImg" class="img-thumbnail" src="${imgUsuario}" alt="" onclick="verPaginaUsuario()">
-                <div>
+                <div class="divUsuarioLogout">
                     <p href="usuario/${response["id_usuario"]}" id="username" onclick="verPaginaUsuario()">${response["username"]}</p>
                     <i id="logoutBtn" onclick="showLogoutModal(event)" title="Cerrar Sesion" class="fa fa-sign-out tooltip-test" aria-hidden="true"></i>
                 </div>

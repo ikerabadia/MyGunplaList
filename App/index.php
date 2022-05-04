@@ -24,7 +24,7 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuario") {
         $apiUserController->getUsuario($array_ruta[2]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoUsuario") {
-        $apiUserController->newUsuario($_POST["username"], $_POST["password"], $_POST["email"]);
+        $apiUserController->newUsuario($_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["email"]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "deleteUsuario") {
         $apiUserController->deleteUsuario($array_ruta[2]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "updateUsuario") {

@@ -219,12 +219,30 @@ class ApiUserController
 
     public function loginFront($user, $password){
 
-        $login = BdUsuarios::getLogin($user, $password);
+        $login = BdUsuarios::getLogin($user);
 
         if ($login->rowCount() == 1) {
-            $_SESSION["usuarioActual"] = $login->fetch();
 
-            echo json_encode("true");
+            foreach ($login as $usuario) {
+                if (password_verify($password, $usuario["password"])) {
+                    $_SESSION["usuarioActual"] = array();
+                    $_SESSION["usuarioActual"]["id_usuario"] = $usuario["id_usuario"];
+                    $_SESSION["usuarioActual"]["username"] = $usuario["username"];
+                    $_SESSION["usuarioActual"]["password"] = $usuario["password"];
+                    $_SESSION["usuarioActual"]["img_usuario"] = $usuario["img_usuario"];
+                    $_SESSION["usuarioActual"]["email"] = $usuario["email"];
+
+                    if ($usuario["moderador"] == 1) {
+                        $_SESSION["usuarioActual"]["moderador"] = true;
+                    }else{
+                        $_SESSION["usuarioActual"]["moderador"] = false;
+                    }
+
+                    echo json_encode("true");
+                }else{
+                    echo json_encode("false");
+                }
+            }
         } else {
             echo json_encode("false");
         }
