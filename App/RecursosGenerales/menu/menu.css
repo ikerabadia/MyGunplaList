@@ -75,7 +75,6 @@ body {
 .navbar-red {
     color: #fff;
     border-bottom: 3px solid #2A3439;
-    border-left: 3px solid #2A3439;
     background: linear-gradient(to bottom, #184bba 0%, #3399ff 100%);
 }
 

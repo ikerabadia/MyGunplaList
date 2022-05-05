@@ -1,14 +1,14 @@
 <?php
 
     session_start();
-    require("controller/UserController.php");
+    require("controller/AppController.php");
     require("controller/ApiUserController.php");
     require("controller/ApiModelKitController.php");
     require_once('model/bd.php');
     require_once('model/bdUsuarios.php');
     require_once('model/bdModelKit.php');
         
-    $userController = new UserController;
+    $appController = new AppController;
     $apiUserController = new ApiUserController;
     $apiModelKitController = new ApiModelKitController;
     $home = "/mygunplalist/index.php/";
@@ -16,9 +16,11 @@
     $array_ruta = array_filter(explode("/",$ruta));
 
     if (isset($array_ruta[0]) && $array_ruta[0] == "login") {
-        $userController->login();
+        $appController->login();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "home") { //PAGINA PRINCIPAL
-        $userController->home();
+        $appController->home();
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "modelKits") { //PAGINA PRINCIPAL
+        $appController->modelKits();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuarios") { //Usuarios  API 
         $apiUserController->getUsuarios($_POST["pagina"], $_POST["cantidadRegistros"]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuario") {
