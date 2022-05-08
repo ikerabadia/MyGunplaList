@@ -4,6 +4,7 @@ body{
 .principalBackground{
     width: 100%;
     background: url("../../../mygunplalist/RecursosGenerales/img/wallpaperModelKits.webp") no-repeat center center fixed;
+    background-size: cover;
 }
 .content{
     width: 80%;
@@ -13,6 +14,7 @@ body{
     border-right: 2px solid #2A3439;
     margin-left: 10%;
     padding-top: 50px;
+    margin-top: 93px;
 }
 .tituloPrincipal{
     font-family: 'mecha';
@@ -34,4 +36,246 @@ body{
     font-size: 4em;
     color: #E60B0B;
     border-bottom: 10px solid #FFD500;
+}
+
+/*FILTROS*/
+.filtros{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.btn-outline-secondary, .filtros input, .filtros select, .filtros span{
+    border: 2px solid #2A3439;
+    color: #2A3439;
+}
+#spanNotaMaxima{
+    border-left: 0px;
+    border-right: 0px;
+}
+#inputNotaMinima{
+    border-left: 1px solid #2A3439;
+    border-right: 2px solid #2A3439;
+}
+
+.gradoOrdenBuscarLabel{
+    border-top: 2px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    border-left: 2px solid #2A3439; 
+}
+#btnBuscador{
+    border-top: 2px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    border-right: 2px solid #2A3439; 
+    border-left: 1px solid #2A3439;
+}
+
+.filtrosNota{
+    width: 25%;
+}
+.filtrosGrado{
+    width: 17%;
+    margin: 0px !important;
+}
+.filtrosOrden{
+    width: 17%;
+    margin: 0px !important;
+}
+.filtrosBuscador{
+    width: 20%;
+    margin: 0px !important;
+}
+
+.form-control:focus, .form-select:focus{
+    color: #2A3439;
+    background-color: #fff;
+    border-color: #2A3439;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(42 52 57 / 25%);
+}
+
+.filtros span, .filtros label{
+    background: #2A3439;
+    color: white;
+    font-weight: bold;
+}
+
+/*MODEL KITS RESULTADOS*/
+.modelKits{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.modelKit{
+    width: 24%;
+    height: 350px;
+    position: relative;
+    border-radius: 5px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.modelKitLink{
+    cursor: pointer;
+    text-decoration: none;
+}
+.ImgModelKit{
+    background: url("../../../mygunplalist/RecursosGenerales/img/imgPruebaCard.jpg") no-repeat center center;
+    width: 90%;
+    height: 70%;
+    background-size: cover;
+    margin: 0px;
+    top: 5%;
+    position: absolute;
+    left: 5%;
+    border-radius: 5px;
+    border: 1px solid #2A3439;
+    z-index: 10;
+    transition: 0.5s;
+    box-shadow: 0px 0px 0px black;
+}
+.fondoAnimado{
+    width: 90%;
+    height: 80%;
+    background: linear-gradient(to top, #184bba 0%, #3399ff 100%);
+    border-radius: 5px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border: 2px solid #2A3439;
+    transition: 0.5s;
+}
+
+.modelKitLink:hover .fondoAnimado{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(42,52,57,1) 0%, #3399ff 100%);
+    /* background: linear-gradient(0deg, rgba(42,52,57,1) 0%, rgba(230,11,11,1) 100%); */
+}
+.modelKitLink:hover .ImgModelKit{
+    box-shadow: 0px 0px 10px black;
+}
+.datosModelKit{
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: 0.5s;
+    justify-content: space-between;
+    height: 65px;
+}
+.datosModelKit p{
+    margin: 0px;
+}
+.nombreModelKit{
+    height: 100%;
+    width: 75%;
+    opacity: 70%;
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.5s;
+    font-size: 1em;
+}
+.modelKitLink:hover .nombreModelKit{
+    opacity: 100%;
+}
+.contenedorGradoEscala{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-family: 'mecha';
+    color: white;
+    border-left: 1px solid #FFD500;
+    opacity: 70%;
+    transition: 0.5s;
+}
+.modelKitLink:hover .contenedorGradoEscala{
+    opacity: 100%;
+    border-left: 5px solid #FFD500;
+}
+.contenedorNotaModelKit{
+    position: absolute;
+    top: 2%;
+    opacity: 0;
+    left: 2%;
+    z-index: 20;
+    background: #2A3439;
+    height: 40px;
+    border-radius: 5px;
+    width: 20%;
+    margin: 0px;
+    font-family: 'mecha';
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.25s;
+}
+.modelKitLink:hover .contenedorNotaModelKit{
+    /* transform: rotate(360deg); */
+    transform:rotateX(360deg) ;
+    opacity: 1;
+}
+.contenedorNotaModelKit i{
+    color: #FFD500;
+    font-size: 1em;
+}
+.contenedorEstadoModelKit{
+    position: absolute;
+    top: 2%;
+    opacity: 0;
+    right: 2%;
+    z-index: 20;
+    height: 40px;
+    width: 40px;
+    margin: 0px;
+    border-radius: 5px;
+    background-color: #2A3439;
+    color: #E60B0B;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s;
+}
+.modelKitLink:hover .contenedorEstadoModelKit{
+    transform:rotateX(360deg);
+    opacity: 1;
+}
+.contenedorEstadoModelKit i{
+    font-size: 1em;
+}
+.estadoModelKit{
+    height: 100%;
+    width: 200%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    transition: 0.35s;
+    text-shadow: 0px 0px 0px #E60B0B;
+    left: 0%;
+}
+.estadoModelKit:hover{
+    left: -100%;
+}
+.estadoModelKit i{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+.enLista{
+    color: white;
 }

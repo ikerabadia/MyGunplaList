@@ -76,6 +76,9 @@ body {
     color: #fff;
     border-bottom: 3px solid #2A3439;
     background: linear-gradient(to bottom, #184bba 0%, #3399ff 100%);
+    position: fixed;
+    width: 100%;
+    top: 0px;
 }
 
 .all-show {
@@ -182,7 +185,7 @@ body {
     transition-timing-function: ease;
 }
 #userPageButtonImg{
-    width: 18%;
+    width: 80px;
     transition: 0.5s;
     border:0px;
     background-color: #2A3439;
