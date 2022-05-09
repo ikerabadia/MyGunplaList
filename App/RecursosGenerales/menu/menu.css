@@ -213,3 +213,40 @@ body {
 .divUsuarioLogout{
     width: 100%;
 }
+
+/*ESTILOS APLICADOS A BOOTSTRAP*/
+.modal-header{
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    border-bottom: 10px solid #FFD500;
+    color: #E60B0B;
+    font-family: 'mecha'
+}
+.modal-content{
+    border: 2px solid #2A3439;
+}
+.modal-body .input-group-text{
+    border: 2px solid #2A3439;
+    color: white;
+    background-color: #2A3439
+}
+.modal-body .form-control{
+    border-top: 2px solid #2A3439;
+    border-right: 2px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    border-left: 1px solid #2A3439;
+    color: #2A3439;
+}
+.modal-body .form-select{
+    border-top: 2px solid #2A3439;
+    border-right: 2px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    border-left: 1px solid #2A3439;
+    color: #2A3439;
+}
+.modal-body .form-label{
+    border-top: 2px solid #2A3439;
+    border-right: 2px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    border-left: 1px solid #2A3439;
+    color: #2A3439;
+}

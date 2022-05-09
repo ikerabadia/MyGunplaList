@@ -65,7 +65,98 @@
 
                 <div class="divCrearModelKit">
                     <p>¿No encuentras el model kit que buscas? Crealo</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearModelKit" onclick="showCreateModelKitModal()">
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearModelKit" onclick="showCreateModelKitModal()"> -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">NUEVO MODEL KIT</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="Instrucciones">
+                                        <p>A continuacion le vamos a pedir los datos necesarios para crear un nuevo model kit en nuestra base de datos.
+                                            Nos gustaria pedirle por favor que se haya asegurado de que el model kit que quiere crear no exista ya en nuestra web
+                                            para evitar model kits repetidos y que no tenga que suprimirlo un moderador.
+                                         </p>
+                                         <p>Destacar que los campos marcados en rojo son obligatorios.</p>
+                                         <p>Dicho esto, por favor, rellene los siguientes campos:</p>
+                                    </div>
+                                    <div class="formularioCrearModelKit">
+
+                                        <div class="input-group flex-nowrap mb-3">
+                                            <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                            <input type="text" class="form-control" placeholder="Nombre del Model Kit" aria-label="Username" aria-describedby="addon-wrapping">
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="inputCreateGrado" >Grado</label>
+                                            <select class="form-select" id="inputCreateGrado">
+                                              <option selected>Grado</option>
+                                              <option value="SD">SD - Super Deformed</option>
+                                              <option value="EG">EG - Entry Grade</option>
+                                              <option value="HG">HG - High Grade</option>
+                                              <option value="MG">MG - Master Grade</option>
+                                              <option value="RG">RG - Real Grade</option>
+                                              <option value="PG">PG - Perfect Grade</option>
+                                              <option value="MS">MS - Mega Size</option>
+                                              <option value="NG">NG - Otro</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="inputCreateEscala" >Escala</label>
+                                            <select class="form-select" id="inputCreateEscala">
+                                              <option selected>Escala</option>
+                                              <option value="1 / 144">1 / 144</option>
+                                              <option value="1 / 100">1 / 100</option>
+                                              <option value="1 / 60">1 / 60</option>
+                                              <option value="NSC">NSC (Non Scale)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Descripcion</span>
+                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                        </div>
+
+                                        <div class="mb-3 divCreateInputImg">
+                                            <p>Imagen Caja</p>
+                                            <input class="form-control inputImg" type="file" id="inputCreateImgCaja" accept="image/*">
+                                        </div>
+                                        <div class="mb-3 divCreateInputImg">
+                                            <p>Imagen Delante</p>
+                                            <input class="form-control inputImg" type="file" id="inputCreateImg1" accept="image/*">
+                                        </div>
+                                        <div class="mb-3 divCreateInputImg">
+                                            <p>Imagen Detras</p>
+                                            <input class="form-control inputImg" type="file" id="inputCreateImg2" accept="image/*">
+                                        </div>
+                                        <div class="mb-3 divCreateInputImg">
+                                            <p>Imagen Pose 1</p>
+                                            <input class="form-control inputImg" type="file" id="inputCreateImg3" accept="image/*">
+                                        </div>
+                                        <div class="mb-3 divCreateInputImg">
+                                            <p>Imagen Pose 2</p>
+                                            <input class="form-control inputImg" type="file" id="inputCreateImg4" accept="image/*">
+                                        </div>
+
+                                    </div>
+                                    
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                                    <button type="button" class="btn btn-primary">CREAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="paginado">
@@ -107,8 +198,8 @@
             </div>
         </div>
 
-        <div class="modal" tabindex="-1" id="createModelKitModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <!-- <div class="modal" tabindex="-1" id="createModelKitModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">NUEVO MODEL KIT</h5>
@@ -123,7 +214,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+
+
     </div>
 
         <footer class="footer">

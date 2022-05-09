@@ -350,3 +350,41 @@ body{
     margin-left: 5%;
     color: #FFD500;
 }
+
+/*CREATE MODEL KIT*/
+.formularioCrearModelKit .input-group-text{
+    width: 21%;
+}
+
+.inputImg::file-selector-button {
+    background-color: #2A3439;
+    color: white;
+}
+.inputImg:hover.inputImg::file-selector-button{
+    background-color: white;
+    color: #2A3439;
+}
+input[type=file]:hover input[type=file]::file-selector-button {
+    background-color: white;
+    color:  #2A3439;
+}
+.divCreateInputImg p{
+    margin: 0px;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    background-color: #2A3439;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    border-left: 2px solid #2A3439;
+    border-right: 2px solid #2A3439;
+    border-top: 2px solid #2A3439;
+}
+.inputImg{
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+/*imagenes*/
+/* .file {
+    visibility: hidden;
+    position: absolute;
+} */

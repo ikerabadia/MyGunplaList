@@ -217,3 +217,5 @@ function showCreateModelKitModal() {
 function hideCreateModelKitModal() {
     document.getElementById("createModelKitModal").style.display = "none";
 }
+
+//IMAGENES DEL CREATE MODEL KIT
