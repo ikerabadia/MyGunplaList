@@ -24,14 +24,14 @@
 
                     <div class="input-group filtrosNota">
                         <span class="input-group-text">Nota minima</span>
-                        <input id="inputNotaMinima" type="number" aria-label="Nota minima" class="form-control" id="inputFiltroNotaMinima" value="0" step="any" min="0" max="10">
+                        <input id="inputNotaMinima" type="number" aria-label="Nota minima" class="form-control" value="0" step="any" min="0" max="10" onchange="aplicarFiltros()" onkeyup="aplicarFiltros()">
                         <span id="spanNotaMaxima" class="input-group-text">Nota maxima</span>
-                        <input type="number" aria-label="Nota maxima" class="form-control" id="inputFiltroNotaMaxima" value="10" step="any" min="0" max="10">
+                        <input type="number" aria-label="Nota maxima" class="form-control" id="inputNotaMaxima" value="10" step="any" min="0" max="10" onchange="aplicarFiltros()" onkeyup="aplicarFiltros()">
                     </div>
 
                     <div class="input-group mb-3 filtrosGrado">
-                        <label class="input-group-text gradoOrdenBuscarLabel" for="inputFiltrosGrado">Grado</label>
-                        <select class="form-select" id="inputFiltrosGrado">
+                        <label class="input-group-text gradoOrdenBuscarLabel" for="inputFiltrosGrado" >Grado</label>
+                        <select class="form-select" id="inputFiltrosGrado" onchange="aplicarFiltros()">
                           <option value="todos" selected>Todos</option>
                           <option value="SD">SD - Super Deformed</option>
                           <option value="EG">EG - Entry Grade</option>
@@ -45,7 +45,7 @@
 
                     <div class="input-group mb-3 filtrosOrden">
                         <label class="input-group-text gradoOrdenBuscarLabel" for="inputFiltrosOrden">Orden</label>
-                        <select class="form-select" id="inputFiltrosOrden">
+                        <select class="form-select" id="inputFiltrosOrden" onchange="aplicarFiltros()">
                           <option value="fecha_salida">Fecha de salida</option>
                           <option value="nota">Nota</option>
                           <option value="popularidad">Popularidad</option>
@@ -54,222 +54,83 @@
 
                     <div class="input-group mb-3 filtrosBuscador" >
                         <span class="input-group-text" id="btnBuscador"><i class="fa fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">                        
+                        <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2" id="inputFiltrosTextoBuscador" onkeyup="aplicarFiltros()">                        
                     </div>
 
                 </div>
 
-                <div class="modelKits">
+                <div class="modelKits" id="modelKits">
+                    
+                </div>
 
-                    <div class="modelKit">
-                        <a class="modelKitLink">                        
-                            <div class="ImgModelKit">
+                <div class="divCrearModelKit">
+                    <p>¿No encuentras el model kit que buscas? Crealo</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearModelKit" onclick="showCreateModelKitModal()">
+                </div>
 
-                            </div>
-                            <div class="fondoAnimado">
-                                <div class="datosModelKit">
-                                    <p class="nombreModelKit">
-                                        ZAKU II  RED COMET VER
-                                    </p>
-                                    <div class="contenedorGradoEscala">
-                                        <p class="gradoModelKit">
-                                            HG
-                                        </p>
-                                        <p class="escalaModelKit">
-                                            1 / 144
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>   
-                            <p class="contenedorNotaModelKit">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span id="notaModelKit">9.85</span>                                
+                <div class="paginado">
+                    <div class="contenedorPaginado">
+                        <div class="btnPagina" id="btnPaginaAnterior" onclick="paginaAnterior()">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="datosPaginado">
+                            <p>
+                                Model Kits 
+                                <span id="elements">1-20</span> 
+                                de 
+                                <span id="totalElements">100</span>
                             </p>
-                            <div class="contenedorEstadoModelKit">
-                                <div class="estadoModelKit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> 
-                                    <i class="fa fa-list enLista" aria-hidden="true"></i>                                    
-                                </div>                                                          
-                            </div>
-                        </a>
+                        </div>
+                        <div class="btnPagina" id="btnPaginaSiguiente" onclick="paginaSiguiente()">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        </div>
                     </div>
-
-                    <div class="modelKit">
-                        <a class="modelKitLink">                        
-                            <div class="ImgModelKit">
-
-                            </div>
-                            <div class="fondoAnimado">
-                                <div class="datosModelKit">
-                                    <p class="nombreModelKit">
-                                        ZAKU II  RED COMET VER
-                                    </p>
-                                    <div class="contenedorGradoEscala">
-                                        <p class="gradoModelKit">
-                                            HG
-                                        </p>
-                                        <p class="escalaModelKit">
-                                            1 / 144
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>   
-                            <p class="contenedorNotaModelKit">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span id="notaModelKit">9.85</span>                                
-                            </p>
-                            <div class="contenedorEstadoModelKit">
-                                <div class="estadoModelKit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> 
-                                    <i class="fa fa-list enLista" aria-hidden="true"></i>                                    
-                                </div>                                                          
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="modelKit">
-                        <a class="modelKitLink">                        
-                            <div class="ImgModelKit">
-
-                            </div>
-                            <div class="fondoAnimado">
-                                <div class="datosModelKit">
-                                    <p class="nombreModelKit">
-                                        ZAKU II  RED COMET VER
-                                    </p>
-                                    <div class="contenedorGradoEscala">
-                                        <p class="gradoModelKit">
-                                            HG
-                                        </p>
-                                        <p class="escalaModelKit">
-                                            1 / 144
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>   
-                            <p class="contenedorNotaModelKit">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span id="notaModelKit">9.85</span>                                
-                            </p>
-                            <div class="contenedorEstadoModelKit">
-                                <div class="estadoModelKit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> 
-                                    <i class="fa fa-list enLista" aria-hidden="true"></i>                                    
-                                </div>                                                          
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="modelKit">
-                        <a class="modelKitLink">                        
-                            <div class="ImgModelKit">
-
-                            </div>
-                            <div class="fondoAnimado">
-                                <div class="datosModelKit">
-                                    <p class="nombreModelKit">
-                                        ZAKU II  RED COMET VER
-                                    </p>
-                                    <div class="contenedorGradoEscala">
-                                        <p class="gradoModelKit">
-                                            HG
-                                        </p>
-                                        <p class="escalaModelKit">
-                                            1 / 144
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>   
-                            <p class="contenedorNotaModelKit">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span id="notaModelKit">9.85</span>                                
-                            </p>
-                            <div class="contenedorEstadoModelKit">
-                                <div class="estadoModelKit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> 
-                                    <i class="fa fa-list enLista" aria-hidden="true"></i>                                    
-                                </div>                                                          
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="modelKit">
-                        <a class="modelKitLink">                        
-                            <div class="ImgModelKit">
-
-                            </div>
-                            <div class="fondoAnimado">
-                                <div class="datosModelKit">
-                                    <p class="nombreModelKit">
-                                        ZAKU II  RED COMET VER
-                                    </p>
-                                    <div class="contenedorGradoEscala">
-                                        <p class="gradoModelKit">
-                                            HG
-                                        </p>
-                                        <p class="escalaModelKit">
-                                            1 / 144
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>   
-                            <p class="contenedorNotaModelKit">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span id="notaModelKit">9.85</span>                                
-                            </p>
-                            <div class="contenedorEstadoModelKit">
-                                <div class="estadoModelKit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> 
-                                    <i class="fa fa-list enLista" aria-hidden="true"></i>                                    
-                                </div>                                                          
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="modelKit">
-                        <a class="modelKitLink">                        
-                            <div class="ImgModelKit">
-
-                            </div>
-                            <div class="fondoAnimado">
-                                <div class="datosModelKit">
-                                    <p class="nombreModelKit">
-                                        ZAKU II  RED COMET VER
-                                    </p>
-                                    <div class="contenedorGradoEscala">
-                                        <p class="gradoModelKit">
-                                            HG
-                                        </p>
-                                        <p class="escalaModelKit">
-                                            1 / 144
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>   
-                            <p class="contenedorNotaModelKit">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span id="notaModelKit">9.85</span>                                
-                            </p>
-                            <div class="contenedorEstadoModelKit">
-                                <div class="estadoModelKit">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> 
-                                    <i class="fa fa-list enLista" aria-hidden="true"></i>                                    
-                                </div>                                                          
-                            </div>
-                        </a>
-                    </div>
-
                 </div>
                 
     
             </div>
         </div>
 
-        
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+            <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect id="toastCuadradoColor" width="100%" height="100%" fill="red"></rect>
+                    </svg>
+                    <strong class="me-auto">MyGunplaList</strong>
+                    <small>ahora</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id="toastTexto" class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" id="createModelKitModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">NUEVO MODEL KIT</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="hideCreateModelKitModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Creando nuevo model kit...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideCreateModelKitModal()">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="createModelKit()">Crear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <footer class="footer">
             
         </footer>
         <script src="../../../mygunplalist/RecursosGenerales/jquery-3.6.0.js"></script>
+        <script src="../../../mygunplalist/RecursosGenerales/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
         <script src="../../../mygunplalist/RecursosGenerales/menu/menu.js"></script>
         <script src="../../../mygunplalist/view/modelKits/modelKits.js"></script>
     </body>

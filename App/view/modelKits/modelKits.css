@@ -8,13 +8,13 @@ body{
 }
 .content{
     width: 80%;
-    height: 100vh;
     background: #ffffffb8;
     border-left: 2px solid #2A3439;
     border-right: 2px solid #2A3439;
     margin-left: 10%;
     padding-top: 50px;
     margin-top: 93px;
+    padding-bottom: 50px;
 }
 .tituloPrincipal{
     font-family: 'mecha';
@@ -121,7 +121,6 @@ body{
     overflow: hidden;
 }
 .modelKitLink{
-    cursor: pointer;
     text-decoration: none;
 }
 .ImgModelKit{
@@ -138,6 +137,7 @@ body{
     z-index: 10;
     transition: 0.5s;
     box-shadow: 0px 0px 0px black;
+    cursor: pointer;
 }
 .fondoAnimado{
     width: 90%;
@@ -244,9 +244,12 @@ body{
     background-color: #2A3439;
     color: #E60B0B;
     overflow: hidden;
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.25s;
+    cursor: pointer;
+    font-size: 1.2em;
 }
 .modelKitLink:hover .contenedorEstadoModelKit{
     transform:rotateX(360deg);
@@ -274,8 +277,76 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2em;
 }
 .enLista{
     color: white;
+}
+.enBacklog{
+    color: #3399ff;
+}
+.enConstruccion{
+    color: silver;
+}
+.terminado{
+    color: #9aff00;
+}
+
+/*PAGINADO*/
+.paginado{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.contenedorPaginado{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    color: white;
+    border-radius: 5px;
+    background-color: #2a343987;
+    border: 2px solid #2A3439;
+}
+.datosPaginado{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #2A3439;
+}
+.btnPagina{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    cursor: pointer;
+    height: 100%;
+    transition: 0.35s;
+    font-size: 2em;
+}
+.btnPagina:hover{
+    background: white;
+    color: #E60B0B;
+}
+.datosPaginado p{
+    margin: 0px;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+}
+#elements{
+    font-family: 'mecha';
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #FFD500;
+}
+#totalElements{
+    font-family: 'mecha';
+    margin-left: 5%;
+    color: #FFD500;
 }

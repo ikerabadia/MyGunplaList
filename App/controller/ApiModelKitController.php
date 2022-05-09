@@ -107,11 +107,11 @@ class ApiModelKitController
 
     
 
-    public function getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador){
+    public function getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador, $grado){
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
 
-        $modelKitsBd = BdModelKit::getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador);
+        $modelKitsBd = BdModelKit::getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador, $grado);
 
         if ($modelKitsBd != false) {
             $array["status"] = true;
@@ -156,7 +156,9 @@ class ApiModelKitController
                 $aux["img_pose2"] = $modelKitBd["img_pose2"];
 
                 array_push($array["modelKits"], $aux);
-            } 
+            }
+            $array["totalElements"] = BdModelKit::getCountAllModelKits($notaMinima, $notaMaxima, $textoBuscador, $grado);
+
         }else{
             $array["status"] = false;
             $array["mensaje"] = "Ha ocurrido un error al obtener los model kits";

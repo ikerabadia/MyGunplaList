@@ -84,7 +84,6 @@ function pintarMenu() {
 
 function showLogoutModal() {
     document.getElementById("logoutModal").style.display = "block";
-    /* event.preventDefault(); */
 }
 function hideLogoutModal() {
     document.getElementById("logoutModal").style.display = "none";

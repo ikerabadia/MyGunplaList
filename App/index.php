@@ -102,7 +102,8 @@
         $notaMinima = $_POST["notaMinima"];
         $notaMaxima = $_POST["notaMaxima"];
         $textoBuscador = $_POST["textoBuscador"];
-        $apiModelKitController->getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador);
+        $grado = $_POST["grado"];
+        $apiModelKitController->getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador, $grado);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModelKitById") {
         $apiModelKitController->getModelKitById($array_ruta[2]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getTopModelKitsByDate") {

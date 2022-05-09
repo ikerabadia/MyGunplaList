@@ -97,11 +97,18 @@ class BdModelKit{
     
 
     //CONSULTA PARA OBTENER LOS MODEL KITS PAGINADOS Y RANKEADOS TANTO POR NOTA COMO POR POPULARIDAD
-    static function getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador){
+    static function getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador, $grado){
         try {
             $db = Conexion::getConection();
 
-            $offset = ($pagina * 50);
+            $offset = ($pagina * 20);
+
+            $filtroGrado = "";
+            if ($grado == "todos") {
+                $filtroGrado = "%%";
+            }else{
+                $filtroGrado = "$grado";
+            }
 
             $sql = "SELECT * FROM(
                 SELECT
@@ -119,12 +126,55 @@ class BdModelKit{
                     (UPPER(listado.nombre) LIKE UPPER('%$textoBuscador%'))
                      AND ( listado.nota >= $notaMinima )
                      AND ( listado.nota <= $notaMaxima )
+                     AND ( listado.grado LIKE '$filtroGrado' )
                  ORDER BY $orden DESC
-                 LIMIT 50 OFFSET $offset";
+                 LIMIT 20 OFFSET $offset";
 
             $resultado = $db->query($sql);
 
             return $resultado;
+
+        } catch (\Exception $th) {
+            echo $th->getMessage();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    static function getCountAllModelKits($notaMinima, $notaMaxima, $textoBuscador, $grado){
+        try {
+            $db = Conexion::getConection();
+
+            $filtroGrado = "";
+            if ($grado == "todos") {
+                $filtroGrado = "%%";
+            }else{
+                $filtroGrado = "$grado";
+            }
+
+            $sql = "SELECT COUNT(*) as totalElements FROM(
+                SELECT
+                        COALESCE((SELECT AVG(nota_media_usuario) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit),0) as nota,
+                        DENSE_RANK() OVER (
+                                ORDER BY nota desc
+                            ) puesto_nota,
+                        COALESCE((SELECT COUNT(*) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit),0) as popularidad,    
+                        DENSE_RANK() OVER (
+                                ORDER BY popularidad desc
+                            ) puesto_popularidad, 
+                        mk.*
+                        FROM `model_kit` mk
+                ) listado WHERE 
+                    (UPPER(listado.nombre) LIKE UPPER('%$textoBuscador%'))
+                     AND ( listado.nota >= $notaMinima )
+                     AND ( listado.nota <= $notaMaxima )
+                     AND ( listado.grado LIKE '$filtroGrado' )
+            ";
+
+            $resultado = $db->query($sql);
+
+            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+            return $fila['totalElements'];
 
         } catch (\Exception $th) {
             echo $th->getMessage();
