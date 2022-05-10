@@ -26,11 +26,22 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuario") {
         $apiUserController->getUsuario($array_ruta[2]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoUsuario") {
-        $apiUserController->newUsuario($_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["email"]);
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $email = $_POST["email"];
+        $linkInstagram = $_POST["link_instagram"];
+        $linkYoutube = $_POST["link_youtube"];
+        $apiUserController->newUsuario($username, password_hash($password, PASSWORD_DEFAULT), $email, $linkInstagram, $linkYoutube);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "deleteUsuario") {
         $apiUserController->deleteUsuario($array_ruta[2]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "updateUsuario") {
-        $apiUserController->updateUsuario($array_ruta[2], $_POST["username"], $_POST["password"], $_POST["img_usuario"], $_POST["email"]);
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $img_usuario = $_POST["img_usuario"];
+        $email = $_POST["email"];
+        $linkInstagram = $_POST["link_instagram"];
+        $linkYoutube = $_POST["link_youtube"];
+        $apiUserController->updateUsuario($array_ruta[2], $username, password_hash($password, PASSWORD_DEFAULT), $img_usuario, $email, $linkInstagram, $linkYoutube);
     } else if (isset($array_ruta[0]) && $array_ruta[0]=="api" && $array_ruta[1] == "guardarImagenUsuario") { //Esto lo dejo aqui para saber como se guarda la imagen
         $idUsuario = $_POST["usuario"];
         $imagen = $_FILES["imagen"];
@@ -79,7 +90,8 @@
         $imgCaja = $_POST["imgCaja"];
         $imgPose1 = $_POST["imgPose1"];
         $imgPose2 = $_POST["imgPose2"];
-        $apiModelKitController->newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2);
+        $linkGunplaWiki = $_POST["linkGunplaWiki"];
+        $apiModelKitController->newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $linkGunplaWiki);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "updateModelKit") {
         $idModelKit = $array_ruta[2];
         $nombre = $_POST["nombre"];
@@ -92,7 +104,8 @@
         $imgCaja = $_POST["imgCaja"];
         $imgPose1 = $_POST["imgPose1"];
         $imgPose2 = $_POST["imgPose2"];
-        $apiModelKitController->updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2);
+        $linkGunplaWiki = $_POST["linkGunplaWiki"];
+        $apiModelKitController->updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $linkGunplaWiki);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModificacionesModelKit") {
         $idModelKit = $array_ruta[2];
         $apiModelKitController->getModificacionesModelKit($idModelKit);
@@ -106,11 +119,11 @@
         $apiModelKitController->getAllModelKits($pagina, $orden, $notaMinima, $notaMaxima, $textoBuscador, $grado);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModelKitById") {
         $apiModelKitController->getModelKitById($array_ruta[2]);
-    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getTopModelKitsByDate") {
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getTopModelKitsOrdered") {
         $numeroRegistros = $_POST["numeroRegistros"];
         $orden = $_POST["orden"];
         $dias = $_POST["dias"];
-        $apiModelKitController->getTopModelKitsByDate($numeroRegistros, $orden, $dias);
+        $apiModelKitController->getTopModelKitsOrdered($numeroRegistros, $orden, $dias);
     }else if(count($array_ruta)==0){ //Pagina mostrada por defecto
         header("Location: ".$_SERVER["REQUEST_URI"]."home");
     }else{

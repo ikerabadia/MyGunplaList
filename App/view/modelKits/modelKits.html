@@ -64,34 +64,31 @@
                 </div>
 
                 <div class="divCrearModelKit">
-                    <p>¿No encuentras el model kit que buscas? Crealo</p>
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearModelKit" onclick="showCreateModelKitModal()"> -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                    </button>
+                    
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">NUEVO MODEL KIT</h5>
+                                    <h5 class="modal-title tituloCreateModelKit" id="exampleModalLabel">NUEVO MODEL KIT</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
+                                    <p class="semiTituloCreate">DATOS</p>
                                     <div class="Instrucciones">
-                                        <p>A continuacion le vamos a pedir los datos necesarios para crear un nuevo model kit en nuestra base de datos.
-                                            Nos gustaria pedirle por favor que se haya asegurado de que el model kit que quiere crear no exista ya en nuestra web
+                                        <p>A continuacion le vamos a pedir los datos necesarios para <b>crear un nuevo model kit</b> en nuestra base de datos.
+                                            Nos gustaria pedirle por favor que se haya asegurado de <b>que el model kit que quiere crear no exista ya en nuestra web</b>
                                             para evitar model kits repetidos y que no tenga que suprimirlo un moderador.
                                          </p>
-                                         <p>Destacar que los campos marcados en rojo son obligatorios.</p>
+                                         <p>Destacar que los campos marcados son obligatorios.</p>
                                          <p>Dicho esto, por favor, rellene los siguientes campos:</p>
                                     </div>
                                     <div class="formularioCrearModelKit">
 
                                         <div class="input-group flex-nowrap mb-3">
                                             <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                            <input type="text" class="form-control" placeholder="Nombre del Model Kit" aria-label="Username" aria-describedby="addon-wrapping">
+                                            <input type="text" class="form-control" id="inputNombreModelKit" placeholder="Nombre del Model Kit" aria-label="NombreModelKit" aria-describedby="addon-wrapping">
                                         </div>
 
                                         <div class="input-group mb-3">
@@ -120,30 +117,51 @@
                                             </select>
                                         </div>
 
+                                        <div class="input-group flex-nowrap mb-3">
+                                            <span class="input-group-text" id="addon-wrapping">Link GunplaWiki</span>
+                                            <input type="text" class="form-control" placeholder="https://gunpla.fandom.com/wiki/EG_(2020)_RX-78-2_Gundam" aria-label="linkGunplaWiki" aria-describedby="addon-wrapping">
+                                        </div>
+
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Descripcion</span>
-                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                            <textarea class="form-control" id="descripcionModelKit" aria-label="With textarea"></textarea>
+                                        </div>
+
+                                        <p class="semiTituloCreate">IMAGENES</p>
+
+                                        <div class="Instrucciones">
+                                            <p>Ahora, por favor, le vamos a pedir las <b>imagenes</b> del model kit. Es muy importante que las imagenes 
+                                                que asigne coincidan con lo que se esta pidiendo en cada una de ellas, para que asi los futuros usuario 
+                                                tengan una vision lo mas amplia posible del model kit. 
+                                                <b>Tenga especial cuidado con la imagen de la caja, ya que es la que distinguira realmente a los distintos 
+                                                model kits de un mismo gundam, de una forma rapida y clara.</b>
+                                             </p>
                                         </div>
 
                                         <div class="mb-3 divCreateInputImg">
                                             <p>Imagen Caja</p>
                                             <input class="form-control inputImg" type="file" id="inputCreateImgCaja" accept="image/*">
+                                            <img src="#" class="img-fluid mt-3" id="imgCaja" alt="Imagen de la caja del model kit">
                                         </div>
                                         <div class="mb-3 divCreateInputImg">
-                                            <p>Imagen Delante</p>
+                                            <p>Imagen de vista delantera</p>
                                             <input class="form-control inputImg" type="file" id="inputCreateImg1" accept="image/*">
+                                            <img src="#" class="img-fluid mt-3" id="img1" alt="Imagen vista delantera">
                                         </div>
                                         <div class="mb-3 divCreateInputImg">
-                                            <p>Imagen Detras</p>
+                                            <p>Imagen de vista trasera</p>
                                             <input class="form-control inputImg" type="file" id="inputCreateImg2" accept="image/*">
+                                            <img src="#" class="img-fluid mt-3" id="img2" alt="Imagen vista trasera">
                                         </div>
                                         <div class="mb-3 divCreateInputImg">
                                             <p>Imagen Pose 1</p>
                                             <input class="form-control inputImg" type="file" id="inputCreateImg3" accept="image/*">
+                                            <img src="#" class="img-fluid mt-3" id="img3" alt="Imagen pose 1">
                                         </div>
                                         <div class="mb-3 divCreateInputImg">
                                             <p>Imagen Pose 2</p>
                                             <input class="form-control inputImg" type="file" id="inputCreateImg4" accept="image/*">
+                                            <img src="#" class="img-fluid mt-3" id="img4" alt="Imagen pose 2">
                                         </div>
 
                                     </div>
@@ -182,7 +200,7 @@
             </div>
         </div>
 
-        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 150">
             <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -197,26 +215,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="modal" tabindex="-1" id="createModelKitModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">NUEVO MODEL KIT</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="hideCreateModelKitModal()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Creando nuevo model kit...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideCreateModelKitModal()">Cancelar</button>
-                        <button type="button" class="btn btn-danger" onclick="createModelKit()">Crear</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
 
     </div>
 

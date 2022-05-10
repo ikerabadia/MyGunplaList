@@ -6,11 +6,11 @@ class BdModelKit{
     //          MODEL KITS
     //---------------------------------------------------------------------------------------
 
-    static function newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $idUsuario){
+    static function newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $idUsuario, $linkGunplaWiki){
         try {
             $db = Conexion::getConection();
 
-            $sql = "INSERT INTO `model_kit`(`nombre`, `grado`, `escala`, `descripcion`, `fecha_salida`, `img_pose_base_delante`, `img_pose_base_detras`, `img_caja`, `img_pose1`, `img_pose2`) VALUES ('$nombre','$grado','$escala','$descripcion','$fechaSalida','$imgPoseBaseDelante','$imgPoseBaseDetras','$imgCaja','$imgPose1','$imgPose2')";
+            $sql = "INSERT INTO `model_kit`(`nombre`, `grado`, `escala`, `descripcion`, `fecha_salida`, `img_pose_base_delante`, `img_pose_base_detras`, `img_caja`, `img_pose1`, `img_pose2`, `link_gunpla_wiki`) VALUES ('$nombre','$grado','$escala','$descripcion','$fechaSalida','$imgPoseBaseDelante','$imgPoseBaseDetras','$imgCaja','$imgPose1','$imgPose2', '$linkGunplaWiki')";
             $resultado = $db->query($sql);
 
             if ($resultado) {
@@ -28,11 +28,11 @@ class BdModelKit{
         }
     }
 
-    static function updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $idUsuario){
+    static function updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $idUsuario, $linkGunplaWiki){
         try {
             $db = Conexion::getConection();
 
-            $sql = "UPDATE `model_kit` SET `nombre`='$nombre',`grado`='$grado',`escala`='$escala',`descripcion`='$descripcion',`fecha_salida`='$fechaSalida',`img_pose_base_delante`='$imgPoseBaseDelante',`img_pose_base_detras`='$imgPoseBaseDetras',`img_caja`='$imgCaja',`img_pose1`='$imgPose1',`img_pose2`='$imgPose2' WHERE id_model_kit=$idModelKit";
+            $sql = "UPDATE `model_kit` SET `nombre`='$nombre',`grado`='$grado',`escala`='$escala',`descripcion`='$descripcion',`fecha_salida`='$fechaSalida',`img_pose_base_delante`='$imgPoseBaseDelante',`img_pose_base_detras`='$imgPoseBaseDetras',`img_caja`='$imgCaja',`img_pose1`='$imgPose1',`img_pose2`='$imgPose2',`link_gunpla_wiki`='$linkGunplaWiki'  WHERE id_model_kit=$idModelKit";
             $resultado = $db->query($sql);
 
             if ($resultado) {
@@ -216,7 +216,7 @@ class BdModelKit{
         }
     }
 
-    static function getTopModelKitsByDate($numeroRegistros, $orden, $dias){
+    static function getTopModelKitsOrdered($numeroRegistros, $orden, $dias){
         try {
             $db = Conexion::getConection();
 

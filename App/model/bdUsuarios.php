@@ -26,32 +26,6 @@ class BdUsuarios{
             echo $e->getMessage();
         }
     }
-    
-    
-    /*  CONSULTA CON SHA1 DE PRUEBA
-     
-    static function getUsuarioId($id)
-    {
-        try {
-            $db = Conexion::getConection();
-
-            $sql = "SELECT * FROM restaurante WHERE sha1(CodRes)='".trim($id)."'";
-            //return $sql;
-            $resultado = $db->query($sql);
-            
-            if ($resultado) {
-                return $resultado;
-            } else {
-                throw new Exception("Error en el select....");
-            } 
-        } catch (\Exception $th) {
-            echo $th->getMessage();
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-    */
-
         
     
     static function getUsuarios($pagina, $cantidadRegistros){
@@ -94,11 +68,11 @@ class BdUsuarios{
     }
     
     
-    static function newUsuario($username, $password, $email){
+    static function newUsuario($username, $password, $email, $linkInstagram, $linkYoutube){
         try {
             $db = Conexion::getConection();
 
-            $sql = "INSERT INTO `usuarios`(`username`, `password`, `email`) VALUES ('$username', '$password', '$email')";
+            $sql = "INSERT INTO `usuarios`(`username`, `password`, `email`, `link_instagram`, `link_youtube` ) VALUES ('$username', '$password', '$email', '$linkInstagram', '$linkYoutube')";
             $resultado = $db->query($sql);
 
             if ($resultado) {
@@ -134,47 +108,23 @@ class BdUsuarios{
     }
     
     
-    static function updateUsuario($idUsuario, $username, $password, $img_usuario, $email){
+    static function updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $linkInstagram, $linkYoutube){
         try {
             $db = Conexion::getConection();
 
-            $sql = "UPDATE `usuarios` SET username = '$username', password = '$password', img_usuario = '$img_usuario', email = '$email' WHERE id_usuario = $idUsuario";
+            $sql = "UPDATE `usuarios` SET username = '$username', password = '$password', img_usuario = '$img_usuario', email = '$email', link_instagram = '$linkInstagram', link_youtube = '$linkYoutube' WHERE id_usuario = $idUsuario";
             $resultado = $db->query($sql);
 
             if ($resultado) {
-                return $resultado;
+                return "true";
             } else {
-                throw new Exception("Error en el select....");
+                return "false";
             }
-        } catch (\Exception $th) {
-            echo $th->getMessage();
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-    
-    /**
-     * limpiarLikesUsuario
-     *
-     * @param  mixed $idUsuario
-     * @return void
-     */
-    static function limpiarLikesUsuario($idUsuario){
-        try {
-            $db = Conexion::getConection();
 
-            $sql = "DELETE FROM `likes` WHERE fkUsuario = '$idUsuario'";
-            $resultado = $db->query($sql);
-
-            if ($resultado) {
-                return $resultado;
-            } else {
-                throw new Exception("Error en el select....");
-            }
         } catch (\Exception $th) {
-            echo $th->getMessage();
+            return "false";
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            return "false";
         }
     }
     

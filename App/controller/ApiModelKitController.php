@@ -9,13 +9,13 @@ class ApiModelKitController
     //MODEL KITS
     //----------------------------------------    
 
-    public function newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2)
+    public function newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $linkGunplaWiki)
     {
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         
         if (isset($_SESSION["usuarioActual"])) {
-            $modelKitsBd = BdModelKit::newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $_SESSION["usuarioActual"]["id_usuario"]);
+            $modelKitsBd = BdModelKit::newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $_SESSION["usuarioActual"]["id_usuario"], $linkGunplaWiki);
             
             /* foreach ($modelKitsBd as $modelKitBd) {
                 $aux = array();
@@ -51,13 +51,13 @@ class ApiModelKitController
         }
     }
 
-    public function updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2)
+    public function updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $linkGunplaWiki)
     {
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
 
         if (isset($_SESSION["usuarioActual"])) {
-            $modelKitsBd = BdModelKit::updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $_SESSION["usuarioActual"]["id_usuario"]);
+            $modelKitsBd = BdModelKit::updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $_SESSION["usuarioActual"]["id_usuario"], $linkGunplaWiki);
 
             if ($modelKitsBd == true) {
                 $array["status"] = true;
@@ -149,6 +149,7 @@ class ApiModelKitController
                 $aux["puesto_nota"] = $modelKitBd["puesto_nota"];
                 $aux["popularidad"] = $modelKitBd["popularidad"];
                 $aux["puesto_popularidad"] = $modelKitBd["puesto_popularidad"];
+                $aux["link_gunpla_wiki"] = $modelKitBd["link_gunpla_wiki"];
                 $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
                 $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
                 $aux["img_caja"] = $modelKitBd["img_caja"];
@@ -215,6 +216,7 @@ class ApiModelKitController
                 $aux["nota_pos_pers"] = $modelKitBd["nota_pos_pers"]; 
                 $aux["nota_calidad"] = $modelKitBd["nota_calidad"]; 
                 $aux["nota_poses"] = $modelKitBd["nota_poses"]; 
+                $aux["link_gunpla_wiki"] = $modelKitBd["link_gunpla_wiki"];
                 $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
                 $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
                 $aux["img_caja"] = $modelKitBd["img_caja"];
@@ -232,11 +234,11 @@ class ApiModelKitController
 
     }
 
-    public function getTopModelKitsByDate($numeroRegistros, $orden, $dias){
+    public function getTopModelKitsOrdered($numeroRegistros, $orden, $dias){
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
 
-        $modelKitsBd = BdModelKit::getTopModelKitsByDate($numeroRegistros, $orden, $dias);
+        $modelKitsBd = BdModelKit::getTopModelKitsOrdered($numeroRegistros, $orden, $dias);
 
         if ($modelKitsBd != false) {
             $array["status"] = true;
@@ -274,6 +276,7 @@ class ApiModelKitController
                 $aux["puesto_nota"] = $modelKitBd["puesto_nota"];
                 $aux["popularidad"] = $modelKitBd["popularidad"];
                 $aux["puesto_popularidad"] = $modelKitBd["puesto_popularidad"];
+                $aux["link_gunpla_wiki"] = $modelKitBd["link_gunpla_wiki"];
                 $aux["img_pose_base_delante"] = $modelKitBd["img_pose_base_delante"];
                 $aux["img_pose_base_detras"] = $modelKitBd["img_pose_base_detras"];
                 $aux["img_caja"] = $modelKitBd["img_caja"];

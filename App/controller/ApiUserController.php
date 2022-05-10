@@ -22,6 +22,8 @@ class ApiUserController
             $aux["id_usuario"] = $usuario["id_usuario"];
             $aux["username"] = $usuario["username"];
             $aux["password"] = $usuario["password"];
+            $aux["link_instagram"] = $usuario["link_instagram"];
+            $aux["link_youtube"] = $usuario["link_youtube"];
             $aux["img_usuario"] = $usuario["img_usuario"];
             $aux["email"] = $usuario["email"];
             array_push($array["usuarios"], $aux);
@@ -41,6 +43,8 @@ class ApiUserController
             $aux["id_usuario"] = $usuario["id_usuario"];
             $aux["username"] = $usuario["username"];
             $aux["password"] = $usuario["password"];
+            $aux["link_instagram"] = $usuario["link_instagram"];
+            $aux["link_youtube"] = $usuario["link_youtube"];
             $aux["img_usuario"] = $usuario["img_usuario"];
             $aux["email"] = $usuario["email"];
             array_push($array["usuarios"], $aux);
@@ -48,12 +52,12 @@ class ApiUserController
         echo json_encode($array);
     }
    
-    public function newUsuario($username, $password, $email)
+    public function newUsuario($username, $password, $email, $link_instagram, $link_youtube)
     {
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["usuario"] = array();
-        $usuariosbd = BdUsuarios::newUsuario($username, $password, $email);
+        $usuariosbd = BdUsuarios::newUsuario($username, $password, $email, $link_instagram, $link_youtube);
         
         echo json_encode($usuariosbd);
     }
@@ -78,12 +82,12 @@ class ApiUserController
     }
     
     
-    public function updateUsuario($idUsuario, $username, $password, $img_usuario, $email)
+    public function updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $link_instagram, $link_youtube)
     {
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
         $array["usuario"] = array();
-        $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email);
+        $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $link_instagram, $link_youtube);
         
         echo json_encode($usuariosbd);
     }
@@ -180,6 +184,8 @@ class ApiUserController
                 $aux["id_usuario"] = $usuariobd["id_usuario"];
                 $aux["username"] = $usuariobd["username"];
                 $aux["password"] = $usuariobd["password"];
+                $aux["link_instagram"] = $usuariobd["link_instagram"];
+                $aux["link_youtube"] = $usuariobd["link_youtube"];
                 $aux["img_usuario"] = $usuariobd["img_usuario"];
                 $aux["email"] = $usuariobd["email"];
                 if ($usuariobd["moderador"] == 1) {
@@ -444,6 +450,7 @@ class ApiUserController
                     $aux2["puesto_nota"] = $modelKitBd2["puesto_nota"];
                     $aux2["popularidad"] = $modelKitBd2["popularidad"];
                     $aux2["puesto_popularidad"] = $modelKitBd2["puesto_popularidad"];
+                    $aux2["link_gunpla_wiki"] = $modelKitBd2["link_gunpla_wiki"];
                     $aux2["img_pose_base_delante"] = $modelKitBd2["img_pose_base_delante"];
                     $aux2["img_pose_base_detras"] = $modelKitBd2["img_pose_base_detras"];
                     $aux2["img_caja"] = $modelKitBd2["img_caja"];

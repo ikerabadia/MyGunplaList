@@ -163,7 +163,7 @@ function addModelKitMisGunplas(idModelKit) {
         console.log(resultados);
         if (resultados["status"] == true) {
             mostrarToast("green", "Model kit añadido a tus gunplas");
-            document.getElementById("mk"+idModelKit).innerHTML = `<i class="fa fa-list enLista" aria-hidden="true"></i>`;
+            document.getElementById("mk"+idModelKit).parentElement.innerHTML = `<i class="fa fa-list enLista" aria-hidden="true"></i>`;
         }else{
             mostrarToast("red", "Ha ocurrido un error al añadir el model kit a tus gunplas");
         }
@@ -185,11 +185,24 @@ function pintarPaginado(listaModelKits) {
     
     if (listaModelKits["totalElements"] == 0) {
         document.getElementById("elements").innerHTML = "0 - 0"
+
+        mostrarCrearModelKit();
     }else{
         document.getElementById("elements").innerHTML = `${paginaActual*elementosPorPagina+1} - ${(paginaActual*elementosPorPagina) + listaModelKits["modelKits"].length}`;
     }
     
     document.getElementById("totalElements").innerHTML = `${listaModelKits["totalElements"]}`;
+}
+
+function mostrarCrearModelKit() {
+    document.getElementById("modelKits").innerHTML = `
+        <div class="noEncuentraModelKit">
+            <p>¿No encuentras el model kit que buscas?</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            CREALO AQUI
+            </button>
+        </div>
+    `;
 }
 
 function paginaAnterior() {
@@ -218,4 +231,38 @@ function hideCreateModelKitModal() {
     document.getElementById("createModelKitModal").style.display = "none";
 }
 
-//IMAGENES DEL CREATE MODEL KIT
+//PREVISUALIZADO DE IMAGENES EN LA CREACION DE MODEL KITS
+inputCreateImgCaja.onchange = evt => {
+    const [file] = inputCreateImgCaja.files
+    if (file) {
+      imgCaja.src = URL.createObjectURL(file)
+    }
+}
+
+inputCreateImg1.onchange = evt => {
+    const [file] = inputCreateImg1.files
+    if (file) {
+      img1.src = URL.createObjectURL(file)
+    }
+}
+
+inputCreateImg2.onchange = evt => {
+    const [file] = inputCreateImg2.files
+    if (file) {
+      img2.src = URL.createObjectURL(file)
+    }
+}
+
+inputCreateImg3.onchange = evt => {
+    const [file] = inputCreateImg3.files
+    if (file) {
+      img3.src = URL.createObjectURL(file)
+    }
+}
+
+inputCreateImg4.onchange = evt => {
+    const [file] = inputCreateImg4.files
+    if (file) {
+      img4.src = URL.createObjectURL(file)
+    }
+}
