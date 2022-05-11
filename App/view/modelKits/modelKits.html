@@ -118,8 +118,13 @@
                                         </div>
 
                                         <div class="input-group flex-nowrap mb-3">
+                                            <span class="input-group-text" id="addon-wrapping">Fecha lanzamiento</span>
+                                            <input type="date" class="form-control" id="inputCreateReleaseDate" aria-label="linkGunplaWiki" aria-describedby="addon-wrapping">
+                                        </div>
+
+                                        <div class="input-group flex-nowrap mb-3">
                                             <span class="input-group-text" id="addon-wrapping">Link GunplaWiki</span>
-                                            <input type="text" class="form-control" placeholder="https://gunpla.fandom.com/wiki/EG_(2020)_RX-78-2_Gundam" aria-label="linkGunplaWiki" aria-describedby="addon-wrapping">
+                                            <input type="text" class="form-control" id="inputCreateLinkGunplaWiki" placeholder="https://gunpla.fandom.com/wiki/EG_(2020)_RX-78-2_Gundam" aria-label="linkGunplaWiki" aria-describedby="addon-wrapping">
                                         </div>
 
                                         <div class="input-group mb-3">
@@ -170,7 +175,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
-                                    <button type="button" class="btn btn-primary">CREAR</button>
+                                    <button type="button" class="btn btn-primary" onclick="createModelKit()">CREAR</button>
                                 </div>
                             </div>
                         </div>

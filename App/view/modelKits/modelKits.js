@@ -266,3 +266,19 @@ inputCreateImg4.onchange = evt => {
       img4.src = URL.createObjectURL(file)
     }
 }
+
+//CREACION DE MODEL KIT
+function createModelKit() {
+    var nombre = document.getElementById("inputNombreModelKit").value;
+    var grado = document.getElementById("inputCreateGrado").value;
+    var escala = document.getElementById("inputCreateEscala").value;
+    var descripcion = document.getElementById("descripcionModelKit").value;
+    var fechaSalida = document.getElementById("inputCreateReleaseDate").value;
+    var linkGunplaWiki = document.getElementById("inputCreateLinkGunplaWiki").value;
+    var imgPoseBaseDelante = document.getElementById("inputCreateImg1").files[0];
+    var imgPoseBaseDetras = document.getElementById("inputCreateImg2").files[0];
+    var imgCaja = document.getElementById("imgCaja").files[0];
+    var imgPose1 = document.getElementById("inputCreateImg3").files[0];
+    var imgPose2 = document.getElementById("inputCreateImg4").files[0];
+
+}

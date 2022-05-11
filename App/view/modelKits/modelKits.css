@@ -1,6 +1,9 @@
 body{
     
 }
+button{
+    font-family: 'mecha';
+}
 .principalBackground{
     width: 100%;
     background: url("../../../mygunplalist/RecursosGenerales/img/wallpaperModelKits.webp") no-repeat center center fixed;

@@ -29,13 +29,34 @@ class BdModelKit{
     }
 
     static function updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $idUsuario, $linkGunplaWiki){
+        
+        $data = array(
+            'nombre' => $nombre, 
+            'grado' => $grado,
+            'escala' => $escala,
+            'descripcion' => $descripcion,
+            'fecha_salida' => $fechaSalida,
+            'link_gunpla_wiki' => $linkGunplaWiki,
+            'img_pose_base_delante' => $imgPoseBaseDelante,
+            'img_pose_base_detras' => $imgPoseBaseDetras,
+            'img_caja' => $imgCaja,
+            'img_pose1' => $imgPose1,
+            'img_pose2' => $imgPose2            
+        );
+        $table = "model_kit";
+        $where = "id_model_kit=$idModelKit";
+
+        
+
         try {
             $db = Conexion::getConection();
 
-            $sql = "UPDATE `model_kit` SET `nombre`='$nombre',`grado`='$grado',`escala`='$escala',`descripcion`='$descripcion',`fecha_salida`='$fechaSalida',`img_pose_base_delante`='$imgPoseBaseDelante',`img_pose_base_detras`='$imgPoseBaseDetras',`img_caja`='$imgCaja',`img_pose1`='$imgPose1',`img_pose2`='$imgPose2',`link_gunpla_wiki`='$linkGunplaWiki'  WHERE id_model_kit=$idModelKit";
-            $resultado = $db->query($sql);
+            //$sql = "UPDATE `model_kit` SET `nombre`='$nombre',`grado`='$grado',`escala`='$escala',`descripcion`='$descripcion',`fecha_salida`='$fechaSalida',`img_pose_base_delante`='$imgPoseBaseDelante',`img_pose_base_detras`='$imgPoseBaseDetras',`img_caja`='$imgCaja',`img_pose1`='$imgPose1',`img_pose2`='$imgPose2',`link_gunpla_wiki`='$linkGunplaWiki'  WHERE id_model_kit=$idModelKit";
+            $sql = self::buildSqlUpdate($table, $data, $where);
+            echo $sql;
+            //$resultado = $db->query($sql);
 
-            if ($resultado) {
+            if (/* $resultado */false) {
                 $sql = "INSERT INTO `modificaciones_model_kit`(`fk_model_kit`, `fk_usuario`, `fecha_modificacion`) VALUES ('$idModelKit','$idUsuario',now())";
                 $resultado2 = $db->query($sql);
                 return "true";
@@ -47,6 +68,20 @@ class BdModelKit{
         } catch (\PDOException $e) {
             
         }
+    }
+
+    static function buildSqlUpdate($table, $data, $where)
+    {
+        $cols = array();
+    
+        foreach($data as $key=>$val) {
+            if ($val != null && $val != "null") {
+                $cols[] = "$key = '$val'";
+            }            
+        }
+        $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
+    
+        return($sql);
     }
 
     static function isInList($idUsuario, $idModelKit){
