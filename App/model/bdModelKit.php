@@ -6,18 +6,18 @@ class BdModelKit{
     //          MODEL KITS
     //---------------------------------------------------------------------------------------
 
-    static function newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $idUsuario, $linkGunplaWiki){
+    static function newModelKit($nombre, $grado, $escala, $descripcion, $fechaSalida, $idUsuario, $linkGunplaWiki){
         try {
             $db = Conexion::getConection();
 
-            $sql = "INSERT INTO `model_kit`(`nombre`, `grado`, `escala`, `descripcion`, `fecha_salida`, `img_pose_base_delante`, `img_pose_base_detras`, `img_caja`, `img_pose1`, `img_pose2`, `link_gunpla_wiki`) VALUES ('$nombre','$grado','$escala','$descripcion','$fechaSalida','$imgPoseBaseDelante','$imgPoseBaseDetras','$imgCaja','$imgPose1','$imgPose2', '$linkGunplaWiki')";
+            $sql = "INSERT INTO `model_kit`(`nombre`, `grado`, `escala`, `descripcion`, `fecha_salida`, `link_gunpla_wiki`) VALUES ('$nombre','$grado','$escala','$descripcion','$fechaSalida', '$linkGunplaWiki')";
             $resultado = $db->query($sql);
 
             if ($resultado) {
                 $fkModelKit = $db->lastInsertId();
                 $sql = "INSERT INTO `modificaciones_model_kit`(`fk_model_kit`, `fk_usuario`, `fecha_modificacion`) VALUES ('$fkModelKit','$idUsuario',now())";
                 $resultado2 = $db->query($sql);
-                return "true";
+                return $fkModelKit;
             } else {
                 return "false";
             }
@@ -53,15 +53,14 @@ class BdModelKit{
 
             //$sql = "UPDATE `model_kit` SET `nombre`='$nombre',`grado`='$grado',`escala`='$escala',`descripcion`='$descripcion',`fecha_salida`='$fechaSalida',`img_pose_base_delante`='$imgPoseBaseDelante',`img_pose_base_detras`='$imgPoseBaseDetras',`img_caja`='$imgCaja',`img_pose1`='$imgPose1',`img_pose2`='$imgPose2',`link_gunpla_wiki`='$linkGunplaWiki'  WHERE id_model_kit=$idModelKit";
             $sql = self::buildSqlUpdate($table, $data, $where);
-            echo $sql;
-            //$resultado = $db->query($sql);
+            $resultado = $db->query($sql);
 
-            if (/* $resultado */false) {
+            if ($resultado) {
                 $sql = "INSERT INTO `modificaciones_model_kit`(`fk_model_kit`, `fk_usuario`, `fecha_modificacion`) VALUES ('$idModelKit','$idUsuario',now())";
                 $resultado2 = $db->query($sql);
                 return "true";
             } else {
-                throw new Exception("Error en el select....");
+                return "false";
             }
         } catch (\Exception $th) {
             

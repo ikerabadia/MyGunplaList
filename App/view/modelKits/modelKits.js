@@ -69,7 +69,7 @@ function pintarModelKit(modelKit) {
     <div class="modelKit">
         <div class="modelKitLink" >  
             <a href="modelKit/${modelKit["id_model_kit"]}">                      
-                <div class="ImgModelKit" >
+                <div class="ImgModelKit" id="imgModelKit${modelKit["id_model_kit"]}">
 
                 </div>
             </a>
@@ -98,6 +98,16 @@ function pintarModelKit(modelKit) {
         </div>
     </div>
     `;
+
+    if(modelKit["img_caja"] != ""){
+        url = modelKit["img_caja"];
+        document.getElementById("imgModelKit"+modelKit["id_model_kit"]).innerHTML = `
+            <img src="${url}" alt="">
+        `;
+        /* document.getElementById("imgModelKit"+modelKit["id_model_kit"]).style.backgroundImage = "url("+url+")"; */
+    }else{
+        document.getElementById("imgModelKit"+modelKit["id_model_kit"]).innerHTML = `<p>SIN IMAGEN <br> :C<p>`;
+    }
 
 }
 
@@ -269,16 +279,68 @@ inputCreateImg4.onchange = evt => {
 
 //CREACION DE MODEL KIT
 function createModelKit() {
+
+    //Obtengo los datos e imagenes del nuevo model kit
     var nombre = document.getElementById("inputNombreModelKit").value;
     var grado = document.getElementById("inputCreateGrado").value;
     var escala = document.getElementById("inputCreateEscala").value;
     var descripcion = document.getElementById("descripcionModelKit").value;
     var fechaSalida = document.getElementById("inputCreateReleaseDate").value;
     var linkGunplaWiki = document.getElementById("inputCreateLinkGunplaWiki").value;
+    var imgCaja = document.getElementById("inputCreateImgCaja").files[0];
     var imgPoseBaseDelante = document.getElementById("inputCreateImg1").files[0];
-    var imgPoseBaseDetras = document.getElementById("inputCreateImg2").files[0];
-    var imgCaja = document.getElementById("imgCaja").files[0];
+    var imgPoseBaseDetras = document.getElementById("inputCreateImg2").files[0];    
     var imgPose1 = document.getElementById("inputCreateImg3").files[0];
     var imgPose2 = document.getElementById("inputCreateImg4").files[0];
 
+    //Meto todos los datos e imagenes en el formdata
+    var formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('grado', grado);
+    formData.append('escala', escala);
+    formData.append('descripcion', descripcion);
+    formData.append('fechaSalida', fechaSalida);
+    formData.append('linkGunplaWiki', linkGunplaWiki);
+    formData.append('imgCaja', imgCaja);
+    formData.append('imgPoseBaseDelante', imgPoseBaseDelante);
+    formData.append('imgPoseBaseDetras', imgPoseBaseDetras);
+    formData.append('imgPose1', imgPose1);
+    formData.append('imgPose2', imgPose2);
+    
+    $.ajax({
+        url: 'api/nuevoModelKit',
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if (response.status == true) {
+                mostrarToast("green", "Model Kit creado correctamente");
+                limpiarModalCreateModelKit();
+            }else{
+                mostrarToast("red", "Ha ocurrido un error al crear el model kit");
+            }
+            console.log(response);
+        }
+    });
+
+}
+function limpiarModalCreateModelKit() {
+    document.getElementById("inputNombreModelKit").value = "";
+    document.getElementById("inputCreateGrado").value = "";
+    document.getElementById("inputCreateEscala").value = "";
+    document.getElementById("descripcionModelKit").value = "";
+    document.getElementById("inputCreateReleaseDate").value = "";
+    document.getElementById("inputCreateLinkGunplaWiki").value = "";
+    document.getElementById("inputCreateImgCaja").value = "";
+    document.getElementById("inputCreateImg1").value = "";
+    document.getElementById("inputCreateImg2").value = "";
+    document.getElementById("inputCreateImg3").value = "";
+    document.getElementById("inputCreateImg4").value = "";
+    imgCaja.src = "";
+    img1.src = "";
+    img2.src = "";
+    img3.src = "";
+    img4.src = "";
+    document.getElementById("btnCerrarModalCreateModelKit").click();   
 }

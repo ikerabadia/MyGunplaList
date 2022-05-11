@@ -128,10 +128,8 @@ button{
     text-decoration: none;
 }
 .ImgModelKit{
-    background: url("../../../mygunplalist/RecursosGenerales/img/imgPruebaCard.jpg") no-repeat center center;
     width: 90%;
     height: 70%;
-    background-size: cover;
     margin: 0px;
     top: 5%;
     position: absolute;
@@ -142,6 +140,21 @@ button{
     transition: 0.5s;
     box-shadow: 0px 0px 0px black;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(42,52,57,1) 15%, rgba(116,116,116,1) 100%);
+    align-items: center;
+    overflow: hidden;
+}
+.ImgModelKit img{
+    height: 100%;
+}
+.ImgModelKit p{
+    font-family: 'mecha';
+    text-align: center;
+    color: #E60B0B;
+    font-size: 1.4em;
 }
 .fondoAnimado{
     width: 90%;
