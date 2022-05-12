@@ -17,7 +17,11 @@
         <div class="principalBackground">
             <div class="content">
 
-                <div class="cabeceraModelKit">
+                <div class="tituloPrincipal">
+                    <h1>GUNDAM ZETA RX-178 MK-II VER 2.0 TITANS</h1>
+                    
+                </div>
+                <div class="subtitulo">
 
                     <div class="contenedorPuestoNota">
                         <div class="contenedorPuesto">
@@ -33,21 +37,109 @@
                         </div>
                     </div>
 
-                    <h1 id="nombreModelKit">GUNDAM ZETA RX-178 MK-II VER 2.0 TITANS</h1>
-
                     <div class="contenedorUltimoEdit">
-                        <div class="lastEditedBy">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        <div class="lastEditedBy">                            
                             <p>Ultima edicion por </p> 
+                            <a id="userUltimoEdit">Ikerabadia99</a>
                         </div>                        
-                        <a id="userUltimoEdit">Ikerabadia99</a>
+                        
                     </div>
 
-                    <div class="contenedorEstado">
+                    <div class="contenedorEstado ">
                         <i class="fa fa-list" aria-hidden="true"></i>
                         <P>Mis gunplas</P>
                     </div>
+                    
+                </div>
 
+                <div class="contenedorGaleriaPuntuaciones">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        </div>
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item h-100">
+                                <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgCaja/caja.jpg" class="mx-auto d-block h-100">
+                              </div>
+                          <div class="carousel-item active h-100">
+                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgDelante/delante.png" class="mx-auto d-block h-100">
+                          </div>
+                          <div class="carousel-item h-100">
+                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgDetras/detras.webp" class="mx-auto d-block h-100">
+                          </div>
+                          <div class="carousel-item h-100">
+                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgPose1/pose1.webp" class="mx-auto d-block h-100">
+                          </div>
+                          <div class="carousel-item h-100">
+                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgPose2/pose2.webp" class="mx-auto d-block h-100">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+
+                      <div class="puntuaciones">
+                        <div class="pestanasPuntuaciones" onclick="tooglePestanaPuntuacion()">
+                            <div class="pestanaPuntuacionesGeneral" id="pestanaPuntuacionesGeneral">
+                                general
+                            </div>
+                            <div class="pestanaPuntuacionesPersonal" id="pestanaPuntuacionesPersonal">
+                                personal
+                            </div>
+                        </div>
+                        <div class="puntuacionesMedia">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            9.12
+                        </div>
+                        <div class="puntuacionesDatosGeneral" id="contenedorPuntuacionesDatosGeneral">
+                            <div class="contenedorNotaDificultadGeneral">
+                                <p class="nombreNotaGeneral">Dificultad</p>
+                                <p class="muestraNota">10</p>
+                            </div>   
+                            <div class="contenedorNotaAcabadoOOBGeneral">
+                                <p class="nombreNotaGeneral">Acabado OOB</p>
+                                <p class="muestraNota">5.7</p>
+                            </div>  
+                            <div class="contenedorNotaCalidadGeneral">
+                                <p class="nombreNotaGeneral">Calidad</p>
+                                <p class="muestraNota">8.6</p>
+                            </div>    
+                            <div class="contenedorNotaPosesGeneral">
+                                <p class="nombreNotaGeneral">Abanico Poses</p>
+                                <p class="muestraNota">7.3</p>
+                            </div>                   
+                        </div>
+                        <div class="puntuacionesDatosGeneral" id="contenedorPuntuacionesDatosPersonal">
+                            <div class="contenedorNotaDificultadGeneral cont">
+                                <div class="nombreNotaPersonal">Dificultad</div>
+                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="7.3">
+                            </div>   
+                            <div class="contenedorNotaAcabadoOOBGeneral cont">
+                                <div class="nombreNotaPersonal">Acabado OOB</div>
+                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="6.9">
+                            </div>  
+                            <div class="contenedorNotaCalidadGeneral cont">
+                                <div class="nombreNotaPersonal">Calidad</div>
+                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="4.9">
+                            </div>    
+                            <div class="contenedorNotaPosesGeneral cont">
+                                <div class="nombreNotaPersonal">Abanico Poses</div>
+                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="9.7">
+                            </div>                   
+                        </div>
+
+                      </div>
                 </div>
 
                 <div class="divCrearModelKit">
