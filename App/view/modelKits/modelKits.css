@@ -10,11 +10,9 @@ button{
     background-size: cover;
 }
 .content{
-    width: 80%;
+    width: 90%;
     background: #ffffffb8;
-    border-left: 2px solid #2A3439;
-    border-right: 2px solid #2A3439;
-    margin-left: 10%;
+    margin-left: 5%;
     padding-top: 50px;
     margin-top: 93px;
     padding-bottom: 50px;
@@ -373,7 +371,7 @@ button{
     width: 50%;
     color: white;
     background: #2A3439;
-    height: 200px;
+    height: 300px;
     margin-top: 40px;
     border-radius: 5px;
     display: flex;
@@ -384,8 +382,14 @@ button{
 .noEncuentraModelKit p{
     font-size: 2em;
     font-weight: 700;
+    text-align: center;
 }
-.noEncuentraModelKit button{
+.noEncuentraModelKit span{
+    font-size: 0.6em;
+    font-weight: 400;
+    text-align: center;
+}
+.noEncuentraModelKit button, .noEncuentraModelKit a{
     font-family: 'mecha';
     font-size: 2em;
     color: #FFD500;
@@ -393,7 +397,8 @@ button{
     border-color: #FFD500;
     transition: 0.35s;
 }
-.noEncuentraModelKit button:hover{
+
+.noEncuentraModelKit button:hover, .noEncuentraModelKit a:hover{
     color: #2A3439;
     background: #FFD500;
 }
@@ -452,8 +457,3 @@ input[type=file]:hover input[type=file]::file-selector-button {
     background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
     color: #E60B0B;
 }
-/*imagenes*/
-/* .file {
-    visibility: hidden;
-    position: absolute;
-} */

@@ -204,18 +204,7 @@ class ApiUserController
                 $usuario = $aux;
             }
 
-            /* $usuario["idUsuario"] = $_SESSION["usuarioActual"]["idUsuario"];
-            $usuario["nombre"] = $_SESSION["usuarioActual"]["nombre"];
-            $usuario["apellido1"] = $_SESSION["usuarioActual"]["apellido1"];
-            $usuario["apellido2"] = $_SESSION["usuarioActual"]["apellido2"];
-            $usuario["correoElectronico"] = $_SESSION["usuarioActual"]["correoElectronico"];
-            $usuario["user"] = $_SESSION["usuarioActual"]["user"];
-            $usuario["password"] = $_SESSION["usuarioActual"]["password"];
-            $usuario["admin"] = $_SESSION["usuarioActual"]["admin"]; */
-
             
-
-            /* array_push($array["usuarios"], $usuario); */
 
             echo json_encode($usuario);
         }else{

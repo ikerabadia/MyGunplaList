@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MyGunplaList</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../../../mygunplalist/view/modelKit/modelKit.css" />
+        <link rel="stylesheet" type="text/css" href="../../../mygunplalist/RecursosGenerales/menu/menu.css" />
+        <link rel="stylesheet" href="../../../mygunplalist/RecursosGenerales/font-awesome-4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+
+        <nav id="menu" class="navbar navbar-expand-lg navbar-red navbar-dark"></nav>
+        <div class="principalBackground">
+            <div class="content">
+
+                <div class="cabeceraModelKit">
+
+                    <div class="contenedorPuestoNota">
+                        <div class="contenedorPuesto">
+                            <p class="contenedorPuestoNotaHeader">rank</p>
+                            <p id="puesto">148</p>
+                        </div>
+                        <div class="contenedorNota">
+                            <p class="contenedorPuestoNotaHeader">nota</p>
+                            <div class="nota">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <p id="nota">9.12</p>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <h1 id="nombreModelKit">GUNDAM ZETA RX-178 MK-II VER 2.0 TITANS</h1>
+
+                    <div class="contenedorUltimoEdit">
+                        <div class="lastEditedBy">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <p>Ultima edicion por </p> 
+                        </div>                        
+                        <a id="userUltimoEdit">Ikerabadia99</a>
+                    </div>
+
+                    <div class="contenedorEstado">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                        <P>Mis gunplas</P>
+                    </div>
+
+                </div>
+
+                <div class="divCrearModelKit">
+                        
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title tituloCreateModelKit" id="exampleModalLabel">NUEVO MODEL KIT</h5>
+                                        <button type="button" class="btn-close" id="btnCerrarModalCreateModelKit" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="semiTituloCreate">DATOS</p>
+                                        <div class="Instrucciones">
+                                            <p>A continuacion le vamos a pedir los datos necesarios para <b>crear un nuevo model kit</b> en nuestra base de datos.
+                                                Nos gustaria pedirle por favor que se haya asegurado de <b>que el model kit que quiere crear no exista ya en nuestra web</b>
+                                                para evitar model kits repetidos y que no tenga que suprimirlo un moderador.
+                                            </p>
+                                            <p>Destacar que los campos marcados son obligatorios.</p>
+                                            <p>Dicho esto, por favor, rellene los siguientes campos:</p>
+                                        </div>
+                                        <div class="formularioCrearModelKit">
+
+                                            <div class="input-group flex-nowrap mb-3">
+                                                <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                                <input type="text" class="form-control" id="inputNombreModelKit" placeholder="Nombre del Model Kit" aria-label="NombreModelKit" aria-describedby="addon-wrapping">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <label class="input-group-text" for="inputCreateGrado" >Grado</label>
+                                                <select class="form-select" id="inputCreateGrado">
+                                                <option selected>Grado</option>
+                                                <option value="SD">SD - Super Deformed</option>
+                                                <option value="EG">EG - Entry Grade</option>
+                                                <option value="HG">HG - High Grade</option>
+                                                <option value="MG">MG - Master Grade</option>
+                                                <option value="RG">RG - Real Grade</option>
+                                                <option value="PG">PG - Perfect Grade</option>
+                                                <option value="MS">MS - Mega Size</option>
+                                                <option value="NG">NG - Otro</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <label class="input-group-text" for="inputCreateEscala" >Escala</label>
+                                                <select class="form-select" id="inputCreateEscala">
+                                                <option selected>Escala</option>
+                                                <option value="1 / 144">1 / 144</option>
+                                                <option value="1 / 100">1 / 100</option>
+                                                <option value="1 / 60">1 / 60</option>
+                                                <option value="NSC">NSC (Non Scale)</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="input-group flex-nowrap mb-3">
+                                                <span class="input-group-text" id="addon-wrapping">Fecha lanzamiento</span>
+                                                <input type="date" class="form-control" id="inputCreateReleaseDate" aria-label="linkGunplaWiki" aria-describedby="addon-wrapping">
+                                            </div>
+
+                                            <div class="input-group flex-nowrap mb-3">
+                                                <span class="input-group-text" id="addon-wrapping">Link GunplaWiki</span>
+                                                <input type="text" class="form-control" id="inputCreateLinkGunplaWiki" placeholder="https://gunpla.fandom.com/wiki/EG_(2020)_RX-78-2_Gundam" aria-label="linkGunplaWiki" aria-describedby="addon-wrapping">
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">Descripcion</span>
+                                                <textarea class="form-control" id="descripcionModelKit" aria-label="With textarea"></textarea>
+                                            </div>
+
+                                            <p class="semiTituloCreate">IMAGENES</p>
+
+                                            <div class="Instrucciones">
+                                                <p>Ahora, por favor, le vamos a pedir las <b>imagenes</b> del model kit. Es muy importante que las imagenes 
+                                                    que asigne coincidan con lo que se esta pidiendo en cada una de ellas, para que asi los futuros usuario 
+                                                    tengan una vision lo mas amplia posible del model kit. 
+                                                    <b>Tenga especial cuidado con la imagen de la caja, ya que es la que distinguira realmente a los distintos 
+                                                    model kits de un mismo gundam, de una forma rapida y clara.</b>
+                                                </p>
+                                            </div>
+
+                                            <div class="mb-3 divCreateInputImg">
+                                                <p>Imagen Caja</p>
+                                                <input class="form-control inputImg" type="file" id="inputCreateImgCaja" accept="image/*">
+                                                <img src="#" class="img-fluid mt-3" id="imgCaja" alt="Imagen de la caja del model kit">
+                                            </div>
+                                            <div class="mb-3 divCreateInputImg">
+                                                <p>Imagen de vista delantera</p>
+                                                <input class="form-control inputImg" type="file" id="inputCreateImg1" accept="image/*">
+                                                <img src="#" class="img-fluid mt-3" id="img1" alt="Imagen vista delantera">
+                                            </div>
+                                            <div class="mb-3 divCreateInputImg">
+                                                <p>Imagen de vista trasera</p>
+                                                <input class="form-control inputImg" type="file" id="inputCreateImg2" accept="image/*">
+                                                <img src="#" class="img-fluid mt-3" id="img2" alt="Imagen vista trasera">
+                                            </div>
+                                            <div class="mb-3 divCreateInputImg">
+                                                <p>Imagen Pose 1</p>
+                                                <input class="form-control inputImg" type="file" id="inputCreateImg3" accept="image/*">
+                                                <img src="#" class="img-fluid mt-3" id="img3" alt="Imagen pose 1">
+                                            </div>
+                                            <div class="mb-3 divCreateInputImg">
+                                                <p>Imagen Pose 2</p>
+                                                <input class="form-control inputImg" type="file" id="inputCreateImg4" accept="image/*">
+                                                <img src="#" class="img-fluid mt-3" id="img4" alt="Imagen pose 2">
+                                            </div>
+
+                                        </div>
+                                        
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                                        <button type="button" class="btn btn-primary" onclick="createModelKit()">CREAR</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 150">
+            <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect id="toastCuadradoColor" width="100%" height="100%" fill="red"></rect>
+                    </svg>
+                    <strong class="me-auto">MyGunplaList</strong>
+                    <small>ahora</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id="toastTexto" class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+        <footer class="footer">
+            
+        </footer>
+        <script src="../../../mygunplalist/RecursosGenerales/jquery-3.6.0.js"></script>
+        <script src="../../../mygunplalist/RecursosGenerales/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+        <script src="../../../mygunplalist/RecursosGenerales/menu/menu.js"></script>
+        <script src="../../../mygunplalist/view/modelKit/modelKit.js"></script>
+    </body>
+</html>

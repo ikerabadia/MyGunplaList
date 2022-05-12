@@ -19,8 +19,10 @@
         $appController->login();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "home") { //PAGINA PRINCIPAL
         $appController->home();
-    }else if (isset($array_ruta[0]) && $array_ruta[0] == "modelKits") { //PAGINA PRINCIPAL
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "modelKits") { //Pagina de busqueda de model kits
         $appController->modelKits();
+    }else if (isset($array_ruta[0]) && preg_match('/modelKit/', $array_ruta[0])) { //Ficha de model kit
+        $appController->modelKit();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuarios") { //Usuarios  API 
         $apiUserController->getUsuarios($_POST["pagina"], $_POST["cantidadRegistros"]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuario") {

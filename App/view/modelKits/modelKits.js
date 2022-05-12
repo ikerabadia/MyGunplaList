@@ -68,7 +68,7 @@ function pintarModelKit(modelKit) {
     document.getElementById("modelKits").innerHTML += `
     <div class="modelKit">
         <div class="modelKitLink" >  
-            <a href="modelKit/${modelKit["id_model_kit"]}">                      
+            <a href="modelKit?id=${modelKit["id_model_kit"]}">                      
                 <div class="ImgModelKit" id="imgModelKit${modelKit["id_model_kit"]}">
 
                 </div>
@@ -205,14 +205,28 @@ function pintarPaginado(listaModelKits) {
 }
 
 function mostrarCrearModelKit() {
-    document.getElementById("modelKits").innerHTML = `
-        <div class="noEncuentraModelKit">
-            <p>¿No encuentras el model kit que buscas?</p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            CREALO AQUI
-            </button>
-        </div>
-    `;
+    if (usuarioLogueado == null) {
+        document.getElementById("modelKits").innerHTML = `
+            <div class="noEncuentraModelKit">
+                <p>¿No encuentras el model kit que buscas? 
+                <br> 
+                <span>Regístrate o inicia sesión y créalo tu mismo</span></p>
+                <a type="button" class="btn btn-primary" href="login" >
+                    Login / Register
+                </a>
+            </div>
+        `;
+    }else{
+        document.getElementById("modelKits").innerHTML = `
+            <div class="noEncuentraModelKit">
+                <p>¿No encuentras el model kit que buscas?</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    CREALO AQUI
+                </button>
+            </div>
+        `;
+    }
+    
 }
 
 function paginaAnterior() {
@@ -315,10 +329,10 @@ function createModelKit() {
         processData: false,
         success: function (response) {
             if (response.status == true) {
-                mostrarToast("green", "Model Kit creado correctamente");
+                mostrarToast("green", response["mensaje"]);
                 limpiarModalCreateModelKit();
             }else{
-                mostrarToast("red", "Ha ocurrido un error al crear el model kit");
+                mostrarToast("red", response["mensaje"]);
             }
             console.log(response);
         }
