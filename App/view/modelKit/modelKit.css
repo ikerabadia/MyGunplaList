@@ -16,6 +16,7 @@ button{
     min-height: 93vh;
 }
 
+
 /*TITULO PRINCIPAL*/
 .tituloPrincipal{
     font-family: 'mecha';
@@ -37,7 +38,35 @@ button{
     font-size: 2em;
     color: #E60B0B;
     border-bottom: 10px solid #FFD500;
+    justify-content: space-between;
 }
+#mostrarModalModificacion{
+    height: 50px;
+    width: 50px;
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    transition: 0.35s ease;
+    overflow: hidden;
+    margin-right: 2%;
+    background-color: #FFD500;
+    color: #2A3439;
+    border: 2px solid #2A3439;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px #2A3439;
+}
+#mostrarModalModificacion:hover{
+    width: 300px;
+    box-shadow: 0px 0px 10px #2A3439;
+}
+#mostrarModalModificacion i{
+    margin-right: 30px;
+}
+#mostrarModalModificacion p{
+    margin: 0px;
+    font-size: 0.9em;
+}
+
 /*SUBTITULO*/
 .subtitulo{
     width: 100%;
@@ -322,6 +351,7 @@ button{
     align-items: center;
     justify-content: center;
 }
+
 .contenedorNotaDificultadGeneral{
     border-top: 3px solid white;
     background: #ffffffb5;
@@ -343,6 +373,12 @@ button{
     width: 50%;
     height: 100%;
 }
+.nombreNotaGeneral{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 5%;
+}
 .inputNota{
     width: 45%;
     margin-right: 5%;
@@ -351,3 +387,155 @@ button{
 #contenedorPuntuacionesDatosPersonal{
     display: none;
 }
+
+/*DATOS DESCRIPCION*/
+.contenedorDatosDescripcion{
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 60px;
+}
+.datos{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2%;
+}
+.datos .dato{
+    width: 100%;
+    height: 20%;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid #2A3439;
+}
+.dato p{
+    font-family: 'mecha';
+    font-size: 1.2em;
+}
+.nombreDato{
+    width: 50%;
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+    background-color: #2A3439;
+
+}
+.muestraDato{
+    width: 50%;
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #2A3439;
+}
+#datoGrado{
+    background-color: #ffffffb5;
+    transition: 0.35s;
+}
+#datoEscala{
+    background-color: #e60b0ba3;
+    transition: 0.35s;
+}
+#datoFechaSalida{
+    background-color: #184bbaab;
+    transition: 0.35s;
+}
+.datoGrado{
+    color: #ffffffb5;
+    transition: 0.35s;
+}
+.datoEscala{
+    color: #e60b0ba3;
+    transition: 0.35s;
+}
+.datoFechaSalida{
+    color: #184bbaab;
+    transition: 0.35s;
+}
+.contenedorDatoGrado:hover .datoGrado{
+    color: #ffffff;
+}
+.contenedorDatoGrado:hover #datoGrado{
+    background-color: #ffffff;
+}
+.contenedorDatoEscala:hover .datoEscala{
+    color: #e60b0b;
+}
+.contenedorDatoEscala:hover #datoEscala{
+    background-color: #e60b0b;
+}
+.contenedorDatoFechaSalida:hover .datoFechaSalida{
+    color: #184bba;
+}
+.contenedorDatoFechaSalida:hover #datoFechaSalida{
+    background-color: #184bba;
+}
+
+.contenedorDatoEscala{
+
+}
+.contenedorDatoFechaSalida{
+
+}
+.linkGunplaWiki{
+    cursor: pointer;
+    background: #ffd500b0;
+    color: #2A3439;
+    font-family: 'mecha';
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    transition: 0.35s;
+}
+.linkGunplaWiki:hover{
+    background: #2A3439;
+    color: #ffd500; 
+}
+/*DESCRIPCION*/
+.descripcion{
+    height: 100%;
+    width: 65%;
+    margin-left: 1%;
+    border-left: 10px solid #2A3439;
+    background-color: #2a3439a1;
+    border-radius: 5px;
+    color: white;
+    overflow-y: scroll;
+    border-right: 10px solid #2A3439;
+    padding: 1%;
+    font-size: 1.1em;
+}
+/*SCROLLBAR*/
+.descripcion::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #2A3439;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(255, 255, 255); 
+}
+
