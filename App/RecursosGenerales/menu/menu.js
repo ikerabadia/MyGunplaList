@@ -152,3 +152,11 @@ function userPageButtonMouseLeave() {
     document.getElementById("username").style.marginLeft = "10%";
 }
 
+function mostrarToast(color, texto){
+    document.getElementById("toastCuadradoColor").style.fill = color;
+    document.getElementById("toastTexto").innerHTML = texto;
+    var toastLiveExample = document.getElementById('toast')
+    var toast = new bootstrap.Toast(toastLiveExample);
+    toast.show();
+}
+

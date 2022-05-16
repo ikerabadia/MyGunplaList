@@ -156,7 +156,37 @@ class ApiModelKitController
         $array = array();
 
         if (isset($_SESSION["usuarioActual"])) {
-            $modelKitsBd = BdModelKit::updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $_SESSION["usuarioActual"]["id_usuario"], $linkGunplaWiki);
+            
+            self::guardarImagenesModelKit($idModelKit, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2);
+                
+                $rutaBase ="http://localhost/mygunplalist/imagenes/modelKits/".$idModelKit;
+                if ($imgPoseBaseDelante != null) {
+                    $rutaImgPoseBaseDelante = $rutaBase."/imgDelante/".$imgPoseBaseDelante["name"];
+                }else{
+                    $rutaImgPoseBaseDelante = "";
+                }
+                if ($imgPoseBaseDetras != null) {
+                    $rutaImgPoseBaseDetras = $rutaBase."/imgDetras/".$imgPoseBaseDetras["name"];
+                }else{
+                    $rutaImgPoseBaseDetras = "";
+                }
+                if ($imgCaja != null) {
+                    $rutaImgCaja = $rutaBase."/imgCaja/".$imgCaja["name"];
+                }else{
+                    $rutaImgCaja = "";
+                }
+                if ($imgPose1 != null) {
+                    $rutaImgPose1 = $rutaBase."/imgPose1/".$imgPose1["name"];
+                }else{
+                    $rutaImgPose1 = "";
+                }
+                if ($imgPose2 != null) {
+                    $rutaImgPose2 = $rutaBase."/imgPose2/".$imgPose2["name"];
+                }else{
+                    $rutaImgPose2 = "";
+                }
+
+                $modelKitsBd = BdModelKit::updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $rutaImgPoseBaseDelante, $rutaImgPoseBaseDetras, $rutaImgCaja, $rutaImgPose1, $rutaImgPose2, $_SESSION["usuarioActual"]["id_usuario"], $linkGunplaWiki);
 
             if ($modelKitsBd == true) {
                 $array["status"] = true;
@@ -234,7 +264,6 @@ class ApiModelKitController
                             $aux["modelKitUserData"]["estado"] = $modelKitListaBd["estado"];
                             $aux["modelKitUserData"]["nota_dificultad"] = $modelKitListaBd["nota_dificultad"];
                             $aux["modelKitUserData"]["nota_acabado_OOB"] = $modelKitListaBd["nota_acabado_OOB"];
-                            $aux["modelKitUserData"]["nota_pos_pers"] = $modelKitListaBd["nota_pos_pers"];
                             $aux["modelKitUserData"]["nota_calidad"] = $modelKitListaBd["nota_calidad"];
                             $aux["modelKitUserData"]["nota_poses"] = $modelKitListaBd["nota_poses"];
                             $aux["modelKitUserData"]["nota_media_usuario"] = $modelKitListaBd["nota_media_usuario"];
@@ -295,7 +324,6 @@ class ApiModelKitController
                             $aux["modelKitUserData"]["estado"] = $modelKitListaBd["estado"];
                             $aux["modelKitUserData"]["nota_dificultad"] = $modelKitListaBd["nota_dificultad"];
                             $aux["modelKitUserData"]["nota_acabado_OOB"] = $modelKitListaBd["nota_acabado_OOB"];
-                            $aux["modelKitUserData"]["nota_pos_pers"] = $modelKitListaBd["nota_pos_pers"];
                             $aux["modelKitUserData"]["nota_calidad"] = $modelKitListaBd["nota_calidad"];
                             $aux["modelKitUserData"]["nota_poses"] = $modelKitListaBd["nota_poses"];
                             $aux["modelKitUserData"]["nota_media_usuario"] = $modelKitListaBd["nota_media_usuario"];
@@ -312,7 +340,6 @@ class ApiModelKitController
                 $aux["puesto_popularidad"] = $modelKitBd["puesto_popularidad"];
                 $aux["nota_dificultad"] = $modelKitBd["nota_dificultad"];  
                 $aux["nota_acabado_OOB"] = $modelKitBd["nota_acabado_OOB"]; 
-                $aux["nota_pos_pers"] = $modelKitBd["nota_pos_pers"]; 
                 $aux["nota_calidad"] = $modelKitBd["nota_calidad"]; 
                 $aux["nota_poses"] = $modelKitBd["nota_poses"]; 
                 $aux["link_gunpla_wiki"] = $modelKitBd["link_gunpla_wiki"];

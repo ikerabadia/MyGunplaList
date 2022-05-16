@@ -109,34 +109,7 @@ class ApiUserController
         BdUsuarios::guardarImagenUsuario($idUsuario, $ruta);
     }
     
-    /**
-     * getImagenUsuario
-     *
-     * @param  mixed $idUsuario
-     * @return void
-     */
-    public function getImagenUsuario($idUsuario) //Hay que ponerlo bien
-    {
-        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
-        $array = array();
-        $array["imagenes"] = array();
-        $imagenesbd = BdUsuarios::getImagenUsuario($idUsuario);
-        foreach ($imagenesbd as $imagen) {
-            $aux = array();
-            $aux["id"] = $imagen["id"];
-            $aux["fk_usuario"] = $imagen["fk_usuario"];
-            $aux["imagen"] = $imagen["imagen"];
-            array_push($array["imagenes"], $aux);
-        }
-        echo json_encode($array);
-    }
     
-    /**
-     * deleteImagenUsuario
-     *
-     * @param  mixed $idUsuario
-     * @return void
-     */
     public function deleteImagenUsuario($idUsuario)
     {
         
@@ -283,46 +256,7 @@ class ApiUserController
 
     }
 
-    public function buscadorBaresPinchos($textoBuscador)
-    {
-
-        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
-        $array = array();
-        $array["bares"] = array();
-        $baresbd = BdUsuarios::getBaresFiltradosNombreDescripcion($textoBuscador);
-
-        foreach ($baresbd as $bar) {
-
-            $aux = array();
-            $aux["idRestaurante"] = $bar["idRestaurante"];
-            $aux["nombre"] = $bar["nombre"];
-            $aux["descripcion"] = $bar["descripcion"];
-            $aux["localizacion"] = $bar["localizacion"];
-            $aux["nota"] = $bar["Puntuacion"];
-            array_push($array["bares"], $aux);           
-            
-        }
-
-        $array["pinchos"] = array();        
-        $pinchosbd = BdUsuarios::getPinchosFiltradosNombreDescripcionTextoResena($textoBuscador, 0, 100, 0, 10);
-
-        foreach($pinchosbd as $pincho){
-            $aux = array();
-            $aux["idPincho"] = $pincho["idPincho"];
-            $aux["nombre"] = $pincho["nombre"];
-            $aux["precio"] = $pincho["precio"];
-            $aux["fkBar"] = $pincho["fkBar"];
-            $aux["nombreBar"] = $pincho["nombreBar"];
-            $aux["descripcion"] = $pincho["descripcion"];
-            $aux["nota"] = $pincho["notaPincho"];
-            $aux["imagen1"] = $pincho["imagen1"];
-            $aux["imagen2"] = $pincho["imagen2"];
-            $aux["imagen3"] = $pincho["imagen3"];
-
-            array_push($array["pinchos"], $aux);
-        }
-        echo json_encode($array);
-    }
+    
 
     public function addToMisGunplas($idModelKit){
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
@@ -382,15 +316,14 @@ class ApiUserController
     }
 
     //poner nota a partir de las puntuaciones recibidas del index.php
-    public function ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses){
+    public function ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaCalidad, $notaPoses, $notaGeneral){
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
 
         if (isset($_SESSION["usuarioActual"])) {
 
             $idUsuario = $_SESSION["usuarioActual"]["id_usuario"];
-            $notaMedia = ($notaDificultad + $notaOOB + $notaPersonalizacion + $notaCalidad + $notaPoses) / 5;
-            $bdUsuarios = BdUsuarios::ponerNota($idModelKit, $idUsuario, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses, $notaMedia);
+            $bdUsuarios = BdUsuarios::ponerNota($idModelKit, $idUsuario, $notaDificultad, $notaOOB, $notaCalidad, $notaPoses, $notaGeneral);
 
             if ($bdUsuarios == true) {
                 $array["status"] = true;
@@ -451,7 +384,6 @@ class ApiUserController
                 $aux["estado"] = $modelKitBd["estado"];
                 $aux["nota_dificultad"] = $modelKitBd["nota_dificultad"];
                 $aux["nota_acabado_OOB"] = $modelKitBd["nota_acabado_OOB"];
-                $aux["nota_pos_pers"] = $modelKitBd["nota_pos_pers"];
                 $aux["nota_calidad"] = $modelKitBd["nota_calidad"];
                 $aux["nota_poses"] = $modelKitBd["nota_poses"];
                 $aux["nota_media_usuario"] = $modelKitBd["nota_media_usuario"];

@@ -227,7 +227,7 @@ class BdUsuarios{
         try {
             $db = Conexion::getConection();
 
-            $sql = "INSERT INTO `listado_model_kits_usuario`(`fk_usuario`, `fk_model_kit`, `estado`, `nota_dificultad`, `nota_acabado_OOB`, `nota_pos_pers`, `nota_calidad`, `nota_poses`, `nota_media_usuario`) VALUES ('$idUsuario','$idModelKit','0',null,null,null,null,null,null)";
+            $sql = "INSERT INTO `listado_model_kits_usuario`(`fk_usuario`, `fk_model_kit`, `estado`, `nota_dificultad`, `nota_acabado_OOB`, `nota_calidad`, `nota_poses`, `nota_media_usuario`) VALUES ('$idUsuario','$idModelKit','0',null,null,null,null,null)";
             $resultado = $db->query($sql);            
             
             if ($resultado) {                
@@ -261,11 +261,11 @@ class BdUsuarios{
         }
     }
 
-    static function ponerNota($idModelKit, $idUsuario, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses, $notaMedia){
+    static function ponerNota($idModelKit, $idUsuario, $notaDificultad, $notaOOB, $notaCalidad, $notaPoses, $notaGeneral){
         try {
             $db = Conexion::getConection();
 
-            $sql = "UPDATE `listado_model_kits_usuario` SET `nota_dificultad`=$notaDificultad, `nota_acabado_OOB`=$notaOOB, `nota_pos_pers`=$notaPersonalizacion, `nota_calidad`=$notaCalidad, `nota_poses`=$notaPoses, `nota_media_usuario`=$notaMedia WHERE fk_usuario = $idUsuario AND fk_model_kit = $idModelKit";
+            $sql = "UPDATE `listado_model_kits_usuario` SET `nota_dificultad`=$notaDificultad, `nota_acabado_OOB`=$notaOOB, `nota_calidad`=$notaCalidad, `nota_poses`=$notaPoses, `nota_media_usuario`=$notaGeneral WHERE fk_usuario = $idUsuario AND fk_model_kit = $idModelKit";
             $resultado = $db->query($sql);
 
             if ($resultado) {

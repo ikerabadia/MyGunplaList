@@ -211,6 +211,8 @@ button{
     font-style: italic;
     transition: 0.35s;
     font-weight: 700;
+    text-decoration: none;
+    color: #2A3439;
 }
 #userUltimoEdit:hover{
     color: #E60B0B;
@@ -224,11 +226,12 @@ button{
     justify-content: center;
     height: 60%;
     border-radius: 5px;
-    color: #E60B0B;
+    color: #e60b0bb5;
     border: 2px solid #2A3439;
-    background-color: #2a3439d6;
+    background-color: #2a3439b8;
     font-size: 1.2em;
     font-family: 'mecha';
+    transition: 0.35s;
 }
 .contenedorEstado i{
     font-size: 1.5em;
@@ -237,7 +240,14 @@ button{
     margin-bottom: 0px;
     margin-left: 5%;
 }
-
+.addMisGunplas{
+    color: #e60b0bb5;
+    background-color: #2a3439b8;
+}
+.addMisGunplas:hover{
+    color: #E60B0B;
+    background-color: #2a3439d6;
+}
 .enLista{
     color: #2A3439;
     border: 2px solid rgb(255, 255, 255);
@@ -322,6 +332,10 @@ button{
     color: white;
     font-family: 'mecha';
     font-size: 5em;
+    position: relative;
+}
+.puntuacionesMedia p{
+    margin-bottom: 0px;
 }
 .puntuacionesMedia i{
     color: #FFDD01;
@@ -368,11 +382,6 @@ button{
     border-top: 3px solid #FFD500;
     background: #ffd500b0;
 }
-
-.nombreNotaPersonal{
-    width: 50%;
-    height: 100%;
-}
 .nombreNotaGeneral{
     display: flex;
     flex-direction: row;
@@ -384,8 +393,36 @@ button{
     margin-right: 5%;
     text-align: center;
 }
-#contenedorPuntuacionesDatosPersonal{
+
+#btnPuntuar{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.6em;
     display: none;
+    flex-direction: row;
+    align-items: center;
+    width: 65px;
+    height: 60px;
+    overflow: hidden;
+    transition: 0.35s ease;
+    cursor: pointer;
+    color: #ffffffa3;
+    padding-left: 10px;
+}
+#btnPuntuar i{
+    color: #ffffffa3;
+}
+#btnPuntuar:hover i{
+    color: #ffffff;
+}
+#btnPuntuar p{
+    margin: 0px;
+    margin-left: 20px;
+}
+#btnPuntuar:hover{
+    width: 350px;
+    color: #ffffff;
 }
 
 /*DATOS DESCRIPCION*/
@@ -483,12 +520,7 @@ button{
     background-color: #184bba;
 }
 
-.contenedorDatoEscala{
 
-}
-.contenedorDatoFechaSalida{
-
-}
 .linkGunplaWiki{
     cursor: pointer;
     background: #ffd500b0;
@@ -539,3 +571,73 @@ button{
     background: rgb(255, 255, 255); 
 }
 
+/*UPDATE MODEL KIT*/
+.tituloCreateModelKit{
+    font-size: 2.5em;
+}
+.formularioCrearModelKit .input-group-text{
+    width: 21%;
+}
+
+.inputImg::file-selector-button {
+    background-color: #2A3439;
+    color: white;
+}
+.inputImg:hover.inputImg::file-selector-button{
+    background-color: white;
+    color: #2A3439;
+}
+input[type=file]:hover input[type=file]::file-selector-button {
+    background-color: white;
+    color:  #2A3439;
+}
+.divCreateInputImg p{
+    margin: 0px;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    background-color: #2A3439;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    border-left: 2px solid #2A3439;
+    border-right: 2px solid #2A3439;
+    border-top: 2px solid #2A3439;
+}
+.inputImg{
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+.img-fluid{
+    border-radius: 5px;
+    border: 2px solid #2A3439;
+}
+.semiTituloCreate{
+    font-family: 'mecha';
+    font-size: xx-large;
+    border-left: 10px solid #FFD500;
+    padding-left: 5%;
+    margin-top: 50px;
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    color: #E60B0B;
+}
+
+/*PUNTUAR MODEL KIT*/
+.formularioPuntuar{
+    width: 100%;
+}
+.spanInputPuntuar{
+    width: 21%;
+}
+
+/*MODAL LISTA EDITS*/
+.listaEditsUser{
+    font-family: 'mecha';
+    transition: 0.35s;
+    text-decoration: none;
+    cursor: pointer;
+    color: #2A3439;
+    font-style: italic;
+    font-weight: 700;
+}
+.listaEditsUser:hover{
+    color: #E60B0B;
+}

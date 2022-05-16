@@ -111,7 +111,7 @@ class BdModelKit{
             $sql = "SELECT 
             *,
             (select username from usuarios u WHERE m.fk_usuario = u.id_usuario) username
-            FROM `modificaciones_model_kit` m WHERE m.fk_model_kit = $idModelKit";
+            FROM `modificaciones_model_kit` m WHERE m.fk_model_kit = $idModelKit ORDER BY m.fecha_modificacion DESC";
             $resultado = $db->query($sql);
 
             $modificaciones = array();
@@ -233,7 +233,6 @@ class BdModelKit{
                     ) puesto_popularidad, 
     			(SELECT AVG(nota_dificultad) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_dificultad,
                 (SELECT AVG(nota_acabado_OOB) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_acabado_OOB,
-                (SELECT AVG(nota_pos_pers) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_pos_pers,
                 (SELECT AVG(nota_calidad) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_calidad,
                 (SELECT AVG(nota_poses) from listado_model_kits_usuario lmk WHERE lmk.fk_model_kit = mk.id_model_kit) as nota_poses,
                 mk.*

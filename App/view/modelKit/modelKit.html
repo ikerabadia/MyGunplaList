@@ -18,7 +18,7 @@
             <div class="content">
 
                 <div class="tituloPrincipal">
-                    <h1>GUNDAM ZETA RX-178 MK-II VER 2.0 TITANS
+                    <h1 id="tituloModelKit">GUNDAM ZETA RX-178 MK-II VER 2.0 TITANS
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="mostrarModalModificacion">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             <p>MODIFICAR</p>
@@ -26,7 +26,7 @@
                     </h1>
                     
                 </div>
-                <div class="subtitulo">
+                <div class="subtitulo" id="subtitulo">
 
                     <div class="contenedorPuestoNota">
                         <div class="contenedorPuesto">
@@ -42,8 +42,9 @@
                         </div>
                     </div>
 
+
                     <div class="contenedorUltimoEdit">
-                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <i class="fa fa-list-alt" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalModificaciones"></i>
                         <div class="lastEditedBy">                            
                             <p>Ultima edicion por </p> 
                             <a id="userUltimoEdit">Ikerabadia99</a>
@@ -51,39 +52,22 @@
                         
                     </div>
 
-                    <div class="contenedorEstado ">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        <P>Mis gunplas</P>
+                    <div class="contenedorEstado addMisGunplas" id="contenedorEstado" onclick='mostrarToast("red", "Debes iniciar sesión para añadir este model kit a tus gunplas")'>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <P>Seguir</P>
                     </div>
                     
                 </div>
 
                 <div class="contenedorGaleriaPuntuaciones">
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <div class="carousel-indicators" id="contenedorIndicadores">
+                          
                         </div>
-                        <div class="carousel-inner h-100">
-                            <div class="carousel-item h-100">
-                                <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgCaja/caja.jpg" class="mx-auto d-block h-100">
-                              </div>
-                          <div class="carousel-item active h-100">
-                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgDelante/delante.png" class="mx-auto d-block h-100">
-                          </div>
-                          <div class="carousel-item h-100">
-                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgDetras/detras.webp" class="mx-auto d-block h-100">
-                          </div>
-                          <div class="carousel-item h-100">
-                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgPose1/pose1.webp" class="mx-auto d-block h-100">
-                          </div>
-                          <div class="carousel-item h-100">
-                            <img src="http://localhost/mygunplalist/imagenes/modelKits/60/imgPose2/pose2.webp" class="mx-auto d-block h-100">
-                          </div>
+                        <div class="carousel-inner h-100" id="contenedorImagenes">
+
                         </div>
+
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
@@ -103,44 +87,27 @@
                                 personal
                             </div>
                         </div>
-                        <div class="puntuacionesMedia">
+                        <div class="puntuacionesMedia" id="contenedorPuntuacionesMedia">
                             <i class="fa fa-star" aria-hidden="true"></i>
-                            9.12
+                            <p id="notaGeneral">9.12</p>
+                            
                         </div>
                         <div class="puntuacionesDatosGeneral" id="contenedorPuntuacionesDatosGeneral">
                             <div class="contenedorNotaDificultadGeneral">
                                 <p class="nombreNotaGeneral">Dificultad</p>
-                                <p class="muestraNota">10</p>
+                                <p class="muestraNota" id="notaDificultad">10</p>
                             </div>   
                             <div class="contenedorNotaAcabadoOOBGeneral">
                                 <p class="nombreNotaGeneral">Acabado OOB</p>
-                                <p class="muestraNota">5.7</p>
+                                <p class="muestraNota" id="notaAcabadoOOB">5.7</p>
                             </div>  
                             <div class="contenedorNotaCalidadGeneral">
                                 <p class="nombreNotaGeneral">Calidad</p>
-                                <p class="muestraNota">8.6</p>
+                                <p class="muestraNota" id="notaCalidad">8.6</p>
                             </div>    
                             <div class="contenedorNotaPosesGeneral">
                                 <p class="nombreNotaGeneral">Abanico Poses</p>
-                                <p class="muestraNota">7.3</p>
-                            </div>                   
-                        </div>
-                        <div class="puntuacionesDatosGeneral" id="contenedorPuntuacionesDatosPersonal">
-                            <div class="contenedorNotaDificultadGeneral cont">
-                                <div class="nombreNotaPersonal">Dificultad</div>
-                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="7.3">
-                            </div>   
-                            <div class="contenedorNotaAcabadoOOBGeneral cont">
-                                <div class="nombreNotaPersonal">Acabado OOB</div>
-                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="6.9">
-                            </div>  
-                            <div class="contenedorNotaCalidadGeneral cont">
-                                <div class="nombreNotaPersonal">Calidad</div>
-                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="4.9">
-                            </div>    
-                            <div class="contenedorNotaPosesGeneral cont">
-                                <div class="nombreNotaPersonal">Abanico Poses</div>
-                                <input class="inputNota" type="number" step="0.1" min="0" max="10" value="9.7">
+                                <p class="muestraNota" id="notaPoses">7.3</p>
                             </div>                   
                         </div>
 
@@ -161,10 +128,10 @@
                             <p class="muestraDato" id="datoFechaSalida">22 - 03 - 2005</p>
                         </div>
                         <div class="dato">
-                            <a href="" class="linkGunplaWiki" id="linkGunplaWiki">MAS INFO EN LA GUNPLAWIKI</a>
+                            <a href="https://gunpla.fandom.com/wiki/EG_(2020)_RX-78-2_Gundam?so=search" target="_blank" class="linkGunplaWiki" id="linkGunplaWiki">MAS INFO EN LA GUNPLAWIKI</a>
                         </div>
                     </div>
-                    <div class="descripcion">
+                    <div class="descripcion" id="datoDescripcion">
                         ipsum dolor sit amet, conseLorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.ctetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque egestas, metus quis posuere posuere, ligula enim eleifend tellus, consequat finibus ex tortor mattis quam. Suspendisse auctor ultrices ullamcorper. Integer tortor sapien, egestas et est ut, lacinia pretium ex. Nunc vitae nulla a elit finibus varius. Mauris nisl ex, blandit et vehicula euismod, finibus nec magna. Donec mollis orci eget ultrices varius. Quisque id lectus a sapien bibendum interdum quis dapibus neque. Donec a ultrices quam. Pellentesque semper magna vel ultrices fringilla. Nullam non interdum massa.
                     </div>
                 </div>
@@ -183,12 +150,8 @@
                                     <div class="modal-body">
                                         <p class="semiTituloCreate">DATOS</p>
                                         <div class="Instrucciones">
-                                            <p>A continuacion le vamos a pedir los datos necesarios para <b>crear un nuevo model kit</b> en nuestra base de datos.
-                                                Nos gustaria pedirle por favor que se haya asegurado de <b>que el model kit que quiere crear no exista ya en nuestra web</b>
-                                                para evitar model kits repetidos y que no tenga que suprimirlo un moderador.
-                                            </p>
-                                            <p>Destacar que los campos marcados son obligatorios.</p>
-                                            <p>Dicho esto, por favor, rellene los siguientes campos:</p>
+                                            <p>A continuación,  usted va a poder <b>modificar los datos</b> de un model kit ya existente en nuestra base de datos.</p>
+                                            <p>Destacar que algunos campos marcados no se pueden dejar vacios</p>
                                         </div>
                                         <div class="formularioCrearModelKit">
 
@@ -234,18 +197,18 @@
                                             </div>
 
                                             <div class="input-group mb-3">
-                                                <span class="input-group-text">Descripcion</span>
+                                                <span class="input-group-text">Descripción</span>
                                                 <textarea class="form-control" id="descripcionModelKit" aria-label="With textarea"></textarea>
                                             </div>
 
                                             <p class="semiTituloCreate">IMAGENES</p>
 
                                             <div class="Instrucciones">
-                                                <p>Ahora, por favor, le vamos a pedir las <b>imagenes</b> del model kit. Es muy importante que las imagenes 
-                                                    que asigne coincidan con lo que se esta pidiendo en cada una de ellas, para que asi los futuros usuario 
-                                                    tengan una vision lo mas amplia posible del model kit. 
-                                                    <b>Tenga especial cuidado con la imagen de la caja, ya que es la que distinguira realmente a los distintos 
-                                                    model kits de un mismo gundam, de una forma rapida y clara.</b>
+                                                <p>Ahora, usted va a poder <b>modificar las imágenes</b> del model kit. Es muy importante que las imágenes 
+                                                    que asigne coincidan con lo que se esta pidiendo en cada una de ellas, para que así los futuros usuarios
+                                                    tengan una visión lo mas amplia posible del model kit. 
+                                                    <b>Tenga especial cuidado con la imagen de la caja, ya que es la que distinguirá realmente a los distintos 
+                                                    model kits de un mismo gundam, de una forma rápida y clara. Esta imagen no se puede dejar vacía</b>
                                                 </p>
                                             </div>
 
@@ -281,11 +244,31 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
-                                        <button type="button" class="btn btn-primary" onclick="updateModelKit()">CREAR</button>
+                                        <button type="button" class="btn btn-primary" onclick="updateModelKit()">GUARDAR</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                </div>
+
+                
+                
+                
+                <div class="modal fade" id="modalModificaciones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">LISTADO DE MODIFICACIONES</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" id="modificacionesModelKit">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 
@@ -305,6 +288,66 @@
                 </div>
                 <div id="toastTexto" class="toast-body">
                     Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div class="modal fade" id="modalNotas" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">PUNTUAR MODEL KIT</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCerrarModalPutuar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Puntue teniendo en cuenta lo que significa cada puntuacion:</p>
+                        <p>Recuerde que debe siempre tener en cuenta el grado del model kit ya que, 
+                            por regla general, los model kits de grados mas caros van a ser superiores en todos los aspectos a los de grados mas baratos.
+                        </p>
+                        <ul>
+                            <li><b>DIFICULTAD: </b>Se debe tener en cuenta la dificultad de montaje del model kit en relación a 
+                            el acabado final OOB (<b>O</b>ut <b>O</b>f <b>B</b>ox) y el grado, puesto que a mas detalles, mayor dificultad, 
+                            siendo un 10 un model kit extremadamente sencillo y un 0 extremadamente dificil</li>
+                            <li><b>ACABADO OOB: </b> Acabado y detalles del model kit sin modificaciones ajenas, tiene 
+                            un gran nivel de detalle, los colores son nítidos y fieles... </li>
+                            <li><b>CALIDAD: </b> Las piezas ensamblan correctamente, no se rompen con facilidad, no se caen una vez ensambladas...</li>
+                            <li><b>ABANICO DE POSES: </b> Permite un gran abanico de poses una vez montado, dandote la posibilidad de ponerlo en poses de todo tipo</li>
+                        </ul>
+                        <div class="formularioPuntuar">
+                            <div class="input-group flex-nowrap mb-3">
+                                <span class="input-group-text spanInputPuntuar" id="addon-wrapping">Dificultad</span>
+                                <input type="number" min="0" max="10" step="0.1" class="form-control" id="inputNotaDificultad"  aria-label="NombreModelKit" aria-describedby="addon-wrapping">
+                            </div>
+                            <div class="input-group flex-nowrap mb-3">
+                                <span class="input-group-text spanInputPuntuar" id="addon-wrapping">Acabado OOB</span>
+                                <input type="number" min="0" max="10" step="0.1" class="form-control" id="inputNotaAcabadoOOB"  aria-label="NombreModelKit" aria-describedby="addon-wrapping">
+                            </div>
+                            <div class="input-group flex-nowrap mb-3">
+                                <span class="input-group-text spanInputPuntuar" id="addon-wrapping">Calidad</span>
+                                <input type="number" min="0" max="10" step="0.1" class="form-control" id="inputNotaCalidad" aria-label="NombreModelKit" aria-describedby="addon-wrapping">
+                            </div>
+                            <div class="input-group flex-nowrap mb-3">
+                                <span class="input-group-text spanInputPuntuar" id="addon-wrapping">Abanico de Poses</span>
+                                <input type="number" min="0" max="10" step="0.1" class="form-control" id="inputNotaPoses" aria-label="NombreModelKit" aria-describedby="addon-wrapping">
+                            </div>
+                            <p><b>NOTA GENERAL: </b> Esta es la nota más importante, la debes dar pensando en lo que te a parecido el conjunto de toda la maqueta, 
+                                no es una media de lo anterior, sino lo que te ha parecido a ti independientemente de las notas anteriores.  </p>
+                            <p>Es la más importante puesto que es a partir de la cual se calculara el ranking</p>
+    
+                            <div class="input-group flex-nowrap mb-3">
+                                <span class="input-group-text spanInputPuntuar" id="addon-wrapping">General</span>
+                                <input type="number" min="0" max="10" step="0.1" class="form-control" id="inputNotaGeneral" aria-label="NombreModelKit" aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                            
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="ponerNota()">Guardar</button>
+                    </div>
                 </div>
             </div>
         </div>

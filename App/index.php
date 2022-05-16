@@ -73,10 +73,10 @@
         $idModelKit = $_POST["idModelKit"];
         $notaDificultad = $_POST["notaDificultad"];
         $notaOOB = $_POST["notaOOB"];
-        $notaPersonalizacion = $_POST["notaPersonalizacion"];
         $notaCalidad = $_POST["notaCalidad"];
         $notaPoses = $_POST["notaPoses"];
-        $apiUserController->ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaPersonalizacion, $notaCalidad, $notaPoses);
+        $notaGeneral = $_POST["notaGeneral"];
+        $apiUserController->ponerNota($idModelKit, $notaDificultad, $notaOOB, $notaCalidad, $notaPoses, $notaGeneral);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getUserList") {
         $estado = $_POST["estado"];
         $idUsuario = $_POST["idUsuario"];
@@ -128,11 +128,35 @@
         $escala = $_POST["escala"];
         $descripcion = $_POST["descripcion"];
         $fechaSalida = $_POST["fechaSalida"];
-        $imgPoseBaseDelante = $_POST["imgPoseBaseDelante"];
-        $imgPoseBaseDetras = $_POST["imgPoseBaseDetras"];
-        $imgCaja = $_POST["imgCaja"];
-        $imgPose1 = $_POST["imgPose1"];
-        $imgPose2 = $_POST["imgPose2"];
+        if (isset($_FILES["imgPoseBaseDelante"])) {
+            $imgPoseBaseDelante = $_FILES["imgPoseBaseDelante"];
+        }else{
+            $imgPoseBaseDelante = null;
+        }
+
+        if (isset($_FILES["imgPoseBaseDetras"])) {
+            $imgPoseBaseDetras = $_FILES["imgPoseBaseDetras"];
+        }else{
+            $imgPoseBaseDetras = null;
+        }
+
+        if (isset($_FILES["imgCaja"])) {
+            $imgCaja = $_FILES["imgCaja"];
+        }else{
+            $imgCaja = null;
+        }
+        
+        if (isset($_FILES["imgPose1"])) {
+            $imgPose1 = $_FILES["imgPose1"];
+        }else{
+            $imgPose1 = null;
+        }
+
+        if (isset($_FILES["imgPose2"])) {
+            $imgPose2 = $_FILES["imgPose2"];
+        }else{
+            $imgPose2 = null;
+        }
         $linkGunplaWiki = $_POST["linkGunplaWiki"];
         $apiModelKitController->updateModelKit($idModelKit, $nombre, $grado, $escala, $descripcion, $fechaSalida, $imgPoseBaseDelante, $imgPoseBaseDetras, $imgCaja, $imgPose1, $imgPose2, $linkGunplaWiki);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getModificacionesModelKit") {
