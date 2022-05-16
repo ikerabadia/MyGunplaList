@@ -31,13 +31,24 @@ function pintarDatos(){
         datosModelKit = resultados;
 
         //Nombre
-        document.getElementById("tituloModelKit").innerHTML = ` 
+        if (usuarioLogueado != null) {
+            document.getElementById("tituloModelKit").innerHTML = ` 
             ${resultados["modelKits"][0]["nombre"]}
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="mostrarModalModificacion">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             <p>MODIFICAR</p>
                         </button>
-        `
+            `
+        }else{
+            document.getElementById("tituloModelKit").innerHTML = ` 
+            ${resultados["modelKits"][0]["nombre"]}
+                        <button type="button" class="btn btn-primary" onclick='mostrarToast("red", "Debes iniciar sesión para poder modificar un model kit")' id="mostrarModalModificacion">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <p>MODIFICAR</p>
+                        </button>
+            `
+        }
+        
         
         //Rank
         document.getElementById("puesto").innerHTML = resultados["modelKits"][0]["puesto_nota"];
@@ -48,63 +59,8 @@ function pintarDatos(){
             document.getElementById("nota").innerHTML = "&nbsp-";
         }
         //Estado
-        $('#contenedorEstado').remove();
-        if (usuarioLogueado == null) {
-            document.getElementById("subtitulo").innerHTML += `
-                <div class="contenedorEstado addMisGunplas" id="contenedorEstado" onclick='mostrarToast("red", "Debes iniciar sesión para añadir este model kit a tus gunplas")'>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    <P>Seguir</P>
-                </div>
-            `
-            document.getElementById("contenedorEstado").style.cursor = "pointer";
-        }else{
-            if (resultados["modelKits"][0]["modelKitUserData"].length == 0) {
-                document.getElementById("subtitulo").innerHTML += `
-                    <div class="contenedorEstado addMisGunplas" id="contenedorEstado" onclick='addToMisGunplas(${resultados["modelKits"][0]["id_model_kit"]})'>
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        <P>Seguir</P>
-                    </div>
-                `
-                document.getElementById("contenedorEstado").style.cursor = "pointer";
-            }else{
-                switch (resultados["modelKits"][0]["modelKitUserData"]["estado"]) {
-                    case "0":
-                        document.getElementById("subtitulo").innerHTML += `
-                            <div class="contenedorEstado enLista" id="contenedorEstado">
-                                <i class="fa fa-list" aria-hidden="true"></i>
-                                <P>Mis gunplas</P>
-                            </div>
-                        `
-                        break;
-                    case "1":
-                        document.getElementById("subtitulo").innerHTML += `
-                            <div class="contenedorEstado enBacklog" id="contenedorEstado">
-                                <i class="fa fa-archive" aria-hidden="true"></i>
-                                <P>Backlog</P>
-                            </div>
-                        `
-                        break;       
-                    case "2":
-                        document.getElementById("subtitulo").innerHTML += `
-                            <div class="contenedorEstado enConstruccion" id="contenedorEstado">
-                                <i class="fa fa-wrench" aria-hidden="true"></i>
-                                <P>En construccion</P>
-                            </div>
-                        `
-                        break;     
-                    case "3":
-                        document.getElementById("subtitulo").innerHTML += `
-                            <div class="contenedorEstado terminado" id="contenedorEstado">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                                <P>Completado</P>
-                            </div>
-                        `
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+
+        pintarEstado();
 
         //imagenes
         var contenedorIndicadores = document.getElementById("contenedorIndicadores");
@@ -161,7 +117,7 @@ function pintarDatos(){
         document.getElementById("linkGunplaWiki").href = resultados["modelKits"][0]["link_gunpla_wiki"];
         document.getElementById("datoDescripcion").innerHTML = resultados["modelKits"][0]["descripcion"];
 
-        //Edits
+        //Edits Modificaciones
         pintarEdits();
 
         //Boton Puntuar
@@ -173,7 +129,66 @@ function pintarDatos(){
         //Modal modificar
         pintarModalModificar();
 
+        
+
       });
+}
+
+function pintarEstado() {
+    
+        $('#contenedorEstado').remove();
+        if (usuarioLogueado == null) {
+            document.getElementById("subtitulo").innerHTML += `
+                <div class="contenedorEstado addMisGunplas" id="contenedorEstado" onclick='mostrarToast("red", "Debes iniciar sesión para añadir este model kit a tus gunplas")'>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <P>Seguir</P>
+                </div>
+            `
+            document.getElementById("contenedorEstado").style.cursor = "pointer";
+        }else{
+            console.log(datosModelKit["modelKits"][0]["modelKitUserData"]["estado"]);
+
+            if (datosModelKit["modelKits"][0]["modelKitUserData"].length == 0) {
+                document.getElementById("subtitulo").innerHTML += `
+                    <div class="contenedorEstado addMisGunplas" id="contenedorEstado" onclick='addToMisGunplas(${datosModelKit["modelKits"][0]["id_model_kit"]})'>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <P>Seguir</P>
+                    </div>
+                `
+                document.getElementById("contenedorEstado").style.cursor = "pointer";
+            }else{
+
+                if (datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == 0 || datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == "0") {
+                    document.getElementById("subtitulo").innerHTML += `
+                            <div class="contenedorEstado enLista" id="contenedorEstado">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                <P>Mis gunplas</P>
+                            </div>
+                        `;
+                }else if(datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == 1 || datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == "1"){
+                    document.getElementById("subtitulo").innerHTML += `
+                            <div class="contenedorEstado enBacklog" id="contenedorEstado">
+                                <i class="fa fa-archive" aria-hidden="true"></i>
+                                <P>Backlog</P>
+                            </div>
+                        `;
+                }else if(datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == 2 || datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == "2"){
+                    document.getElementById("subtitulo").innerHTML += `
+                            <div class="contenedorEstado enConstruccion" id="contenedorEstado">
+                                <i class="fa fa-wrench" aria-hidden="true"></i>
+                                <P>En construccion</P>
+                            </div>
+                        `
+                }else if(datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == 3 || datosModelKit["modelKits"][0]["modelKitUserData"]["estado"] == "3"){
+                    document.getElementById("subtitulo").innerHTML += `
+                            <div class="contenedorEstado terminado" id="contenedorEstado">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <P>Completado</P>
+                            </div>
+                        `
+                }
+            }
+        }
 }
 
 function pintarModalModificar() {
@@ -298,7 +313,7 @@ function pintarEdits() {
         document.getElementById("userUltimoEdit").innerHTML = resultados["modificaciones"][0]["username"];
         document.getElementById("userUltimoEdit").href = "usuario/" + resultados["modificaciones"][0]["fk_usuario"];
 
-        
+        document.getElementById("modificacionesModelKit").innerHTML = "";
 
         for (let i = 0; i < resultados["modificaciones"].length; i++) {
             
