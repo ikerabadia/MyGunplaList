@@ -68,7 +68,7 @@ function pintarDatos(){
                 document.getElementById("contenedorEstado").style.cursor = "pointer";
             }else{
                 switch (resultados["modelKits"][0]["modelKitUserData"]["estado"]) {
-                    case 0:
+                    case "0":
                         document.getElementById("subtitulo").innerHTML += `
                             <div class="contenedorEstado enLista" id="contenedorEstado">
                                 <i class="fa fa-list" aria-hidden="true"></i>
@@ -76,7 +76,7 @@ function pintarDatos(){
                             </div>
                         `
                         break;
-                    case 1:
+                    case "1":
                         document.getElementById("subtitulo").innerHTML += `
                             <div class="contenedorEstado enBacklog" id="contenedorEstado">
                                 <i class="fa fa-archive" aria-hidden="true"></i>
@@ -84,7 +84,7 @@ function pintarDatos(){
                             </div>
                         `
                         break;       
-                    case 2:
+                    case "2":
                         document.getElementById("subtitulo").innerHTML += `
                             <div class="contenedorEstado enConstruccion" id="contenedorEstado">
                                 <i class="fa fa-wrench" aria-hidden="true"></i>
@@ -92,7 +92,7 @@ function pintarDatos(){
                             </div>
                         `
                         break;     
-                    case 3:
+                    case "3":
                         document.getElementById("subtitulo").innerHTML += `
                             <div class="contenedorEstado terminado" id="contenedorEstado">
                                 <i class="fa fa-check" aria-hidden="true"></i>
