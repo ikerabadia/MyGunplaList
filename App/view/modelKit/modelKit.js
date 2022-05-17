@@ -30,24 +30,8 @@ function pintarDatos(){
         resultados=eval(json);
         datosModelKit = resultados;
 
-        //Nombre
-        if (usuarioLogueado != null) {
-            document.getElementById("tituloModelKit").innerHTML = ` 
-            ${resultados["modelKits"][0]["nombre"]}
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="mostrarModalModificacion">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <p>MODIFICAR</p>
-                        </button>
-            `
-        }else{
-            document.getElementById("tituloModelKit").innerHTML = ` 
-            ${resultados["modelKits"][0]["nombre"]}
-                        <button type="button" class="btn btn-primary" onclick='mostrarToast("red", "Debes iniciar sesión para poder modificar un model kit")' id="mostrarModalModificacion">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <p>MODIFICAR</p>
-                        </button>
-            `
-        }
+        pintarDatosRelUsuario();
+        
         
         
         //Rank
@@ -58,9 +42,8 @@ function pintarDatos(){
         }else{
             document.getElementById("nota").innerHTML = "&nbsp-";
         }
-        //Estado
 
-        pintarEstado();
+        
 
         //imagenes
         var contenedorIndicadores = document.getElementById("contenedorIndicadores");
@@ -107,8 +90,7 @@ function pintarDatos(){
             
         }
 
-        //puntuaciones        
-        establecerPuntuaciones();
+        
 
         //Datos
         document.getElementById("datoGrado").innerHTML = resultados["modelKits"][0]["grado"];
@@ -118,13 +100,7 @@ function pintarDatos(){
         document.getElementById("datoDescripcion").innerHTML = resultados["modelKits"][0]["descripcion"];
 
         //Edits Modificaciones
-        pintarEdits();
-
-        //Boton Puntuar
-        pintarBotonPuntuar();
-
-        //Modal puntuar
-        pintarModalPuntuar();
+        pintarEdits();        
         
         //Modal modificar
         pintarModalModificar();
@@ -132,6 +108,55 @@ function pintarDatos(){
         
 
       });
+}
+
+function pintarDatosRelUsuario(){
+
+    var settings = {
+        "url": "api/getUsuarioLogueado",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        usuarioLogueado = response;
+
+        //Nombre y boton de modificacion
+        if (usuarioLogueado != null) {
+            document.getElementById("tituloModelKit").innerHTML = ` 
+            ${datosModelKit["modelKits"][0]["nombre"]}
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="mostrarModalModificacion">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <p>MODIFICAR</p>
+                        </button>
+            `
+        }else{
+            document.getElementById("tituloModelKit").innerHTML = ` 
+            ${datosModelKit["modelKits"][0]["nombre"]}
+                        <button type="button" class="btn btn-primary" onclick='mostrarToast("red", "Debes iniciar sesión para poder modificar un model kit")' id="mostrarModalModificacion">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <p>MODIFICAR</p>
+                        </button>
+            `
+        }
+
+        //Estado
+        pintarEstado();
+
+        //puntuaciones        
+        establecerPuntuaciones();
+
+        //Boton Puntuar
+        pintarBotonPuntuar();
+
+        //Modal puntuar
+        pintarModalPuntuar();
+      });
+
+    
+
 }
 
 function pintarEstado() {
