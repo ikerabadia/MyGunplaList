@@ -121,7 +121,12 @@ function pintarDatosRelUsuario(){
       };
       
       $.ajax(settings).done(function (response) {
-        usuarioLogueado = response;
+        if (response == "false") {
+            usuarioLogueado = null;
+        }else{
+            usuarioLogueado = response;
+        }
+        
 
         //Nombre y boton de modificacion
         if (usuarioLogueado != null) {
@@ -171,7 +176,6 @@ function pintarEstado() {
             `
             document.getElementById("contenedorEstado").style.cursor = "pointer";
         }else{
-            console.log(datosModelKit["modelKits"][0]["modelKitUserData"]["estado"]);
 
             if (datosModelKit["modelKits"][0]["modelKitUserData"].length == 0) {
                 document.getElementById("subtitulo").innerHTML += `
