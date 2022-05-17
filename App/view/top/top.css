@@ -1,0 +1,227 @@
+body{
+    
+}
+button{
+    font-family: 'mecha';
+}
+.principalBackground{
+    width: 100%;
+    background: url("../../../mygunplalist/RecursosGenerales/img/wallpaperModelKits.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+/*CONTENIDO*/
+.content{
+    width: 90%;
+    background: #ffffffb8;
+    margin-left: 5%;
+    padding-top: 50px;
+    margin-top: 93px;
+    padding-bottom: 50px;
+    min-height: 93vh;
+}
+/*TITULO PRINCIPAL*/
+.tituloPrincipal{
+    font-family: 'mecha';
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tituloPrincipal h1{
+    width: 100%;
+    height: 80%;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5%;
+    font-size: 4em;
+    color: #E60B0B;
+    border-bottom: 10px solid #FFD500;
+}
+/*SUBTITULO*/
+.subtitulo{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+/*TOOGLE RANKING*/
+.toogleRanking{
+    margin-left: 5%;
+    width: 90%;
+    height: 80%;
+    background-color: #2A3439;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 25px #000000;
+    position: relative;
+}
+.btnToogleRanking{
+    width: 20%;
+    height: 70%;
+    background-color: #E60B0B;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.35s;
+    position: absolute;
+    top: 15%;
+    left: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .btnToogleRanking:hover{
+    animation: tooglePopularidad 1s ease;
+} */
+#txtBtnToogleRanking{
+    margin: 0px;
+    font-family: 'mecha';
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+@keyframes tooglePopularidad {
+    0%{
+        left: 1%;
+        transform: rotateX(0deg); 
+        background-color: #E60B0B;
+    }
+    25%{
+        transform: rotateX(0deg);
+    }
+    50%{
+        transform: rotateX(180deg);
+    }
+    75%{
+        transform: rotateX(360deg);
+    }
+    100%{
+        left: 79%;
+        transform: rotateX(360deg);
+        background-color: #184BBA;
+    }
+}
+@keyframes toogleNota {
+    0%{
+        left: 79%;
+        transform: rotateX(360deg);
+        background-color: #184BBA;
+    }
+    25%{
+        transform: rotateX(360deg);
+    }
+    50%{
+        transform: rotateX(180deg);
+        color: white;
+    }
+    75%{
+        transform: rotateX(0deg);
+    }
+    100%{
+        left: 1%;    
+        transform: rotateX(0deg);    
+        background-color: #E60B0B;
+    }
+}
+/*MODEL KITS*/
+.modelKits{
+    margin-top: 60px;
+}
+/*header*/
+.modelKitsHeader{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 3px solid #2A3439;
+    background-color: #2a3439db;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+.w125{
+    width: 12.5%;
+}
+.w50{
+    width: 50%;
+}
+.modelKitsHeader h2{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'mecha';
+    font-size: 1.5em;
+}
+
+
+
+
+
+/*PAGINADO*/
+.paginado{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.contenedorPaginado{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    color: white;
+    border-radius: 5px;
+    background-color: #2a343987;
+    border: 2px solid #2A3439;
+}
+.datosPaginado{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #2A3439;
+}
+.btnPagina{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    cursor: pointer;
+    height: 100%;
+    transition: 0.35s;
+    font-size: 2em;
+}
+.btnPagina:hover{
+    background: white;
+    color: #E60B0B;
+}
+.datosPaginado p{
+    margin: 0px;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+}
+#elements{
+    font-family: 'mecha';
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #FFD500;
+}
+#totalElements{
+    font-family: 'mecha';
+    margin-left: 5%;
+    color: #FFD500;
+}
+

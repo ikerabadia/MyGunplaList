@@ -18,6 +18,9 @@ class AppController
     public function modelKit(){
         require("view/modelKit/modelKit.html");
     }
+    public function top(){
+        require("view/top/top.html");
+    }
 
     /*----------------------------------------------------------------------------------------------------------*/
     /*GET RUTA*/

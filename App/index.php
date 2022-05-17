@@ -15,7 +15,7 @@
     $ruta = str_replace($home, "", $_SERVER["REQUEST_URI"]);
     $array_ruta = array_filter(explode("/",$ruta));
 
-    if (isset($array_ruta[0]) && $array_ruta[0] == "login") {
+    if (isset($array_ruta[0]) && $array_ruta[0] == "login") { //Login
         $appController->login();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "home") { //PAGINA PRINCIPAL
         $appController->home();
@@ -23,6 +23,8 @@
         $appController->modelKits();
     }else if (isset($array_ruta[0]) && preg_match('/modelKit/', $array_ruta[0])) { //Ficha de model kit
         $appController->modelKit();
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "top") { //Top model kits
+        $appController->top();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuarios") { //Usuarios  API 
         $apiUserController->getUsuarios($_POST["pagina"], $_POST["cantidadRegistros"]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuario") {
