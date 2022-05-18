@@ -179,7 +179,7 @@ button{
     background: #ffffffc7;
 }
 .par{
-    background-color: #f6f6f6;
+    background-color: #e7e7e7;
 }
 #lastModelKit{
     display: flex;
@@ -241,8 +241,16 @@ button{
     background-size: contain;
     border-radius: 5px;
 }
+.noImagen{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .datosModelKit{
-    width: 60%;
+    width: 57%;
+    margin-left: 3%;
     font-family: 'mecha';   
     
 }
@@ -260,6 +268,10 @@ button{
 
 }
 /*estado*/
+.contenedorPuestoEstado{
+    display: flex;
+    align-items: center;
+}
 .contenedorEstado{
     width: 80%;
     display: flex;
@@ -273,8 +285,8 @@ button{
     font-size: 1.2em;
     font-family: 'mecha';
     transition: 0.35s;
-    margin-top: 35%;
     margin-left: 10%;
+    
 }
 .contenedorEstado i{
     font-size: 1.5em;
@@ -286,6 +298,7 @@ button{
 .addMisGunplas{
     color: #e60b0bb5;
     background-color: #2a3439b8;
+    cursor: pointer;
 }
 .addMisGunplas:hover{
     color: #E60B0B;
