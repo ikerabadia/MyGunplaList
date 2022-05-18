@@ -1,6 +1,7 @@
 var rankingActual = "nota";
 var usuarioLogueado = null;
 var paginaActual = 0;
+var elementosPorPagina = 20;
 
 window.onload = function() {
     pintarMenu();
@@ -53,7 +54,6 @@ function pintarDatos(){
             
             var modelKit;
             var estado;
-            var idPuesto = "";
 
             document.getElementById("modelKitBody").innerHTML = "";
             for (let i = 0; i < modelKits.length; i++) {
@@ -163,6 +163,7 @@ function pintarDatos(){
                     par = "";
                 }
             }
+            pintarPaginado(resultados);
           });
       });
 
@@ -252,6 +253,7 @@ function addToMisGunplas(idModelKit, elemento){
 }
 
 function toogleRanking() {
+    paginaActual = 0;
     if (rankingActual == "nota") {
         rankingActual = "popularidad";
         document.getElementById("btnToogleRanking").style.animation = "tooglePopularidad 0.5s ease forwards";
@@ -265,5 +267,37 @@ function toogleRanking() {
             document.getElementById("txtBtnToogleRanking").innerHTML = "NOTA";
         }, 250);        
     }
+    pintarDatos();
+}
+
+function pintarPaginado(listaModelKits) {
+    if (paginaActual == 0) { //si es la primera pagina, no se pinta el boton de retroceder
+        document.getElementById("btnPaginaAnterior").style.display = "none";
+    }else{
+        document.getElementById("btnPaginaAnterior").style.display = "flex";
+    }
+    if (listaModelKits["modelKits"].length < elementosPorPagina || elementosPorPagina*(paginaActual+1) == listaModelKits["totalElements"]) { //si es la ultima pagina, no se pinta el boton de avanzar
+        document.getElementById("btnPaginaSiguiente").style.display = "none";
+    }else{
+        document.getElementById("btnPaginaSiguiente").style.display = "flex";
+    }
+    
+    if (listaModelKits["totalElements"] == 0) { 
+        document.getElementById("elements").innerHTML = "0 - 0";
+    }else{
+        document.getElementById("elements").innerHTML = `${paginaActual*elementosPorPagina+1} - ${(paginaActual*elementosPorPagina) + listaModelKits["modelKits"].length}`;
+    }
+    
+    document.getElementById("totalElements").innerHTML = `${listaModelKits["totalElements"]}`;
+}
+
+function paginaAnterior() {
+    if (paginaActual > 0) {
+        paginaActual--;
+    }
+    pintarDatos();
+}
+function paginaSiguiente() {
+    paginaActual++;
     pintarDatos();
 }
