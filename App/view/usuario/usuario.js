@@ -1,5 +1,6 @@
 var usuarioLogueado = null;
 var usuarioVista = null;
+var idUsuarioVista = null;
 var paginaActual = 0;
 var elementosPorPagina = 20;
 var estadoMostrado = "";
@@ -234,7 +235,7 @@ function updateUser() {
 function pintarMisGunplas() {
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
-  var idUsuarioVista = urlParams.get("id");
+  idUsuarioVista = urlParams.get("id");
 
   pintarEstadoMostrado();
 
@@ -265,12 +266,7 @@ function pintarMisGunplas() {
 
 function pintarModelKit(modelKit) {
   if (estadoMostrado == "3") {                  //muestro los model kit terminados 
-    document.getElementById("modelKitsHeader").innerHTML = `
-        <h2 class="w10 borderR">PUESTO</h2>        
-        <h2 class="w50 borderR">INFORMACION</h2>  
-        <h2 class="w10 borderR">NOTA</h2>      
-        <h2 class="w30">ESTADO</h2>                        
-    `;
+    
     var notaUsuario = "-";
     if (modelKit["nota_media_usuario"] != null) {
         notaUsuario = modelKit["nota_media_usuario"];
@@ -295,17 +291,14 @@ function pintarModelKit(modelKit) {
             <div class="contenedorPuesto w10 borderR">
                 <p class="datoNota" id="notaUsuario1">${notaUsuario}</p>
             </div>
-            <div class="contenedorPuesto contenedorPuestoEstado w30">
+            <div class="contenedorPuesto contenedorPuestoEstado w30" id="estado${modelKit["model_kit"][0]["id_model_kit"]}">
                 ${getEstado(modelKit["estado"])}
             </div>
 
         </div>
     `;
   } else {
-    document.getElementById("modelKitsHeader").innerHTML = `
-            <h2 class="w70 borderRL">INFORMACION</h2>
-            <h2 class="w30">ESTADO</h2>                    
-        `;
+    
     document.getElementById("modelKitBody").innerHTML += `
                                 <div class="modelKit ">
                                     <div class="contenedorPuesto w70 borderRL divImgDatos">
@@ -320,21 +313,46 @@ function pintarModelKit(modelKit) {
                                         </div>
             
                                     </div>
-                                    <div class="contenedorPuesto contenedorPuestoEstado w30">
+                                    <div class="contenedorPuesto contenedorPuestoEstado w30" id="estado${modelKit["model_kit"][0]["id_model_kit"]}">
                                         ${getEstado(modelKit["estado"])}
                                     </div>
                                 </div>
         `;
+  }
+  
+
+
+  var settings = {
+    "url": "api/getUsuarioLogueado",
+    "method": "GET",
+    "timeout": 0,
+  };
+  
+  $.ajax(settings).done(function (response) {
+    var json = response;
+    var resultados = eval(json);
+    var usuario = resultados;
+
+    if (usuarioLogueado["id_usuario"] == usuario["id_usuario"]) {
+      document.getElementById("estado" + modelKit["model_kit"][0]["id_model_kit"]).innerHTML += `
+        <div class="btnEliminarDeMisGunplas">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <p>ELIMINAR</p>
+        </div>
+      `
     }
+
+  });
+  
     
-    if (modelKit["model_kit"][0]["img_caja"] != "") {
+  if (modelKit["model_kit"][0]["img_caja"] != "") {
         document.getElementById("img"+modelKit["model_kit"][0]["id_model_kit"]).style.backgroundImage = "url('"+modelKit["model_kit"][0]["img_caja"]+"')";
-    }else{
+  }else{
         document.getElementById("img"+modelKit["model_kit"][0]["id_model_kit"]).style.background = "#2A3439";
         document.getElementById("img"+modelKit["model_kit"][0]["id_model_kit"]).innerHTML = `
             <div class="noImagen" id="imgModelKit23"><p>SIN IMAGEN <br> :C</p></div>
         `
-    }
+  }
 }
 
 function getEstado(estado){    
@@ -390,6 +408,10 @@ function pintarEstadoMostrado() {
                             </div>
     `
 
+    document.getElementById("modelKitsHeader").innerHTML = `
+        <h2 class="w70 borderRL">INFORMACION</h2>
+        <h2 class="w30">ESTADO</h2>                    
+    `;
     if (estadoMostrado === "") {
         var btnEstado = document.getElementById("filtroEstadoTodos");
         btnEstado.style.width = "22%";
@@ -415,6 +437,12 @@ function pintarEstadoMostrado() {
         btnEstado.style.fontSize = "1.5em";
         btnEstado.style.backgroundColor = "rgb(159, 159, 159)";
     }else if(estadoMostrado == 3){
+      document.getElementById("modelKitsHeader").innerHTML = `
+            <h2 class="w10 borderR">PUESTO</h2>        
+            <h2 class="w50 borderR">INFORMACION</h2>  
+            <h2 class="w10 borderR">NOTA</h2>      
+            <h2 class="w30">ESTADO</h2>                        
+        `;
         var btnEstado = document.getElementById("filtroEstadoTerminado");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";

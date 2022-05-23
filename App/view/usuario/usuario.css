@@ -596,6 +596,7 @@ button{
 .contenedorPuestoEstado{
     display: flex;
     align-items: center;
+    position: relative;
 }
 .contenedorEstado{
     width: 80%;
@@ -649,7 +650,19 @@ button{
     border: 2px solid #99ff00;
     background-color: #99ff0087;
 }
-
+/*btns estado*/
+.btnEliminarDeMisGunplas{
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.btnEliminarDeMisGunplas p{
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
 
 
 /*MEDIA QUERIES*/

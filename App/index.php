@@ -59,13 +59,7 @@
         $idUsuario = $_POST["usuario"];
         $imagen = $_FILES["imagen"];
         $apiUserController->guardarImagenUsuario($idUsuario,$imagen);
-    }/* else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getImagenUsuario") {
-        $apiController->getImagenUsuario($array_ruta[2]);
-    } else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "deleteImagenUsuario") {
-        $apiController->deleteImagenUsuario($array_ruta[2]);
-    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "bajaUsuario") {
-        $apiController->bajaUsuario();
-    }*/else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getUsuarioLogueado") {
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getUsuarioLogueado") {
         $apiUserController->getUsuarioLogueado();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "loginFront") {
         $user = $_POST["user"];
