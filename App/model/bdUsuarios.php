@@ -109,10 +109,22 @@ class BdUsuarios{
     
     
     static function updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $linkInstagram, $linkYoutube){
+        
+        $data = array(
+            'username' => $username, 
+            'password' => $password,
+            'img_usuario' => $img_usuario,
+            'email' => $email,
+            'link_instagram' => $linkInstagram,
+            'link_youtube' => $linkYoutube       
+        );
+        $table = "usuarios";
+        $where = "id_usuario=$idUsuario";
+        
         try {
             $db = Conexion::getConection();
 
-            $sql = "UPDATE `usuarios` SET username = '$username', password = '$password', img_usuario = '$img_usuario', email = '$email', link_instagram = '$linkInstagram', link_youtube = '$linkYoutube' WHERE id_usuario = $idUsuario";
+            $sql = self::buildSqlUpdate($table, $data, $where);
             $resultado = $db->query($sql);
 
             if ($resultado) {
@@ -126,6 +138,20 @@ class BdUsuarios{
         } catch (\PDOException $e) {
             return "false";
         }
+    }
+
+    static function buildSqlUpdate($table, $data, $where)
+    {
+        $cols = array();
+    
+        foreach($data as $key=>$val) {
+            if ($val != null && $val != "null") {
+                $cols[] = "$key = '$val'";
+            }            
+        }
+        $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
+    
+        return($sql);
     }
     
     /**

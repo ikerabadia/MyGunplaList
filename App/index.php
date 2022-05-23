@@ -23,6 +23,8 @@
         $appController->modelKits();
     }else if (isset($array_ruta[0]) && preg_match('/modelKit/', $array_ruta[0])) { //Ficha de model kit
         $appController->modelKit();
+    }else if (isset($array_ruta[0]) && preg_match('/usuario/', $array_ruta[0])) { //Ficha de model kit
+        $appController->usuario();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "top") { //Top model kits
         $appController->top();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuarios") { //Usuarios  API 
@@ -41,11 +43,18 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "updateUsuario") {
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $img_usuario = $_POST["img_usuario"];
+        if ($password != null) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+        }
         $email = $_POST["email"];
         $linkInstagram = $_POST["link_instagram"];
         $linkYoutube = $_POST["link_youtube"];
-        $apiUserController->updateUsuario($array_ruta[2], $username, password_hash($password, PASSWORD_DEFAULT), $img_usuario, $email, $linkInstagram, $linkYoutube);
+        if (isset($_FILES["img_usuario"])) {
+            $img_usuario = $_FILES["img_usuario"];
+        }else{
+            $img_usuario = null;
+        }
+        $apiUserController->updateUsuario($array_ruta[2], $username, $password, $img_usuario, $email, $linkInstagram, $linkYoutube);
     } else if (isset($array_ruta[0]) && $array_ruta[0]=="api" && $array_ruta[1] == "guardarImagenUsuario") { //Esto lo dejo aqui para saber como se guarda la imagen
         $idUsuario = $_POST["usuario"];
         $imagen = $_FILES["imagen"];

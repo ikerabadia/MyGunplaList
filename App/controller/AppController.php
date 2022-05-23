@@ -21,6 +21,9 @@ class AppController
     public function top(){
         require("view/top/top.html");
     }
+    public function usuario(){
+        require("view/usuario/usuario.html");
+    }
 
     /*----------------------------------------------------------------------------------------------------------*/
     /*GET RUTA*/

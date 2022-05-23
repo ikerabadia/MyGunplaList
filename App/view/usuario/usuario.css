@@ -1,0 +1,692 @@
+body{
+    
+}
+a{
+    text-decoration: none;
+}
+button{
+    font-family: 'mecha';
+}
+.principalBackground{
+    width: 100%;
+    background: url("../../../mygunplalist/RecursosGenerales/img/wallpaperModelKits.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.content{
+    width: 100%;
+    background: #ffffffb8;
+    margin-top: 93px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.tituloPrincipal{
+    font-family: 'mecha';
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tituloPrincipal h2{
+    width: 100%;
+    height: 80%;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5%;
+    font-size: 4em;
+    color: #E60B0B;
+    border-bottom: 10px solid #FFD500;
+}
+
+/*INFO PERFIL*/
+.perfilInfo{
+    background-color: #2A3439;
+    width: 30%;
+    min-height: 93vh;
+    box-shadow: 0px 0px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.contenedorImg{
+    width: 100%;
+    height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.perfilData{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+#perfilDataEdit{
+    display: none;
+}
+.imgPerfil{
+    background-image: url("../../../mygunplalist/RecursosGenerales/img/genericUser.jpg");
+    width: 450px;
+    height: 450px;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 25px black;
+}
+#datoUserUsername{
+    color: white;
+    font-family: 'mecha';
+    font-size: 2.7em;
+    text-align: center;
+}
+#datoUserEmail{
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    font-style: italic;
+}
+.contenedorYoutube{
+    margin-top: 40px;
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70px;
+    background-color: #ff0000;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px black;
+    transition: 0.35s;
+}
+.contenedorInstagram{
+    background: radial-gradient(circle farthest-corner at 32% 106%, rgb(255, 225, 125) 0%, rgb(255, 205, 105) 10%, rgb(250, 145, 55) 28%, rgb(235, 65, 65) 42%, transparent 82%), linear-gradient(135deg, rgb(35, 75, 215) 12%, rgb(195, 60, 190) 58%);
+    margin-top: 30px;
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70px;
+    background-color: #ff0000;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px black;
+    transition: 0.35s;
+}
+.contenedorYoutube:hover, .contenedorInstagram:hover{
+    box-shadow: 0px 0px 10px white;
+}
+.contenedorYoutube p, .contenedorInstagram p{
+    margin-bottom: 0px;
+    margin-left: 5%;
+    font-size: 2em;
+    font-family: 'mecha';
+    color: white;
+}
+.contenedorYoutube i, .contenedorInstagram i{
+    margin-left: 5%;
+    font-size: 3em;
+    color: white;
+}
+/*btns edtion*/
+.btnEdit{
+    position: absolute;
+    background-color: #FFD500;
+    top: 5%;
+    right: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+    cursor: pointer;
+    overflow: hidden;
+}
+.btnEdit:hover{
+    box-shadow: 0px 0px 10px white;
+    width: 120px;
+}
+.btnEdit i{
+    font-size: 2em;
+    color: #2A3439;
+    margin-left: 5px;
+    font-weight: 700;
+}
+.btnEdit p{
+    margin-bottom: 0px;
+    font-family: 'mecha';
+    margin-left: 10px;
+    color: #2A3439;
+    font-weight: 100;
+    font-size: 1.4em;
+}
+/*edit inputs*/
+.divDatoInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: grey;
+    width: 80%;
+    margin-top: 20px;
+    height: 35px;
+}
+.divDatoInput input{
+    outline: none;
+    transition: 0.3s;
+    border: 1px solid #ddd;
+    color: grey;
+    width: 60%;
+    border-radius: 5px;
+}
+.divDatoInput input:focus{
+    border-left: 10px solid #FFD500;
+}
+.divCreateInputImg{
+    width: 80%;
+    margin-top: 50px;
+}
+.divCreateInputImg p{
+    margin: 0px;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    background-color: #FFD500;
+    color: #2A3439;
+    border-radius: 5px 5px 0px 0px;
+}
+.divCreateInputImg .form-control {
+    border-top: 2px solid #FFD500;
+    border-left: 1px solid #FFD500;
+    color: #2A3439;
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+.inputImg::file-selector-button {
+    background-color: #FFD500;
+    color: #2A3439;
+}
+
+/*Botones de guardar o cancelar*/
+.divBtnSaveCancel{
+    width: 80%;
+    height: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.btnCancel{
+    background-color: #E60B0B;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+}
+.btnCancel:hover{
+    box-shadow: 0px 0px 10px #E60B0B;
+    width: 190px;
+}
+.btnCancel i{
+    font-size: 2em;
+    color: #2A3439;
+    margin-left: 5px;
+    position: absolute;
+    right: 7px;
+    font-weight: 700;
+}
+.btnCancel p{
+    margin-bottom: 0px;
+    font-family: 'mecha';
+    margin-left: 10px;
+    color: #2A3439;
+    font-weight: 100;
+    font-size: 1.4em;
+    position: absolute;
+    right: 40px;
+}
+
+
+.btnGuardar{
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+}
+.btnGuardar:hover{
+    box-shadow: 0px 0px 10px green;
+    width: 175px;
+}
+.btnGuardar i{
+    font-size: 2em;
+    color: #2A3439;
+    margin-left: 5px;
+    font-weight: 700;
+}
+.btnGuardar p{
+    margin-bottom: 0px;
+    font-family: 'mecha';
+    margin-left: 10px;
+    color: #2A3439;
+    font-weight: 100;
+    font-size: 1.4em;
+}
+
+/*MIS GUNPLAS*/
+.misGunplas{
+    width: 70%;
+    margin-top: 50px;
+}
+
+/*FILTROS*/
+.filtros{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.filtrosEstadoContenedor{
+    width: 70%;
+    display: flex;    
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.filtroEstado{
+    width: 15%;
+    margin-right: 5%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'mecha';
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.35s;
+}
+.filtroEstado:hover{
+    width: 22%;
+    height: 70px;
+    font-size: 1.5em;
+}
+.filtroEstadoMostrado{
+    width: 22%;
+    height: 70px;
+    font-size: 1.5em;
+}
+
+#filtroEstadoTodos{
+    color: #e60b0b;
+    background-color: #2a3439b8;
+    border: 2px solid #2a3439;
+}
+#filtroEstadoTodos:hover{
+    background-color: #2a3439;
+}
+#filtroEstadoDeseados{
+    color: #2A3439;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.523);
+}
+#filtroEstadoDeseados:hover{
+    background-color: rgb(255, 255, 255);
+}
+#filtroEstadoBacklog{
+    color: white;
+    border: 2px solid #184bba;
+    background-color: #184bbab1;
+}
+#filtroEstadoBacklog:hover{
+    background-color: #184bba;
+}
+#filtroEstadoConstruccion{
+    color: white;
+    border: 2px solid rgb(159, 159, 159);
+    background-color: rgba(159, 159, 159, 0.617);
+}
+#filtroEstadoConstruccion:hover{
+    background-color: rgb(159, 159, 159);
+}
+#filtroEstadoTerminado{
+    color: white;
+    border: 2px solid #99ff00;
+    background-color: #99ff0087;
+}
+#filtroEstadoTerminado:hover{
+    border: 2px solid #99ff00;
+    background-color: #99ff00;
+}
+
+.form-control:focus, .form-select:focus{
+    color: #2A3439;
+    background-color: #fff;
+    border-color: #2A3439;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(42 52 57 / 25%);
+}
+
+
+/*BUSCADOR*/
+.filtrosBuscador{
+    width: 20%;
+    margin-bottom: 0px !important;
+    height: 50px;
+}
+.filtrosBuscador input{
+    border: 2px solid #2A3439;
+    color: #2A3439;
+}
+.filtrosBuscador span{
+    background-color: #2A3439;
+    border: 2px solid #2A3439;
+    color: white;
+}
+
+/*MIS GUNPLAS*/
+/*MODEL KITS*/
+.scrollModelKits{
+    height: 900px;
+    overflow-y: scroll;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 50px;
+    border-radius: 5px;
+    border: 3px solid #2a3439;
+}
+/*SCROLLBAR*/
+.scrollModelKits::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    width: 6px;
+    background: #2A3439;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #e60b0bac;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(255, 255, 255); 
+}
+/*header*/
+.modelKitsHeader{
+    display: flex;
+    flex-direction: row;
+    background-color: #2a3439db;
+    border-left: 3px solid #2A3439;
+    border-right: 3px solid #2A3439;
+    color: white;
+}
+.w125{
+    width: 12.5%;
+}
+.w10{
+    width: 10%;
+}
+.w50{
+    width: 50%;
+}
+.w70{
+    width: 70%;
+}
+.w30{
+    width: 30%;
+}
+.modelKitsHeader h2{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'mecha';
+    font-size: 1.5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.borderR{
+    border-right: 2px solid #2A3439;
+}
+.borderRL{
+    border-right: 2px solid #2A3439;
+    border-left: 2px solid #2A3439;
+}
+/*model kit*/
+.modelKit{
+    display: flex;
+    flex-direction: row;
+    height: 250px;
+    border-left: 3px solid #2A3439;
+    border-right: 3px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    background: #ffffffc7;
+}
+.par{
+    background-color: #e7e7e7;
+}
+#lastModelKit{
+    display: flex;
+    flex-direction: row;
+    height: 250px;
+    border-left: 3px solid #2A3439;
+    border-right: 3px solid #2A3439;
+    border-bottom: 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+.datoNota{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'mecha';
+    font-size: 4em;
+    text-shadow: 5px 5px black;
+    color: #E60B0B;
+}
+.datoPopularidad{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'mecha';
+    font-size: 4em;
+    text-shadow: 5px 5px black;
+    color: #184BBA;
+}
+
+.puesto1, .nota1{
+    color: goldenrod;
+}
+.puesto2, .nota2{
+    color: silver;
+}
+.puesto3, .nota3{
+    color: #cd7f32;
+}
+.divImgDatos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.img{
+    height: 80%;
+    width: 40%;
+    margin-left: 1%;
+    background: url("http://localhost/mygunplalist/imagenes/modelKits/37/imgCaja/caja.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.35s;
+    box-shadow: 0px 0px 0px #2A3439;
+    cursor: pointer;
+}
+.img:hover{
+    box-shadow: 0px 0px 25px #2A3439;
+}
+.noImagen{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noImagen p{
+    font-family: 'mecha';
+    font-size: 1.5em;
+    text-decoration: none;
+    text-align: center;
+    color: #E60B0B;    
+}
+.datosModelKit{
+    width: 57%;
+    margin-left: 3%;
+    font-family: 'mecha';   
+    margin-right: 3%;
+}
+.datosModelKit p{
+    font-style: italic;
+}
+.nombre a{
+    text-decoration: none;
+    color: #2A3439;
+    transition: 0.35s;
+    cursor: pointer;  
+}
+.nombre a:hover{
+    color: #E60B0B;
+
+}
+/*estado*/
+.contenedorPuestoEstado{
+    display: flex;
+    align-items: center;
+}
+.contenedorEstado{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    border-radius: 5px;
+    color: #e60b0bb5;
+    border: 2px solid #2A3439;
+    background-color: #2a3439b8;
+    font-size: 1.2em;
+    font-family: 'mecha';
+    transition: 0.35s;
+    margin-left: 10%;
+    
+}
+.contenedorEstado i{
+    font-size: 1.5em;
+}
+.contenedorEstado p{
+    margin-bottom: 0px;
+    margin-left: 5%;
+}
+.addMisGunplas{
+    color: #e60b0bb5;
+    background-color: #2a3439b8;
+    cursor: pointer;
+}
+.addMisGunplas:hover{
+    color: #E60B0B;
+    background-color: #2a3439d6;
+}
+.enLista{
+    color: #2A3439;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.523);
+}
+.enBacklog{
+    color: #2A3439;
+    border: 2px solid #3399ff;
+    background-color: #3399ff82;
+}
+.enConstruccion{
+    color: #2A3439;
+    border: 2px solid rgb(159, 159, 159);
+    background-color: rgb(192, 192, 192);
+}
+.terminado{
+    color: #2A3439;
+    border: 2px solid #99ff00;
+    background-color: #99ff0087;
+}
+
+
+
+/*MEDIA QUERIES*/
+@media screen and (max-width: 1920px){
+    
+    .contenedorImg{
+        height: 400px;
+    }
+    .imgPerfil{
+        width: 350px;
+        height: 350px;
+    }
+    #datoUserUsername{
+        font-size: 2em;
+    }
+    .divCreateInputImg{
+        margin-top: 20px;
+    }
+    /*FILTROS*/
+    .filtroEstado{
+        font-size: 0.8em;
+    }
+    .filtroEstado:hover{
+        font-size: 1.1em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

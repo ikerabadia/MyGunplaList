@@ -86,28 +86,66 @@ class ApiUserController
     {
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
-        $array["usuario"] = array();
-        $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $link_instagram, $link_youtube);
-        
-        echo json_encode($usuariosbd);
-    }
-    
-    
-    
-    public function guardarImagenUsuario($idUsuario,$imagen)
-    {
-        $ruta ="http://localhost/mygunplalist/backend/imagenes/usuarios/".$idUsuario."/".$imagen["name"];
 
-        if (!file_exists("./imagenes/usuarios/".$idUsuario)) {
+        if (isset($_SESSION["usuarioActual"])) {
+            
+            self::guardarImagenUsuario($img_usuario, $idUsuario);
+                
+                $rutaBase ="http://localhost/mygunplalist/imagenes/usuarios/".$idUsuario;
+                if ($img_usuario != null) {
+                    $img_usuario = $rutaBase."/".$img_usuario["name"];
+                }else{
+                    $img_usuario = "";
+                }
+
+                $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $link_instagram, $link_youtube);
+
+            if ($usuariosbd == true) {
+                $array["status"] = true;
+                $array["mensaje"] = "Usuario modificado correctamente";
+                
+            }else{
+                $array["status"] = false;
+                $array["mensaje"] = "Ha ocurrido un error al modificar su usuario";
+            }
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "debes estar logueado para modificar un usuario";
+        }
+        
+        echo json_encode($array);
+    }
+
+    public function guardarImagenUsuario($img_usuario, $idUsuario){
+
+        $rutaBase ="localhost/mygunplalist/imagenes/usuarios/".$idUsuario;
+
+        //Se guarda la imagen de la caja
+        if ($img_usuario != null) {
+            if (file_exists("./imagenes/usuarios/".$idUsuario)) {
+            
+                self::rrmdir("./imagenes/usuarios/".$idUsuario);            
+    
+            }
+    
             mkdir("./imagenes/usuarios/".$idUsuario, 0777, true);
+            move_uploaded_file($img_usuario["tmp_name"], "./imagenes/usuarios/".$idUsuario."/".$img_usuario["name"]);
         }
-        if (!file_exists("./imagenes/usuarios/".$idUsuario."/".$imagen["name"])) {
 
-            move_uploaded_file($imagen["tmp_name"], "./imagenes/usuarios/".$idUsuario."/".$imagen["name"]);
-        }
-        
-        BdUsuarios::guardarImagenUsuario($idUsuario, $ruta);
     }
+
+    public function rrmdir($dir) {
+        if (is_dir($dir)) {
+          $objects = scandir($dir);
+          foreach ($objects as $object) {
+            if ($object != "." && $object != "..") {
+              if (filetype($dir."/".$object) == "dir") self::rrmdir($dir."/".$object); else unlink($dir."/".$object);
+            }
+          }
+          reset($objects);
+          rmdir($dir);
+        }
+     }
     
     
     public function deleteImagenUsuario($idUsuario)
