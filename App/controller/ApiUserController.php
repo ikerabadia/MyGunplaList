@@ -204,14 +204,7 @@ class ApiUserController
                 }else{
                     $aux["moderador"] = false;
                 }
-                
 
-                //$aux["imagen"] ="";
-                /* $imagenesbd = Conexion::getImagenUsuario($usuariobd["idUsuario"]);
-                foreach ($imagenesbd as $imagen) {
-                    $aux["imagen"] = $imagen["imagen"];
-                } */
-                /* array_push($array["usuarios"], $aux); */
                 $usuario = $aux;
             }
 
@@ -259,43 +252,6 @@ class ApiUserController
         session_destroy();
     }
 
-    //-------------------------------------
-    //GENERICAS
-    //-------------------------------------
-    public function getImagenesSlider(){
-
-        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
-        $array = array();
-        $array["mejorValorados"] = array();
-        $mejorValoradosbd = BdUsuarios::getImagenesMejorValorados();
-        foreach ($mejorValoradosbd as $imagen) {
-            $aux = array();
-            $aux["imagen"] = $imagen["imagen"];
-
-            array_push($array["mejorValorados"], $aux);
-        }
-
-        $idUsuario = 0;
-
-        if (isset($_SESSION["usuarioActual"])) {
-            $idUsuario = $_SESSION["usuarioActual"]["idUsuario"];
-        }
-
-        $array["preferidos"] = array();
-        $preferidos = BdUsuarios::getImagenesPreferidos($idUsuario);
-        foreach ($preferidos as $imagen) {
-            $aux = array();
-            $aux["imagen"] = $imagen["imagen"];
-
-            array_push($array["preferidos"], $aux);
-        }
-
-        echo json_encode($array);
-
-    }
-
-    
-
     public function addToMisGunplas($idModelKit){
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
@@ -316,6 +272,31 @@ class ApiUserController
         }else{
             $array["status"] = false;
             $array["mensaje"] = "debes estar logueado para añadir un model kit a tus gunplas";
+        }
+
+        echo json_encode($array);
+    }
+
+    public function deleteFromMisGunplas($idModelKit){
+        header("Content-Type: application/json', 'HTTP/1.1 200 OK");
+        $array = array();
+
+        if (isset($_SESSION["usuarioActual"])) {
+
+            $idUsuario = $_SESSION["usuarioActual"]["id_usuario"];
+            $bdUsuarios = BdUsuarios::DeleteFromMisGunplas($idModelKit, $idUsuario);
+
+            if ($bdUsuarios == true) {
+                $array["status"] = true;
+                $array["mensaje"] = "Model Kit eliminado tus gunplas correctamente";
+            }else{
+                $array["status"] = false;
+                $array["mensaje"] = "El model kit no estaba entre tus gunplas";
+            }    
+
+        }else{
+            $array["status"] = false;
+            $array["mensaje"] = "Debes estar logueado para eliminar un model kit de tus gunplas";
         }
 
         echo json_encode($array);

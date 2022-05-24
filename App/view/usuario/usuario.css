@@ -53,6 +53,7 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    position: fixed;
 }
 .contenedorImg{
     width: 100%;
@@ -155,7 +156,7 @@ button{
     overflow: hidden;
 }
 .btnEdit:hover{
-    box-shadow: 0px 0px 10px white;
+    box-shadow: 0px 0px 10px #FFD500;
     width: 120px;
 }
 .btnEdit i{
@@ -301,6 +302,7 @@ button{
 .misGunplas{
     width: 70%;
     margin-top: 50px;
+    margin-left: 30%;
 }
 
 /*FILTROS*/
@@ -651,17 +653,77 @@ button{
     background-color: #99ff0087;
 }
 /*btns estado*/
+/*eliminar*/
 .btnEliminarDeMisGunplas{
-    position: absolute;
-    left: 5%;
-    bottom: 5%;
+    background-color: #E60B0B;
     display: flex;
     flex-direction: row;
     align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    left: 10%;
+    bottom: 10px;
+}
+.btnEliminarDeMisGunplas:hover{
+    box-shadow: 0px 0px 10px #E60B0B;
+    width: 200px;
 }
 .btnEliminarDeMisGunplas p{
     margin-bottom: 0px;
+    font-family: 'mecha';
     margin-left: 10px;
+    color: #2A3439;
+    font-weight: 100;
+    font-size: 1.4em;
+    position: absolute;
+    right: 40px;
+}
+.btnEliminarDeMisGunplas i{
+    font-size: 2em;
+    color: #2A3439;
+    margin-left: 5px;
+    position: absolute;
+    right: 7px;
+    font-weight: 700;
+}
+/*modificar estado*/
+.btnModificarEstadoMisGunplas{
+    position: absolute;
+    background-color: #FFD500;
+    bottom: 10px;
+    right: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+    cursor: pointer;
+    overflow: hidden;
+}
+.btnModificarEstadoMisGunplas:hover{
+    box-shadow: 0px 0px 10px #FFD500;
+    width: 150px;
+}
+.btnModificarEstadoMisGunplas p{
+    margin-bottom: 0px;
+    font-family: 'mecha';
+    margin-left: 10px;
+    color: #2A3439;
+    font-weight: 100;
+    font-size: 1.4em;
+}
+.btnModificarEstadoMisGunplas i{
+    font-size: 2em;
+    color: #2A3439;
+    margin-left: 5px;
+    font-weight: 700;
 }
 
 
@@ -686,6 +748,9 @@ button{
         font-size: 0.8em;
     }
     .filtroEstado:hover{
+        font-size: 1.1em;
+    }
+    .filtroEstadoMostrado{
         font-size: 1.1em;
     }
 }

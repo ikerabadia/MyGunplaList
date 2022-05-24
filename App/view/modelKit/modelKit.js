@@ -340,14 +340,14 @@ function pintarEdits() {
         resultados=eval(json);
 
         document.getElementById("userUltimoEdit").innerHTML = resultados["modificaciones"][0]["username"];
-        document.getElementById("userUltimoEdit").href = "usuario/" + resultados["modificaciones"][0]["fk_usuario"];
+        document.getElementById("userUltimoEdit").href = "usuario?id=" + resultados["modificaciones"][0]["fk_usuario"];
 
         document.getElementById("modificacionesModelKit").innerHTML = "";
 
         for (let i = 0; i < resultados["modificaciones"].length; i++) {
             
             document.getElementById("modificacionesModelKit").innerHTML += `
-                <p><i class="fa fa-caret-right" aria-hidden="true"></i> Modificado el <span class="listaEditsFecha">${resultados["modificaciones"][i]["fecha_modificacion"]}</span> por <a class="listaEditsUser" href="usuario/${resultados["modificaciones"][i]["fk_usuario"]}" >${resultados["modificaciones"][i]["username"]}</a></p>   
+                <p><i class="fa fa-caret-right" aria-hidden="true"></i> Modificado el <span class="listaEditsFecha">${resultados["modificaciones"][i]["fecha_modificacion"]}</span> por <a class="listaEditsUser" href="usuario?id=${resultados["modificaciones"][i]["fk_usuario"]}" >${resultados["modificaciones"][i]["username"]}</a></p>   
                 <hr>
             `
             

@@ -267,6 +267,24 @@ class BdUsuarios{
             return false;
         }
     }
+    static function deleteFromMisGunplas($idModelKit, $idUsuario){
+        try {
+            $db = Conexion::getConection();
+
+            $sql = "DELETE FROM "; //ACABAR ESTA CONSULTA PARA ELIMINAR UN MODEL KIT DE MIS GUNPLAS
+            $resultado = $db->query($sql);            
+            
+            if ($resultado) {                
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Exception $th) {
+            return false;
+        } catch (\PDOException $e) {
+            return false;
+        }  
+    }
 
     static function patchEstadoMisGunplas($idModelKit, $idUsuario, $estado){
         try {

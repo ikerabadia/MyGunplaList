@@ -336,8 +336,12 @@ function pintarModelKit(modelKit) {
     if (usuarioLogueado["id_usuario"] == usuario["id_usuario"]) {
       document.getElementById("estado" + modelKit["model_kit"][0]["id_model_kit"]).innerHTML += `
         <div class="btnEliminarDeMisGunplas">
-          <i class="fa fa-trash" aria-hidden="true"></i>
           <p>ELIMINAR</p>
+          <i class="fa fa-trash" aria-hidden="true"></i>          
+        </div>
+        <div class="btnModificarEstadoMisGunplas">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <p>ESTADO</p>
         </div>
       `
     }
@@ -416,25 +420,25 @@ function pintarEstadoMostrado() {
         var btnEstado = document.getElementById("filtroEstadoTodos");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.5em";
+        btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "#2a3439";
     }else if(estadoMostrado == 0){
         var btnEstado = document.getElementById("filtroEstadoDeseados");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.5em";
+        btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "rgb(255, 255, 255)";
     }else if(estadoMostrado == 1){
         var btnEstado = document.getElementById("filtroEstadoBacklog");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.5em";
+        btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "#184bba";
     }else if(estadoMostrado == 2){
         var btnEstado = document.getElementById("filtroEstadoConstruccion");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.5em";
+        btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "rgb(159, 159, 159)";
     }else if(estadoMostrado == 3){
       document.getElementById("modelKitsHeader").innerHTML = `
@@ -446,7 +450,7 @@ function pintarEstadoMostrado() {
         var btnEstado = document.getElementById("filtroEstadoTerminado");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.5em";
+        btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "#99ff00";
     }
 }

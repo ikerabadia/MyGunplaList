@@ -35,8 +35,15 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         $email = $_POST["email"];
-        $linkInstagram = $_POST["link_instagram"];
-        $linkYoutube = $_POST["link_youtube"];
+        $linkInstagram = "";
+        if (isset($_POST["link_instagram"])) {
+            $linkInstagram = $_POST["link_instagram"];
+        }
+        $linkYoutube = "";
+        if (isset($_POST["link_youtube"])) {
+            $linkYoutube = $_POST["link_youtube"];
+        }        
+        
         $apiUserController->newUsuario($username, password_hash($password, PASSWORD_DEFAULT), $email, $linkInstagram, $linkYoutube);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "deleteUsuario") {
         $apiUserController->deleteUsuario($array_ruta[2]);
@@ -70,6 +77,9 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "addToMisGunplas") {
         $idModelKit = $_POST["idModelKit"];
         $apiUserController->addToMisGunplas($idModelKit);
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "deleteFromMisGunplas") {
+        $idModelKit = $_POST["idModelKit"];
+        $apiUserController->deleteFromMisGunplas($idModelKit);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "patchEstadoMisGunplas") {
         $idModelKit = $_POST["idModelKit"];
         $estado = $_POST["estado"];
