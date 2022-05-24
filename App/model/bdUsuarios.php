@@ -271,7 +271,8 @@ class BdUsuarios{
         try {
             $db = Conexion::getConection();
 
-            $sql = "DELETE FROM "; //ACABAR ESTA CONSULTA PARA ELIMINAR UN MODEL KIT DE MIS GUNPLAS
+            $sql = "DELETE FROM listado_model_kits_usuario WHERE fk_usuario = ".$idUsuario." AND fk_model_kit = ".$idModelKit;
+            
             $resultado = $db->query($sql);            
             
             if ($resultado) {                

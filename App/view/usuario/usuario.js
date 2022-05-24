@@ -4,6 +4,8 @@ var idUsuarioVista = null;
 var paginaActual = 0;
 var elementosPorPagina = 20;
 var estadoMostrado = "";
+var idModelKitDelete = null;
+var modelKitUpdateEstado = null;
 
 window.onload = function () {
   pintarMenu();
@@ -31,7 +33,7 @@ function cargarDatosUsuario() {
 
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
-    var idUsuarioVista = urlParams.get("id");
+    idUsuarioVista = urlParams.get("id");
 
     var settings = {
       url: "api/usuario/" + idUsuarioVista,
@@ -333,13 +335,13 @@ function pintarModelKit(modelKit) {
     var resultados = eval(json);
     var usuario = resultados;
 
-    if (usuarioLogueado["id_usuario"] == usuario["id_usuario"]) {
+    if (usuario != false && idUsuarioVista == usuario["id_usuario"]) {
       document.getElementById("estado" + modelKit["model_kit"][0]["id_model_kit"]).innerHTML += `
-        <div class="btnEliminarDeMisGunplas">
+        <div class="btnEliminarDeMisGunplas" data-bs-toggle="modal" data-bs-target="#modalEliminarModelKit" onclick="establecerModelKitEliminar(${modelKit["model_kit"][0]["id_model_kit"]})">
           <p>ELIMINAR</p>
           <i class="fa fa-trash" aria-hidden="true"></i>          
         </div>
-        <div class="btnModificarEstadoMisGunplas">
+        <div class="btnModificarEstadoMisGunplas" data-bs-toggle="modal" data-bs-target="#modalModificarEstado" onclick="establecerModelKitModificarEstado(${modelKit["model_kit"][0]["id_model_kit"]}, ${modelKit["estado"]})">
           <i class="fa fa-pencil" aria-hidden="true"></i>
           <p>ESTADO</p>
         </div>
@@ -453,6 +455,40 @@ function pintarEstadoMostrado() {
         btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "#99ff00";
     }
+}
+
+function establecerModelKitEliminar(idModelKit) {
+  idModelKitDelete = idModelKit;
+}
+function establecerModelKitModificarEstado(idModelKit, estado) { //AQUI ES DONDE DEBO PINTAR EL ESTADO EN EL MODAL DE MODIFICACION DE ESTADO
+  modelKitUpdateEstado["id_model_kit"] = idModelKit;
+  modelKitUpdateEstado["estado"] = estado;
+}
+function deleteModelKit() {
+  var settings = {
+    "url": "api/deleteFromMisGunplas",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+      "idModelKit": ""+idModelKitDelete
+    }
+  };
+  
+  $.ajax(settings).done(function (response) {
+    var json = response;
+    var resultados = eval(json);
+    if (resultados["status"] == true) {
+      mostrarToast("green", "Se ha eliminado el model kit de Mis Gunplas");      
+    }else{
+      mostrarToast("red", resultados["mensaje"]);
+    }
+    idModelKitDelete = null;
+    document.getElementById("btnCloseDeleteModal").click();
+    pintarMisGunplas();
+  });
 }
 
 function filtrarEstado(estado) {
