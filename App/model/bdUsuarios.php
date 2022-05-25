@@ -329,19 +329,21 @@ class BdUsuarios{
         try {
             $db = Conexion::getConection();
 
-            $sql = "SELECT * from (
-                SELECT 
-                *,
-                DENSE_RANK() OVER (                	
-                       ORDER BY nota_media_usuario desc
-                ) puesto_nota_mis_gunplas
-                FROM `listado_model_kits_usuario` 
-                WHERE fk_usuario = $idUser
-            )datos WHERE datos.estado LIKE '%$estado%'
-            AND datos.nombre LIKE '%$textoBuscador%'";//Arreglar esto que no esta funcionando el like
+            $sql = "SELECT 
+            *,
+            (SELECT nombre FROM model_kit mk where mk.id_model_kit = datos.fk_model_kit) nombreModelKit 
+            from (
+                 SELECT 
+                 *,    			
+                 DENSE_RANK() OVER (                	
+                      ORDER BY nota_media_usuario desc
+                 ) puesto_nota_mis_gunplas
+                 FROM `listado_model_kits_usuario` 
+                 WHERE fk_usuario = $idUser
+            ) datos 
+            WHERE datos.estado LIKE '%$estado%'  AND
+            (SELECT nombre FROM model_kit mk where mk.id_model_kit = datos.fk_model_kit) LIKE '%$textoBuscador%'";//Arreglar esto que no esta funcionando el like
             $resultado = $db->query($sql);
-
-            //echo var_dump($resultado);
 
             return $resultado;
         } catch (\Exception $th) {

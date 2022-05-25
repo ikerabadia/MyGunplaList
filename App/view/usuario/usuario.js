@@ -238,6 +238,7 @@ function pintarMisGunplas() {
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   idUsuarioVista = urlParams.get("id");
+  var textoBuscador = document.getElementById("inputFiltrosTextoBuscador").value;
 
   pintarEstadoMostrado();
 
@@ -251,6 +252,7 @@ function pintarMisGunplas() {
     data: {
       estado: "" + estadoMostrado,
       idUsuario: "" + idUsuarioVista,
+      textoBuscador: "" + textoBuscador
     },
   };
 
@@ -396,20 +398,36 @@ function getEstado(estado){
 }
 
 function pintarEstadoMostrado() {
+    var claseTodos = "";
+    var claseDeseados = "";
+    var claseBacklog = "";
+    var claseConstruccion = "";
+    var claseTerminado = "";
+    if (estadoMostrado === "") {
+      claseTodos = "filtroEstadoMostrado";
+    }else if(estadoMostrado == 0){
+      claseDeseados = "filtroEstadoMostrado";
+    }else if(estadoMostrado == 1){
+      claseBacklog = "filtroEstadoMostrado";
+    }else if(estadoMostrado == 2){
+      claseConstruccion = "filtroEstadoMostrado";
+    }else if(estadoMostrado == 3){
+      claseTerminado = "filtroEstadoMostrado";
+    }
     document.getElementById("filtrosEstadoContenedor").innerHTML = `
-                            <div class="filtroEstado" id="filtroEstadoTodos" onclick="filtrarEstado('')">
+                            <div class="filtroEstado ${claseTodos}" id="filtroEstadoTodos" onclick="filtrarEstado('')">
                                 TODOS
                             </div>
-                            <div class="filtroEstado" id="filtroEstadoDeseados" onclick="filtrarEstado(0)">
+                            <div class="filtroEstado ${claseDeseados}" id="filtroEstadoDeseados" onclick="filtrarEstado(0)">
                                 DESEADOS
                             </div>
-                            <div class="filtroEstado" id="filtroEstadoBacklog" onclick="filtrarEstado(1)">
+                            <div class="filtroEstado ${claseBacklog}" id="filtroEstadoBacklog" onclick="filtrarEstado(1)">
                                 BACKLOG
                             </div>
-                            <div class="filtroEstado" id="filtroEstadoConstruccion" onclick="filtrarEstado(2)">
+                            <div class="filtroEstado ${claseConstruccion}" id="filtroEstadoConstruccion" onclick="filtrarEstado(2)">
                                 CONSTRUCCION
                             </div>
-                            <div class="filtroEstado" id="filtroEstadoTerminado" onclick="filtrarEstado(3)">
+                            <div class="filtroEstado ${claseTerminado}" id="filtroEstadoTerminado" onclick="filtrarEstado(3)">
                                 TERMINADOS
                             </div>
     `
@@ -418,7 +436,7 @@ function pintarEstadoMostrado() {
         <h2 class="w70 borderRL">INFORMACION</h2>
         <h2 class="w30">ESTADO</h2>                    
     `;
-    if (estadoMostrado === "") {
+    /* if (estadoMostrado === "") {
         var btnEstado = document.getElementById("filtroEstadoTodos");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
@@ -442,25 +460,25 @@ function pintarEstadoMostrado() {
         btnEstado.style.height = "70px";
         btnEstado.style.fontSize = "1.1em";
         btnEstado.style.backgroundColor = "rgb(159, 159, 159)";
-    }else if(estadoMostrado == 3){
+    }else  */if(estadoMostrado == 3){
       document.getElementById("modelKitsHeader").innerHTML = `
             <h2 class="w10 borderR">PUESTO</h2>        
             <h2 class="w50 borderR">INFORMACION</h2>  
             <h2 class="w10 borderR">NOTA</h2>      
             <h2 class="w30">ESTADO</h2>                        
         `;
-        var btnEstado = document.getElementById("filtroEstadoTerminado");
+        /* var btnEstado = document.getElementById("filtroEstadoTerminado");
         btnEstado.style.width = "22%";
         btnEstado.style.height = "70px";
         btnEstado.style.fontSize = "1.1em";
-        btnEstado.style.backgroundColor = "#99ff00";
+        btnEstado.style.backgroundColor = "#99ff00"; */
     }
 }
 
 function establecerModelKitEliminar(idModelKit) {
   idModelKitDelete = idModelKit;
 }
-function establecerModelKitModificarEstado(idModelKit, estado) { //AQUI ES DONDE DEBO PINTAR EL ESTADO EN EL MODAL DE MODIFICACION DE ESTADO
+function establecerModelKitModificarEstado(idModelKit, estado) {
   modelKitUpdateEstado["id_model_kit"] = idModelKit;
   modelKitUpdateEstado["estado"] = estado;
   selectEstadoUpdate(estado);
