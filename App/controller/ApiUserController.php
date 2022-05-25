@@ -91,14 +91,14 @@ class ApiUserController
             
             self::guardarImagenUsuario($img_usuario, $idUsuario);
                 
-                $rutaBase ="http://localhost/mygunplalist/imagenes/usuarios/".$idUsuario;
-                if ($img_usuario != null) {
-                    $img_usuario = $rutaBase."/".$img_usuario["name"];
-                }else{
-                    $img_usuario = "";
-                }
+            $rutaBase ="http://localhost/mygunplalist/imagenes/usuarios/".$idUsuario;
+            if ($img_usuario != null) {
+                $img_usuario = $rutaBase."/".$img_usuario["name"];
+            }else{
+                $img_usuario = "";
+            }
 
-                $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $link_instagram, $link_youtube);
+            $usuariosbd = BdUsuarios::updateUsuario($idUsuario, $username, $password, $img_usuario, $email, $link_instagram, $link_youtube);
 
             if ($usuariosbd == true) {
                 $array["status"] = true;
@@ -112,7 +112,7 @@ class ApiUserController
             $array["status"] = false;
             $array["mensaje"] = "debes estar logueado para modificar un usuario";
         }
-        
+        /* $array["password"] = $password; */
         echo json_encode($array);
     }
 
@@ -360,11 +360,11 @@ class ApiUserController
         echo json_encode($array);
     }
 
-    public function getUserList($idUser, $estado){
+    public function getUserList($idUser, $estado, $textoBuscador){
         header("Content-Type: application/json', 'HTTP/1.1 200 OK");
         $array = array();
 
-        $modelKitsBd = BdUsuarios::getUserList($idUser, $estado);
+        $modelKitsBd = BdUsuarios::getUserList($idUser, $estado, $textoBuscador);
 
         if ($modelKitsBd != false) {
             $array["status"] = true;

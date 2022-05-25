@@ -50,7 +50,8 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "updateUsuario") {
         $username = $_POST["username"];
         $password = $_POST["password"];
-        if ($password != null) {
+        
+        if ($password != "null" && $password != null && $password != "") {
             $password = password_hash($password, PASSWORD_DEFAULT);
         }
         $email = $_POST["email"];
@@ -95,7 +96,8 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getUserList") {
         $estado = $_POST["estado"];
         $idUsuario = $_POST["idUsuario"];
-        $apiUserController->getUserList($idUsuario, $estado);
+        $textoBuscador = $_POST["textoBuscador"];
+        $apiUserController->getUserList($idUsuario, $estado, $textoBuscador);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoModelKit") {                                  //MODEL KITS
         $nombre = $_POST["nombre"];
         $grado = $_POST["grado"];

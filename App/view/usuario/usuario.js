@@ -5,7 +5,7 @@ var paginaActual = 0;
 var elementosPorPagina = 20;
 var estadoMostrado = "";
 var idModelKitDelete = null;
-var modelKitUpdateEstado = null;
+var modelKitUpdateEstado = [];
 
 window.onload = function () {
   pintarMenu();
@@ -388,7 +388,7 @@ function getEstado(estado){
                 return `
                         <div class="contenedorEstado terminado" id="contenedorEstado">
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            <P>Completado</P>
+                            <P>Terminado</P>
                         </div>
                     `
             }       
@@ -463,6 +463,7 @@ function establecerModelKitEliminar(idModelKit) {
 function establecerModelKitModificarEstado(idModelKit, estado) { //AQUI ES DONDE DEBO PINTAR EL ESTADO EN EL MODAL DE MODIFICACION DE ESTADO
   modelKitUpdateEstado["id_model_kit"] = idModelKit;
   modelKitUpdateEstado["estado"] = estado;
+  selectEstadoUpdate(estado);
 }
 function deleteModelKit() {
   var settings = {
@@ -487,6 +488,56 @@ function deleteModelKit() {
     }
     idModelKitDelete = null;
     document.getElementById("btnCloseDeleteModal").click();
+    pintarMisGunplas();
+  });
+}
+
+function selectEstadoUpdate(nuevoEstado) {
+  //Limpio las opciones de ahora
+  document.getElementById("opcionEstadoDeseado").classList.remove("opcionEstadoDeseadoSelected");
+  document.getElementById("opcionEstadoBacklog").classList.remove("opcionEstadoBacklogSelected");
+  document.getElementById("opcionEstadoConstruccion").classList.remove("opcionEstadoConstruccionSelected");
+  document.getElementById("opcionEstadoTerminado").classList.remove("opcionEstadoTerminadoSelected");
+
+  modelKitUpdateEstado["estado"] = nuevoEstado;
+  //Pongo la nueva clase 
+  if (modelKitUpdateEstado["estado"] == 0) {
+    document.getElementById("opcionEstadoDeseado").classList.add("opcionEstadoDeseadoSelected");
+  }else if (modelKitUpdateEstado["estado"] == 1) {
+    document.getElementById("opcionEstadoBacklog").classList.add("opcionEstadoBacklogSelected");
+  }else if (modelKitUpdateEstado["estado"] == 2) {
+    document.getElementById("opcionEstadoConstruccion").classList.add("opcionEstadoConstruccionSelected");
+  }else if (modelKitUpdateEstado["estado"] == 3) {
+    document.getElementById("opcionEstadoTerminado").classList.add("opcionEstadoTerminadoSelected");
+  }
+
+}
+
+function patchEstado() {
+  var settings = {
+    "url": "api/patchEstadoMisGunplas",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+      "idModelKit": ""+modelKitUpdateEstado["id_model_kit"],
+      "estado": ""+modelKitUpdateEstado["estado"]
+    }
+  };
+  
+  $.ajax(settings).done(function (response) {
+    var json = response;
+    var resultados = eval(json);
+    if (resultados["status"] == true) {
+      mostrarToast("green", "Se ha modificado el estado del model kit correctamente");      
+    }else{
+      mostrarToast("red", resultados["mensaje"]);
+    }
+    modelKitUpdateEstado["id_model_kit"] = "";
+    modelKitUpdateEstado["estado"] = "";
+    document.getElementById("btnCloseUpdateEstadoModal").click();
     pintarMisGunplas();
   });
 }

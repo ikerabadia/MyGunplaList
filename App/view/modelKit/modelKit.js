@@ -212,7 +212,7 @@ function pintarEstado() {
                     document.getElementById("subtitulo").innerHTML += `
                             <div class="contenedorEstado terminado" id="contenedorEstado">
                                 <i class="fa fa-check" aria-hidden="true"></i>
-                                <P>Completado</P>
+                                <P>Terminado</P>
                             </div>
                         `
                 }

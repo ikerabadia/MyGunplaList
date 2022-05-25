@@ -726,6 +726,53 @@ button{
     font-weight: 700;
 }
 
+/*RADIO BUTTON ESTADO*/
+.opcionEstado{
+    margin-top: 25px;
+    width: 70%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    border-radius: 5px;
+    transition: 0.35s;   
+    border: 2px solid rgb(255, 255, 255); 
+    cursor: pointer;
+}
+.opcionEstado label{
+    margin-left: 5%;
+    font-family: "mecha";
+    font-size: 1.5em;    
+    cursor: pointer;
+}
+.opcionEstado input{
+    cursor: pointer;
+}
+.opcionEstado i{
+    margin-left: 5%;
+    font-size: 1.5em;
+}
+#opcionEstadoDeseado:hover, .opcionEstadoDeseadoSelected{
+    color: #2A3439;
+    border: 2px solid #2A3439;
+}
+#opcionEstadoBacklog:hover, .opcionEstadoBacklogSelected{
+    color: #2A3439;
+    border: 2px solid #3399ff;
+    background-color: #3399ff82;
+}
+#opcionEstadoConstruccion:hover, .opcionEstadoConstruccionSelected{
+    color: #2A3439;
+    border: 2px solid rgb(159, 159, 159);
+    background-color: rgb(192, 192, 192);
+}
+#opcionEstadoTerminado:hover, .opcionEstadoTerminadoSelected{
+    color: #2A3439;
+    border: 2px solid #99ff00;
+    background-color: #99ff0087;
+}
+
+
 
 /*MEDIA QUERIES*/
 @media screen and (max-width: 1920px){

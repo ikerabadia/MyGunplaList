@@ -239,15 +239,43 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h5 class="modal-title" id="exampleModalLabel">Seleccione el nuevo estado</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseUpdateEstadoModal"></button>
                 </div>
-                <div class="modal-body">
-                  ...
+                <div class="modal-body" id="modalBodyEditEstado">
+
+                    <div class="form-check opcionEstado " id="opcionEstadoDeseado" onclick="selectEstadoUpdate(0)">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Deseado
+                        </label>
+                    </div>
+
+                    <div class="form-check opcionEstado" id="opcionEstadoBacklog" onclick="selectEstadoUpdate(1)">
+                        <i class="fa fa-archive" aria-hidden="true"></i>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Backlog
+                        </label>
+                    </div>
+
+                    <div class="form-check opcionEstado " id="opcionEstadoConstruccion" onclick="selectEstadoUpdate(2)">
+                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                          Construccion
+                        </label>
+                    </div>
+
+                    <div class="form-check opcionEstado " id="opcionEstadoTerminado" onclick="selectEstadoUpdate(3)">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <label class="form-check-label" for="flexRadioDefault4">
+                          Terminado
+                        </label>
+                    </div>
+                      
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-primary" onclick="patchEstado()">Save changes</button>
                 </div>
               </div>
             </div>

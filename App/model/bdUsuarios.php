@@ -325,7 +325,7 @@ class BdUsuarios{
         }
     }
 
-    static function getUserList($idUser, $estado){
+    static function getUserList($idUser, $estado, $textoBuscador){
         try {
             $db = Conexion::getConection();
 
@@ -337,7 +337,8 @@ class BdUsuarios{
                 ) puesto_nota_mis_gunplas
                 FROM `listado_model_kits_usuario` 
                 WHERE fk_usuario = $idUser
-            )datos WHERE datos.estado LIKE '%$estado%'";
+            )datos WHERE datos.estado LIKE '%$estado%'
+            AND datos.nombre LIKE '%$textoBuscador%'";//Arreglar esto que no esta funcionando el like
             $resultado = $db->query($sql);
 
             //echo var_dump($resultado);
