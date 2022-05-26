@@ -104,7 +104,6 @@ function pintarModelKit(modelKit) {
         document.getElementById("imgModelKit"+modelKit["id_model_kit"]).innerHTML = `
             <img src="${url}" alt="">
         `;
-        /* document.getElementById("imgModelKit"+modelKit["id_model_kit"]).style.backgroundImage = "url("+url+")"; */
     }else{
         document.getElementById("imgModelKit"+modelKit["id_model_kit"]).innerHTML = `<p>SIN IMAGEN <br> :C<p>`;
     }

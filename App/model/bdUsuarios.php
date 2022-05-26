@@ -28,11 +28,11 @@ class BdUsuarios{
     }
         
     
-    static function getUsuarios($pagina, $cantidadRegistros){
+    static function getUsuarios($pagina, $cantidadRegistros, $textoBuscador){
         try {
             $db = Conexion::getConection();
 
-            $sql = "SELECT * FROM usuarios LIMIT $cantidadRegistros OFFSET ".($pagina-1)*$cantidadRegistros;
+            $sql = "SELECT * FROM usuarios where username like '%$textoBuscador%' LIMIT $cantidadRegistros OFFSET ".($pagina-1)*$cantidadRegistros;
             $resultado = $db->query($sql);
 
             if ($resultado) {

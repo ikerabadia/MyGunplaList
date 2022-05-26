@@ -30,7 +30,10 @@
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "top") { //Top model kits
         $appController->top();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuarios") { //Usuarios  API 
-        $apiUserController->getUsuarios($_POST["pagina"], $_POST["cantidadRegistros"]);
+        $pagina = $_POST["pagina"];
+        $cantidadRegistros = $_POST["cantidadRegistros"];
+        $textoBuscador = $_POST["textoBuscador"];
+        $apiUserController->getUsuarios($pagina, $cantidadRegistros, $textoBuscador);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "usuario") {
         $apiUserController->getUsuario($array_ruta[2]);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "nuevoUsuario") {
@@ -65,10 +68,6 @@
             $img_usuario = null;
         }
         $apiUserController->updateUsuario($array_ruta[2], $username, $password, $img_usuario, $email, $linkInstagram, $linkYoutube);
-    } else if (isset($array_ruta[0]) && $array_ruta[0]=="api" && $array_ruta[1] == "guardarImagenUsuario") { //Esto lo dejo aqui para saber como se guarda la imagen
-        $idUsuario = $_POST["usuario"];
-        $imagen = $_FILES["imagen"];
-        $apiUserController->guardarImagenUsuario($idUsuario,$imagen);
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "getUsuarioLogueado") {
         $apiUserController->getUsuarioLogueado();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "api" && $array_ruta[1] == "loginFront") {

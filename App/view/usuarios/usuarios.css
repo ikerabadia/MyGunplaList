@@ -1,0 +1,248 @@
+body{
+    
+}
+button{
+    font-family: 'mecha';
+}
+.principalBackground{
+    width: 100%;
+    background: url("../../../mygunplalist/RecursosGenerales/img/wallpaperModelKits.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+.content{
+    width: 90%;
+    background: #ffffffb8;
+    margin-left: 5%;
+    padding-top: 50px;
+    margin-top: 93px;
+    padding-bottom: 50px;
+    min-height: 93vh;
+}
+.tituloPrincipal{
+    font-family: 'mecha';
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tituloPrincipal h1{
+    width: 100%;
+    height: 80%;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5%;
+    font-size: 4em;
+    color: #E60B0B;
+    border-bottom: 10px solid #FFD500;
+}
+/*Estilos span*/
+.yellow{
+    color: #FFD500;
+    font-family: 'mecha';
+}
+
+/*FILTROS*/
+.filtros{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, rgba(24,75,186,1) 15%, rgba(51,153,255,1) 30%, rgba(51,153,255,0) 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;    
+}
+
+.btn-outline-secondary, .filtros input, .filtros select, .filtros span{
+    border: 2px solid #2A3439;
+    color: #2A3439;
+}
+
+#btnBuscador{
+    border-top: 2px solid #2A3439;
+    border-bottom: 2px solid #2A3439;
+    border-right: 2px solid #2A3439; 
+    border-left: 1px solid #2A3439;
+}
+.filtrosBuscador{
+    width: 20%;
+    margin-bottom: 0px !important;
+    margin-right: 5%;
+}
+
+.form-control:focus, .form-select:focus{
+    color: #2A3439;
+    background-color: #fff;
+    border-color: #2A3439;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(42 52 57 / 25%);
+}
+
+.filtros span, .filtros label{
+    background: #2A3439;
+    color: white;
+    font-weight: bold;
+}
+
+/*USUARIO*/
+.usuarios{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.usuario{
+    width: 24%;
+    height: 550px;
+    position: relative;
+    border-radius: 5px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.usuarioLink{
+    text-decoration: none;
+}
+.ImgUsuario{
+    width: 90%;
+    height: 70%;
+    margin: 0px;
+    top: 5%;
+    position: absolute;
+    left: 5%;
+    border-radius: 5px;
+    border: 1px solid #2A3439;
+    z-index: 10;
+    transition: 0.5s;
+    box-shadow: 0px 0px 0px black;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(42,52,57,1) 15%, rgba(116,116,116,1) 100%);
+    align-items: center;
+    overflow: hidden;
+}
+.ImgUsuario img{
+    height: 100%;
+}
+.ImgUsuario p{
+    font-family: 'mecha';
+    text-align: center;
+    color: #E60B0B;
+    font-size: 1.4em;
+}
+.fondoAnimado{
+    width: 90%;
+    height: 80%;
+    background: linear-gradient(to top, #184bba 0%, #3399ff 100%);
+    border-radius: 5px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border: 2px solid #2A3439;
+    transition: 0.5s;
+}
+
+.usuarioLink:hover .fondoAnimado{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(42,52,57,1) 0%, #3399ff 100%);
+}
+.usuarioLink:hover .ImgUsuario{
+    box-shadow: 0px 0px 10px black;
+}
+.datosUsuario{
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    justify-content: center;
+    height: 115px;
+}
+.datosUsuario p{
+    margin: 0px;
+}
+.nombreUsuario{
+    opacity: 70%;
+    color: #ffffff;
+    transition: 0.5s;
+    font-family: 'mecha';
+    font-size: 1.4em;
+    text-decoration: none;
+}
+.nombreUsuario:hover{
+    color: #E60B0B;
+}
+.usuarioLink:hover .nombreUsuario{
+    opacity: 100%;
+    
+}
+
+
+/*NO ENCUENTRA MODEL KIT*/
+.infoUsuarios{
+    width: 50%;
+    color: white;
+    background: #2A3439;
+    height: 300px;
+    margin-top: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.infoUsuarios p{
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+}
+.infoUsuarios span{
+    font-weight: 400;
+    text-align: center;
+}
+.infoUsuarios button, .infoUsuarios a{
+    font-family: 'mecha';
+    font-size: 2em;
+    color: #FFD500;
+    background: #2A3439;
+    border-color: #FFD500;
+    transition: 0.35s;
+}
+
+.infoUsuarios button:hover, .infoUsuarios a:hover{
+    color: #2A3439;
+    background: #FFD500;
+}
+.infoUsuarios button:focus{
+    color: #2A3439;
+    background: #FFD500;
+    box-shadow: 0 0 0 0.25rem rgb(255 213 0 / 50%);
+}
+
+/*NO SE ENCUENTRAN USUARIOS*/
+#divUsuariosNoEncontrados{
+    display: flex;
+    opacity: 0;
+    width: 100%;
+    margin-top: 80px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+#divUsuariosNoEncontrados p{
+    margin-bottom: 0px;
+    font-family: 'mecha';
+    font-size: 3em;
+    color: #2a3439;
+}
+
