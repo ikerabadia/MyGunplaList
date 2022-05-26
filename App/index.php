@@ -23,6 +23,8 @@
         $appController->modelKits();
     }else if (isset($array_ruta[0]) && preg_match('/modelKit/', $array_ruta[0])) { //Ficha de model kit
         $appController->modelKit();
+    }else if (isset($array_ruta[0]) && $array_ruta[0] == "usuarios") { //Ficha de model kit
+        $appController->usuarios();
     }else if (isset($array_ruta[0]) && preg_match('/usuario/', $array_ruta[0])) { //Ficha de model kit
         $appController->usuario();
     }else if (isset($array_ruta[0]) && $array_ruta[0] == "top") { //Top model kits

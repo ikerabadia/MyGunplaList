@@ -45,7 +45,7 @@ function pintarMenu() {
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li class="nav-item"> <a class="nav-link active" aria-current="page" href="top">TOP</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="modelKits">MODEL KITS</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">USUARIOS</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="usuarios">USUARIOS</a> </li>
             </ul>
         </div>
         <div class="container h-100 searcher-container">
@@ -56,6 +56,7 @@ function pintarMenu() {
               </div>
             </div>
         </div>
+        
         <div id="loginRegisterUserContainer">
 
         </div>
