@@ -1,2 +1,48 @@
+body{
+    
+}
+button{
+    font-family: 'mecha';
+}
+.principalBackground{
+    width: 100%;
+    background: url("../../../mygunplalist/RecursosGenerales/img/wallpaperModelKits.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+.content{
+    width: 90%;
+    background: #ffffffb8;
+    margin-left: 5%;
+    padding-top: 50px;
+    margin-top: 93px;
+    padding-bottom: 50px;
+    min-height: 93vh;
+}
+
+/*SLIDER*/
+.slider{
+    background-color: grey;
+    height: 400px;
+    width: 95%;
+    margin-left: 2.5%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.item{
+    width: 10%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.item:hover{
+    width: 15%;
+}
+.selected{
+    width: 50% !important;
+}
+
 
 

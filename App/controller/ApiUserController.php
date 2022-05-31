@@ -112,6 +112,7 @@ class ApiUserController
             $array["status"] = false;
             $array["mensaje"] = "debes estar logueado para modificar un usuario";
         }
+        /* $array["password"] = $password; */
         echo json_encode($array);
     }
 

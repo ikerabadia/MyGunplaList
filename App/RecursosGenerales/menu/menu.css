@@ -250,8 +250,3 @@ body {
     border-left: 1px solid #2A3439;
     color: #2A3439;
 }
-
-/*Toast*/
-.toast-header strong{
-    font-family: 'mecha';
-}

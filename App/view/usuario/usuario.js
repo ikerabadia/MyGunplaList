@@ -436,42 +436,16 @@ function pintarEstadoMostrado() {
         <h2 class="w70 borderRL">INFORMACION</h2>
         <h2 class="w30">ESTADO</h2>                    
     `;
-    /* if (estadoMostrado === "") {
-        var btnEstado = document.getElementById("filtroEstadoTodos");
-        btnEstado.style.width = "22%";
-        btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.1em";
-        btnEstado.style.backgroundColor = "#2a3439";
-    }else if(estadoMostrado == 0){
-        var btnEstado = document.getElementById("filtroEstadoDeseados");
-        btnEstado.style.width = "22%";
-        btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.1em";
-        btnEstado.style.backgroundColor = "rgb(255, 255, 255)";
-    }else if(estadoMostrado == 1){
-        var btnEstado = document.getElementById("filtroEstadoBacklog");
-        btnEstado.style.width = "22%";
-        btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.1em";
-        btnEstado.style.backgroundColor = "#184bba";
-    }else if(estadoMostrado == 2){
-        var btnEstado = document.getElementById("filtroEstadoConstruccion");
-        btnEstado.style.width = "22%";
-        btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.1em";
-        btnEstado.style.backgroundColor = "rgb(159, 159, 159)";
-    }else  */if(estadoMostrado == 3){
+    
+    if(estadoMostrado == 3){
+
       document.getElementById("modelKitsHeader").innerHTML = `
             <h2 class="w10 borderR">PUESTO</h2>        
             <h2 class="w50 borderR">INFORMACION</h2>  
             <h2 class="w10 borderR">NOTA</h2>      
             <h2 class="w30">ESTADO</h2>                        
         `;
-        /* var btnEstado = document.getElementById("filtroEstadoTerminado");
-        btnEstado.style.width = "22%";
-        btnEstado.style.height = "70px";
-        btnEstado.style.fontSize = "1.1em";
-        btnEstado.style.backgroundColor = "#99ff00"; */
+
     }
 }
 

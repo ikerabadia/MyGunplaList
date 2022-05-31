@@ -47,7 +47,7 @@ button{
 .perfilInfo{
     background-color: #2A3439;
     width: 30%;
-    min-height: 94vh;
+    min-height: 93vh;
     box-shadow: 0px 0px 25px;
     display: flex;
     flex-direction: column;
@@ -303,7 +303,6 @@ button{
     width: 70%;
     margin-top: 50px;
     margin-left: 30%;
-    height: 90vh;
 }
 
 /*FILTROS*/
@@ -417,7 +416,7 @@ button{
 /*MIS GUNPLAS*/
 /*MODEL KITS*/
 .scrollModelKits{
-    height: 1050px;
+    height: 900px;
     overflow-y: scroll;
     width: 90%;
     margin-left: 5%;
@@ -448,6 +447,7 @@ button{
     display: flex;
     flex-direction: row;
     background-color: #2a3439db;
+    border-left: 3px solid #2A3439;
     border-right: 3px solid #2A3439;
     color: white;
 }
@@ -488,6 +488,7 @@ button{
     display: flex;
     flex-direction: row;
     height: 250px;
+    border-left: 3px solid #2A3439;
     border-right: 3px solid #2A3439;
     border-bottom: 2px solid #2A3439;
     background: #ffffffc7;
@@ -788,10 +789,6 @@ button{
     }
     .divCreateInputImg{
         margin-top: 20px;
-    }
-    /*MISGUNPLAS*/
-    .scrollModelKits{
-        height: 900px;
     }
     /*FILTROS*/
     .filtroEstado{
