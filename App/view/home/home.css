@@ -21,7 +21,6 @@ button{
 
 /*SLIDER*/
 .slider{
-    background-color: grey;
     height: 400px;
     width: 95%;
     margin-left: 2.5%;
@@ -29,20 +28,93 @@ button{
     display: flex;
     justify-content: space-between;
 }
-.item{
+.itemSlider{
     width: 10%;
     height: 100%;
     border-radius: 5px;
-    background-color: black;
+    background: linear-gradient(to top, #184bba 0%, #3399ff 100%);
     cursor: pointer;
     transition: 0.5s;
+    border: 10px solid #2A3439;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 0px black;
+    position: relative;
 }
-.item:hover{
+.itemSlider:hover{
     width: 15%;
+    border: 10px solid #2A3439;
 }
 .selected{
     width: 50% !important;
+    border: 10px solid #2A3439 !important;
+    box-shadow: 0px 0px 20px black !important;
 }
-
+.imgSlider{
+    background: url(http://localhost/mygunplalist/imagenes/modelKits/37/imgCaja/caja.webp);
+    height: 100%;
+}
+.datosModelKitSlider{
+    position: absolute;
+    bottom: -55px;
+    left: 0px;
+    height: 60px;
+    background: linear-gradient(to bottom, #184bba 0%, #3399ff 100%);
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+    border-top: 10px solid #FFD500;
+    transition: 0.35s;
+}
+.itemSlider:hover .datosModelKitSlider{
+    bottom: 0px;
+}
+.datosModelKitSliderMostrado{
+    bottom: 0px;
+}
+.contenedorNotaModelKitSlider {
+    position: absolute;
+    top: 2%;
+    opacity: 1;
+    right: 2%;
+    z-index: 20;
+    background: #2A3439;
+    height: 40px;
+    border-radius: 5px;
+    width: 60px;
+    margin: 0px;
+    font-family: 'mecha';
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.25s;
+}
+.contenedorNotaModelKitSlider i{
+    color: #FFD500;
+    font-size: 1em;
+}
+.contenedorPuestoModelKitSlider {
+    position: absolute;
+    top: 2%;
+    opacity: 1;
+    left: 2%;
+    z-index: 20;
+    background: #2A3439;
+    height: 40px;
+    border-radius: 5px;
+    width: 40px;
+    margin: 0px;
+    font-family: 'mecha';
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.25s;
+}
+.contenedorPuestoModelKitSlider i{
+    color: goldenrod;
+    font-size: 1em;
+}
 
 
