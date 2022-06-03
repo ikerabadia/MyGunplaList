@@ -238,7 +238,6 @@ button{
     transition: 0.25s;
 }
 .modelKitLink:hover .contenedorNotaModelKit{
-    /* transform: rotate(360deg); */
     transform:rotateX(360deg) ;
     opacity: 1;
 }

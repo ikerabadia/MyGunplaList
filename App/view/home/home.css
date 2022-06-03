@@ -75,7 +75,7 @@ button{
 .contenedorNotaModelKitSlider {
     position: absolute;
     top: 2%;
-    opacity: 1;
+    opacity: 0;
     right: 2%;
     z-index: 20;
     background: #2A3439;
@@ -94,10 +94,15 @@ button{
     color: #FFD500;
     font-size: 1em;
 }
+.itemSlider:hover .contenedorNotaModelKitSlider{
+    transform:rotateX(360deg);
+    opacity: 1;
+}
+
 .contenedorPuestoModelKitSlider {
     position: absolute;
     top: 2%;
-    opacity: 1;
+    opacity: 0;
     left: 2%;
     z-index: 20;
     background: #2A3439;
@@ -115,6 +120,28 @@ button{
 .contenedorPuestoModelKitSlider i{
     color: goldenrod;
     font-size: 1em;
+}
+.itemSlider:hover .contenedorPuestoModelKitSlider{
+    transform:rotateX(360deg);
+    opacity: 1;
+}
+.nombreModelKitSlider{
+    position: absolute;
+    width: 96%;
+    bottom: 15px;
+    background: #2A3439;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'mecha';
+    transition: 0.35s;
+}
+.nombreModelKitSlider:hover{
+    color: #E60B0B;
 }
 
 
