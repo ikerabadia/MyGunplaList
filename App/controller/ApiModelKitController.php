@@ -388,7 +388,6 @@ class ApiModelKitController
                             $aux["modelKitUserData"]["estado"] = $modelKitListaBd["estado"];
                             $aux["modelKitUserData"]["nota_dificultad"] = $modelKitListaBd["nota_dificultad"];
                             $aux["modelKitUserData"]["nota_acabado_OOB"] = $modelKitListaBd["nota_acabado_OOB"];
-                            $aux["modelKitUserData"]["nota_pos_pers"] = $modelKitListaBd["nota_pos_pers"];
                             $aux["modelKitUserData"]["nota_calidad"] = $modelKitListaBd["nota_calidad"];
                             $aux["modelKitUserData"]["nota_poses"] = $modelKitListaBd["nota_poses"];
                             $aux["modelKitUserData"]["nota_media_usuario"] = $modelKitListaBd["nota_media_usuario"];

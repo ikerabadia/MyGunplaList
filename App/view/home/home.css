@@ -13,20 +13,41 @@ button{
     width: 90%;
     background: #ffffffb8;
     margin-left: 5%;
-    padding-top: 50px;
-    margin-top: 93px;
     padding-bottom: 50px;
     min-height: 93vh;
+    margin-top: 93px;
+    padding-top: 50px;
 }
 
 /*SLIDER*/
+.contenedorSlider{
+    height: 900px;
+    background-color: #2a3439d1;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 93px;
+    border-bottom: 5px solid;
+    box-shadow: 0px 10px 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.tituloSlider{
+    margin-left: 2.5%;
+    font-family: 'mecha';
+    border-left: 10px solid #FFD500;
+    padding-left: 30px;
+    margin-top: 20px;
+    color: #2A3439;
+    border-radius: 5px;
+}
 .slider{
-    height: 400px;
+    height: 700px;
     width: 95%;
     margin-left: 2.5%;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    margin-top: 25px;
 }
 .itemSlider{
     width: 10%;
@@ -125,6 +146,10 @@ button{
     transform:rotateX(360deg);
     opacity: 1;
 }
+.selected .contenedorNotaModelKitSlider,  .selected .contenedorPuestoModelKitSlider, .selected .nombreModelKitSlider{
+    transform:rotateX(360deg);
+    opacity: 1;
+}
 .nombreModelKitSlider{
     position: absolute;
     width: 96%;
@@ -138,10 +163,166 @@ button{
     text-decoration: none;
     color: white;
     font-family: 'mecha';
-    transition: 0.35s;
+    transition: 0.25s;
+    opacity: 0;
 }
 .nombreModelKitSlider:hover{
     color: #E60B0B;
 }
 
+/*PRIMERA FILA DE DATOS*/
+.primeraFila{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
 
+/*DESCRIPCION*/
+.contenedorDescripcion{
+    width: 60%;
+    background: linear-gradient(to bottom, #990000 0%, #e60b0b 100%);
+    border-radius: 5px;
+    border-left: 10px solid #2A3439;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 500px;
+    border-right: 10px solid #2A3439;
+}
+.tituloDescripcion{
+    margin-bottom: 0px;
+    width: 17.5%;
+    height: 90%;
+    margin-left: 2.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'mecha';
+    color: #FFD500;
+    text-shadow: 3px 3px black;
+    text-align: center;
+    font-size: 3em;
+}
+.textoDescripcion{
+    margin-bottom: 0px;
+    margin-left: 2.5%;
+    width: 75%;
+    margin-right: 2.5%;
+    font-size: 1.4em;
+    text-align: center;
+    color: white;
+    
+}
+.textoDescripcion a{
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'mecha';  
+    color: white;
+    transition: 0.35s;
+}
+.textoDescripcion a:hover{
+    color: #FFD500;
+}
+
+/*TOP MODEL KITS*/
+.contenedorTopModelKits{
+    width: 37.5%;
+    margin-left: 2.5%;
+}
+.contenedorTopModelKits a{
+    text-decoration: none;
+}
+.tituloTopModelKits{
+    margin-bottom: 0px;
+    font-family: 'mecha';
+    border-left: 10px solid #FFD500;
+    padding-left: 30px;
+    color: #2A3439;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    
+}
+.tituloTopModelKits a{
+    transition: 0.35s;
+    color: #2A3439;
+    text-decoration: none;
+    margin-right: 7px;
+}
+.tituloTopModelKits a:hover{
+    color: #FFD500;
+}
+.topModelKit{
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    margin-top: 15px;
+    padding-right: 10px;
+    transition: 0.35s;
+    cursor: pointer;
+    border-left: 0px solid #FFD500;
+    border-radius: 5px;
+    color: #2A3439;
+}
+.topModelKit:hover{
+    background-color: white;
+    border-left: 10px solid #FFD500;
+    color: red;
+}
+.topModelKit:hover .topModelKitNota{
+    text-shadow: 3px 3px #2A3439;
+    color: goldenrod;
+}
+.topModelKitNota{
+    width: 15%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2em;
+    font-family: 'mecha';
+    transition: 0.35s;
+}
+.topModelKitNota i{
+    margin-left: 8px;
+    width: 25%;
+}
+.topModelKitNota span{
+    width: 75%;
+    text-align: center;
+}
+.topModelKitDatos{
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+}
+.topModelKitContenedorImg{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.topModelKitImg{
+    max-height: 100%;
+}
+.topModelKitDatosTexto{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+.topModelKitNombre{
+    font-family: 'mecha';
+    font-size: 1.3em;
+}
+.topModelKitDatosCortos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'mecha';
+}
